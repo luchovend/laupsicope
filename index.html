@@ -22,16 +22,16 @@
 
             --text-font-primary: #2A363B;
             --text-font-subtle: #5A686D;
-            --text-font-accent: #00695C;
-            --text-font-accent-secondary: #00796B;
-            --text-font-accent-darker: #004D40;
+            --text-font-accent: #00695C; 
+            --text-font-accent-secondary: #00796B; 
+            --text-font-accent-darker: #004D40; 
             --text-font-on-dark-bg: #FFFFFF;
             --text-font-on-accent-bg: #FFFFFF;
 
             --icon-main: var(--text-font-accent);
             --icon-secondary: var(--text-font-accent-secondary);
             --icon-tertiary: var(--text-font-accent-darker);
-            --icon-special-positive: #F9A825;
+            --icon-special-positive: #F9A825; 
 
             --color-text-dark: var(--text-font-primary);
             --color-text-light: var(--text-font-on-dark-bg);
@@ -50,14 +50,14 @@
             --current-primary-accent-bg: var(--color-primary-accent-bg);
             --current-primary-accent-bg-hover: var(--color-primary-accent-bg-hover);
             --current-secondary-accent-bg: var(--color-secondary-accent-bg);
-            --current-secondary-accent-bg-light: var(--color-secondary-accent-bg);
+            --current-secondary-accent-bg-light: var(--color-secondary-accent-bg); 
         }
 
         .theme-2 {
-            --current-primary-accent-bg: #A88B70;
-            --current-primary-accent-bg-hover: #9A7C60;
-            --current-secondary-accent-bg: #D1C5B8;
-            --current-secondary-accent-bg-light: #E0D8CE;
+            --current-primary-accent-bg: #A88B70; 
+            --current-primary-accent-bg-hover: #9A7C60; 
+            --current-secondary-accent-bg: #D1C5B8; 
+            --current-secondary-accent-bg-light: #E0D8CE; 
 
             --color-border: #E5E0DA;
             --color-border-input: #D5CCC2;
@@ -65,19 +65,17 @@
 
         #nosotros.theme-2,
         #enfoque.theme-2 {
-            background-color: #F7F5F2;
+            background-color: #F7F5F2; 
         }
         #servicios.theme-2 {
-            background-color: #FFFFFF;
+            background-color: #FFFFFF; 
             position: relative;
             overflow: hidden;
         }
         #contacto.theme-2 {
-            background-color: #F7F5F2;
-            background-image: radial-gradient(var(--current-secondary-accent-bg-light) 0.7px, transparent 0.7px);
-            background-size: 10px 10px;
+            background-color: #F7F5F2; 
             position: relative;
-            overflow: hidden;
+            overflow: hidden; 
         }
 
 
@@ -113,11 +111,11 @@
         }
         
         #contacto.theme-2 .contact-container {
-            background-color: var(--color-bg-alt);
+            background-color: var(--color-bg-alt); 
             box-shadow: 0 10px 25px rgba(0,0,0,0.08), 0 5px 10px rgba(0,0,0,0.04);
             border-radius: 0.75rem;
             position: relative;
-            z-index: 10;
+            z-index: 10; 
         }
 
         .theme-2 input,
@@ -374,9 +372,9 @@
             list-style: none;
             display: block;
             animation: floatShapes linear infinite;
-            bottom: -250px;
+            bottom: -250px; 
             will-change: transform, opacity;
-            --shape-opacity-val: 0.2;
+            --shape-opacity-val: 0.2; 
         }
         .shape.square {
             background-color: var(--current-secondary-accent-bg-light);
@@ -395,7 +393,7 @@
             border-left-color: transparent;
             border-right-color: transparent;
             border-bottom-color: var(--current-secondary-accent-bg);
-            background-color: transparent !important;
+            background-color: transparent !important; 
             border-radius: 0;
         }
 
@@ -415,98 +413,20 @@
         .shape.triangle:nth-child(7) { border-left-width:60px; border-right-width:60px; border-bottom-width:100px;}
         .shape.triangle:nth-child(11) { border-left-width:40px; border-right-width:40px; border-bottom-width:70px;}
 
-
         @keyframes floatShapes {
             0% {
                 transform: translateY(0) rotate(0deg);
-                opacity: 0;
+                opacity: 0; 
             }
             10% {
-                opacity: var(--shape-opacity-val);
+                opacity: var(--shape-opacity-val); 
             }
             90% {
-                opacity: var(--shape-opacity-val);
+                opacity: var(--shape-opacity-val); 
             }
             100% {
-                transform: translateY(-200vh) rotate(180deg);
-                opacity: 0;
-            }
-        }
-
-        .animated-clouds-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .cloud {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.35); 
-            border-radius: 50% 60% 70% 50% / 40% 50% 60% 50%;
-            opacity: 0;
-            filter: blur(15px); 
-            animation-name: animatedCloud;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-            will-change: transform, opacity; 
-        }
-
-        .cloud-1 {
-            width: 40vw; 
-            height: 22vw;
-            top: 10%;
-            left: -45vw; 
-            animation-duration: 80s;
-            animation-delay: 0s;
-        }
-
-        .cloud-2 {
-            width: 50vw;
-            height: 28vw;
-            top: 35%;
-            left: -55vw;
-            animation-duration: 95s;
-            animation-delay: -20s;
-        }
-
-        .cloud-3 {
-            width: 35vw;
-            height: 20vw;
-            top: 60%;
-            left: -40vw;
-            animation-duration: 70s;
-            animation-delay: -35s;
-        }
-         .cloud-4 {
-            width: 55vw;
-            height: 30vw;
-            top: 20%; 
-            left: -65vw;
-            animation-duration: 100s;
-            animation-delay: -50s;
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-
-        @keyframes animatedCloud {
-            0% {
-                transform: translateX(0) translateY(0px);
-                opacity: 0;
-            }
-            15% { 
-                opacity: 0.35;
-            }
-            85% { 
-                opacity: 0.35;
-            }
-            100% {
-                transform: translateX(calc(100vw + 65vw)) translateY(10px); 
-                opacity: 0;
+                transform: translateY(-200vh) rotate(180deg); 
+                opacity: 0; 
             }
         }
 
@@ -517,7 +437,7 @@
     <header class="bg-header-footer shadow-md sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#inicio" class="block">
-                <img src="imagenes/logolau.png" alt="Logo Laura Portillo Psicopedagoga" class="h-12 md:h-14 image-hover-effect" onerror="this.onerror=null;this.src='https://placehold.co/150x50/FDFBF8/2A363B?text=LP+Psico';this.style.border='1px solid var(--color-border)';this.style.padding='2px'; this.style.backgroundColor='var(--color-bg-header-footer)';">
+                <img src="imagenes/logolau.png" alt="Logotipo Laura Portillo Psicopedagoga" class="h-12 md:h-14 image-hover-effect" onerror="this.onerror=null;this.src='https://placehold.co/150x50/FDFBF8/2A363B?text=LP+Psico';this.style.border='1px solid var(--color-border)';this.style.padding='2px'; this.style.backgroundColor='var(--color-bg-header-footer)';">
             </a>
             <div class="space-x-6 hidden md:flex">
                 <a href="#inicio" class="text-header-footer hover:text-white relative group">
@@ -559,7 +479,7 @@
         <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-[rgba(96,88,80,0.85)] via-[rgba(200,165,140,0.7)] to-[rgba(96,88,80,0.85)] z-0"></div>
 
         <div class="container mx-auto px-6 text-center relative z-10 mt-8 md:mt-12">
-            <img src="imagenes/logolau.png" alt="Logo Laura Portillo Psicopedagoga" class="h-24 md:h-32 mx-auto mb-8 hero-text-animate logo-animate image-hover-effect" onerror="this.onerror=null;this.src='https://placehold.co/300x100/FDFBF8/2A363B?text=Laura+Portillo';this.style.border='1px solid var(--color-border)';this.style.padding='10px'; this.style.backgroundColor='rgba(42,54,59,0.5)';">
+            <img src="imagenes/logolau.png" alt="Logotipo Laura Portillo Psicopedagoga" class="h-24 md:h-32 mx-auto mb-8 hero-text-animate logo-animate image-hover-effect" onerror="this.onerror=null;this.src='https://placehold.co/300x100/FDFBF8/2A363B?text=Laura+Portillo';this.style.border='1px solid var(--color-border)';this.style.padding='10px'; this.style.backgroundColor='rgba(42,54,59,0.5)';">
 
             <p class="hero-text-animate p2 text-md md:text-lg mb-10 max-w-2xl mx-auto font-light" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.35);">
                 Acompañamiento psicopedagógico profesional y personalizado para niños y adolescentes. Descubrí cómo juntos podemos impulsar el aprendizaje y bienestar.
@@ -654,22 +574,20 @@
     </section>
 
     <section id="servicios" class="py-16 md:py-24 fade-in-section theme-2">
-        <div class="animated-shapes-bg">
-            <div class="shape square" style="left: 15%; width: 120px; height: 120px; animation-delay: 0s; animation-duration: 20s; --shape-opacity-val: 0.2;"></div>
-            <div class="shape circle" style="left: 5%; width: 60px; height: 60px; animation-delay: 1s; animation-duration: 25s; --shape-opacity-val: 0.18;"></div>
-            <div class="shape triangle" style="left: 80%; width: 0; height: 0; border-left-width:40px; border-right-width:40px; border-bottom-width:70px; animation-delay: 3s; animation-duration: 23s; --shape-opacity-val: 0.15;"></div>
-            <div class="shape square" style="left: 50%; width: 70px; height: 70px; animation-delay: 4s; animation-duration: 18s; --shape-opacity-val: 0.2;"></div>
-            <div class="shape circle" style="left: 90%; width: 50px; height: 50px; animation-delay: 2s;  animation-duration: 26s; --shape-opacity-val: 0.16;"></div>
-            <div class="shape square" style="left: 30%; width: 90px; height: 90px; animation-delay: 7s; animation-duration: 30s; --shape-opacity-val: 0.12;"></div>
-            <div class="shape triangle" style="left: 65%; width: 0; height: 0; border-left-width:50px; border-right-width:50px; border-bottom-width:85px; animation-delay: 9s; animation-duration: 20s; --shape-opacity-val: 0.14;"></div>
-            <div class="shape circle" style="left: 40%; width: 35px; height: 35px; animation-delay: 11s; animation-duration: 28s; --shape-opacity-val: 0.19;"></div>
-            <div class="shape square" style="left: 22%; width: 40px; height: 40px; animation-delay: 13s; animation-duration: 21s; --shape-opacity-val: 0.17;"></div>
-            <div class="shape circle" style="left: 85%; width: 100px; height: 100px; animation-delay: 6s; animation-duration: 24s; --shape-opacity-val: 0.13;"></div>
-            <div class="shape triangle" style="left: 5%; width: 0; height: 0; border-left-width:35px; border-right-width:35px; border-bottom-width:60px; animation-delay: 10s; animation-duration: 29s; --shape-opacity-val: 0.11;"></div>
-            <div class="shape square" style="left: 70%; width: 60px; height: 60px; animation-delay: 12s; animation-duration: 17s; --shape-opacity-val: 0.21;"></div>
+        <div class="animated-shapes-bg"> <div class="shape square"></div>
+            <div class="shape circle"></div>
+            <div class="shape triangle"></div>
+            <div class="shape square"></div>
+            <div class="shape circle"></div>
+            <div class="shape square"></div>
+            <div class="shape triangle"></div>
+            <div class="shape circle"></div>
+            <div class="shape square"></div>
+            <div class="shape circle"></div>
+            <div class="shape triangle"></div>
+            <div class="shape square"></div>
         </div>
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center mb-12">
+        <div class="container mx-auto px-6 relative z-10"> <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-accent-secondary">Servicios Psicopedagógicos</h2>
                 <p class="text-dark mt-2 text-lg">Apoyo escolar y acompañamiento personalizado para Nivel Primario y hasta 1er año de Secundaria.</p>
             </div>
@@ -721,14 +639,7 @@
     </section>
 
     <section id="contacto" class="py-16 md:py-24 theme-2 fade-in-section">
-        <div class="animated-clouds-bg">
-            <div class="cloud cloud-1"></div>
-            <div class="cloud cloud-2"></div>
-            <div class="cloud cloud-3"></div>
-            <div class="cloud cloud-4"></div>
-        </div>
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="text-center mb-12 md:mb-16">
+        <canvas id="contact-canvas-bg" class="absolute top-0 left-0 w-full h-full z-0"></canvas> <div class="container mx-auto px-6 relative z-10"> <div class="text-center mb-12 md:mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-accent-primary">Ponte en Contacto</h2>
                 <p class="text-dark mt-3 text-lg max-w-2xl mx-auto">
                     Estoy aquí para ayudarte en tu proceso de aprendizaje y desarrollo.
@@ -765,14 +676,24 @@
                     </div>
 
                      <div class="contact-info-item bg-white p-5 rounded-lg shadow-md border-l-4 border-accent-primary transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-1" style="animation-delay: 0.2s;">
-                        <div class="flex items-center">
-                             <div class="flex-shrink-0 w-12 h-12 rounded-full bg-accent-primary text-white flex items-center justify-center mr-4 contact-icon-pulse">
+                        <div class="flex items-center mb-3"> <div class="flex-shrink-0 w-12 h-12 rounded-full bg-accent-primary text-white flex items-center justify-center mr-4 contact-icon-pulse">
                                 <i class="fas fa-map-marker-alt fa-lg"></i>
                             </div>
                             <div>
                                 <span class="font-semibold text-subtle block text-sm">Ubicación:</span>
                                 <p class="text-dark text-lg font-medium">Posadas, Misiones, Argentina</p>
                             </div>
+                        </div>
+                        <div class="mt-2 rounded-md overflow-hidden shadow-md">
+                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113034.00965689948!2d-55.96999794086913!3d-27.39619381290828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9457be7f080496c3%3A0xccbff374623e7b9a!2sPosadas%2C%20Misiones!5e0!3m2!1ses!2sar!4v1684788000000" 
+                                     width="100%" 
+                                     height="200" 
+                                     style="border:0;" 
+                                     allowfullscreen="" 
+                                     loading="lazy" 
+                                     referrerpolicy="no-referrer-when-downgrade"
+                                     title="Mapa de Posadas, Misiones">
+                            </iframe>
                         </div>
                     </div>
                     
@@ -818,17 +739,19 @@
                             </button>
                         </div>
                         <p id="form-message" class="text-xs text-center text-subtle mt-3 h-4"></p> <p class="text-xs text-center text-subtle mt-1">
-                            Este formulario tiene su demora en respuestas. Para una respuesta más rápida, por favor utiliza WhatsApp o Instagram <i class="fas fa-heart icon-positive">.
+                            Este formulario tiene su demora en respuestas. Para una respuesta más rápida, por favor utiliza WhatsApp o Instagram <i class="fas fa-heart icon-positive"></i>.
                         </p>
                     </form>
                 </div>
             </div>
         </div>
     </section>
-    <footer class="bg-header-footer text-header-footer py-12"> <div class="container mx-auto px-6 text-center">
+
+    <footer class="w-full bg-header-footer text-header-footer py-12"> 
+        <div class="container mx-auto px-6 text-center">
             <div class="mb-4">
                  <a href="#inicio" class="inline-block">
-                    <img src="imagenes/logolau.png" alt="Logo Laura Portillo Psicopedagoga" class="h-12 md:h-14 mx-auto image-hover-effect" onerror="this.onerror=null;this.src='https://placehold.co/150x50/FDFBF8/2A363B?text=LP+Psico';this.style.border='1px solid var(--color-border)';this.style.padding='2px'; this.style.backgroundColor='var(--color-bg-header-footer)';">
+                    <img src="imagenes/logolau.png" alt="Logotipo Laura Portillo Psicopedagoga" class="h-12 md:h-14 mx-auto image-hover-effect" onerror="this.onerror=null;this.src='https://placehold.co/150x50/FDFBF8/2A363B?text=LP+Psico';this.style.border='1px solid var(--color-border)';this.style.padding='2px'; this.style.backgroundColor='var(--color-bg-header-footer)';">
                 </a>
             </div>
             <div class="space-x-4 mb-4">
@@ -836,8 +759,8 @@
                 <a href="#nosotros" class="text-header-footer hover:text-white transition-colors duration-300">Sobre Mí</a>
                 <a href="#servicios" class="text-header-footer hover:text-white transition-colors duration-300">Servicios</a>
                 <a href="#contacto" class="text-header-footer hover:text-white transition-colors duration-300">Contacto</a> </div>
-            <p class="text-sm text-header-footer">&copy; 2024 Laura Portillo Psicopedagoga (Mat. 251907). Todos los derechos reservados.</p>
-            <p class="text-xs mt-1 text-header-footer">Diseñado por Luciano Vendrel <i class="fas fa-heart icon-positive"></i>.</p>
+            <p class="text-sm text-header-footer">&copy; 2024 Laura Portillo Psicopedagoga. Todos los derechos reservados.</p>
+            <p class="text-xs mt-1 text-header-footer">Diseñado por Luciano Vendrell <i class="fas fa-heart icon-positive"></i>.</p>
         </div>
     </footer>
 
@@ -856,7 +779,7 @@
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         e.preventDefault();
-                        targetElement.scrollIntoView({
+                        targetElement.scrollIntoView({ 
                             behavior: 'smooth'
                         });
                     }
@@ -867,7 +790,6 @@
             });
         });
 
-
         const logoLinks = document.querySelectorAll('header a[href="#inicio"], footer a[href="#inicio"]');
         logoLinks.forEach(link => {
             link.addEventListener('click', (e) => {
@@ -877,32 +799,38 @@
         });
 
         const sectionsToFade = document.querySelectorAll('.fade-in-section');
+        let contactCanvasInitialized = false; 
+
         const sectionObserver = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
+                if (entry.isIntersecting) { 
+                    entry.target.classList.add('is-visible'); 
                     
                     if (entry.target.id === 'contacto') {
                         const contactInfoItems = entry.target.querySelectorAll('.contact-info-item');
                         contactInfoItems.forEach((item, index) => {
-                            item.style.animationDelay = `${index * 0.15}s`;
+                            item.style.animationDelay = `${index * 0.15}s`; 
                             item.classList.add('is-visible');
                         });
                         const contactIcons = entry.target.querySelectorAll('.contact-icon-pulse');
                          contactIcons.forEach((icon, index) => {
-                            icon.style.animationDelay = `${0.3 + index * 0.15}s`;
+                            icon.style.animationDelay = `${0.3 + index * 0.15}s`; 
                             icon.classList.add('is-visible');
                         });
+
+                        if (!contactCanvasInitialized) {
+                            initContactCanvasAnimation();
+                            contactCanvasInitialized = true;
+                        }
                     }
-                    observer.unobserve(entry.target);
+                    observer.unobserve(entry.target); 
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.1 }); 
 
         sectionsToFade.forEach(section => {
-            sectionObserver.observe(section);
+            sectionObserver.observe(section); 
         });
-
 
         const nosotrosSection = document.getElementById('nosotros');
         if (nosotrosSection) {
@@ -922,10 +850,10 @@
                                 const progressBarFill = item.querySelector('.progress-bar-fill');
                                 const percentageSpan = item.querySelector('.specialty-percentage');
                                 const targetPercentage = parseInt(item.dataset.percentage, 10);
-                                setTimeout(() => {
+                                setTimeout(() => { 
                                     progressBarFill.style.width = targetPercentage + '%';
                                     let currentPercentage = 0;
-                                    const interval = setInterval(() => {
+                                    const interval = setInterval(() => { 
                                         if (currentPercentage >= targetPercentage) {
                                             clearInterval(interval);
                                             percentageSpan.textContent = targetPercentage + '%';
@@ -933,27 +861,131 @@
                                         }
                                         currentPercentage++;
                                         percentageSpan.textContent = currentPercentage + '%';
-                                    }, 1500 / targetPercentage);
-                                }, (index * 0.15 * 1000) + 100);
+                                    }, 1500 / targetPercentage); 
+                                }, (index * 0.15 * 1000) + 100); 
                             }
                         });
-                        nosotrosObserver.unobserve(entry.target);
+                        nosotrosObserver.unobserve(entry.target); 
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.1 }); 
             animatedItems.forEach(item => {
                 item.style.opacity = '0';
             });
-            nosotrosObserver.observe(nosotrosSection);
+            nosotrosObserver.observe(nosotrosSection); 
         }
 
+        function initContactCanvasAnimation() {
+            const canvas = document.getElementById('contact-canvas-bg');
+            const contactoSection = document.getElementById('contacto');
+            if (!canvas || !contactoSection) return;
+
+            const ctx = canvas.getContext('2d');
+            let particlesArray;
+
+            function resizeCanvas() {
+                canvas.width = contactoSection.offsetWidth;
+                canvas.height = contactoSection.offsetHeight;
+            }
+            resizeCanvas();
+
+            const computedStyles = getComputedStyle(document.documentElement);
+            const particleColorHex = computedStyles.getPropertyValue('--current-primary-accent-bg').trim() || '#A88B70';
+            const particleColor = `${particleColorHex}99`; 
+
+            const lineColorHex = computedStyles.getPropertyValue('--text-font-accent').trim() || '#00695C';
+            
+
+            class Particle {
+                constructor(x, y, directionX, directionY, size, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.directionX = directionX;
+                    this.directionY = directionY;
+                    this.size = size;
+                    this.color = color;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+                update() {
+                    if (this.x > canvas.width || this.x < 0) {
+                        this.directionX = -this.directionX;
+                    }
+                    if (this.y > canvas.height || this.y < 0) {
+                        this.directionY = -this.directionY;
+                    }
+                    this.x += this.directionX;
+                    this.y += this.directionY;
+                    this.draw();
+                }
+            }
+
+            function initParticles() {
+                particlesArray = [];
+                let numberOfParticles = (canvas.height * canvas.width) / 10000; 
+                if (numberOfParticles > 150) numberOfParticles = 150; 
+                if (numberOfParticles < 40) numberOfParticles = 40;   
+
+                for (let i = 0; i < numberOfParticles; i++) {
+                    let size = (Math.random() * 3) + 1.5; 
+                    let x = (Math.random() * ((canvas.width - size * 2) - (size * 2)) + size * 2);
+                    let y = (Math.random() * ((canvas.height - size * 2) - (size * 2)) + size * 2);
+                    let directionX = (Math.random() * .5) - 0.25; 
+                    let directionY = (Math.random() * .5) - 0.25;
+                    particlesArray.push(new Particle(x, y, directionX, directionY, size, particleColor));
+                }
+            }
+
+            function connectParticles() {
+                const maxDistance = 130; 
+                for (let a = 0; a < particlesArray.length; a++) {
+                    for (let b = a; b < particlesArray.length; b++) {
+                        let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
+                                     + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
+                        if (distance < (maxDistance * maxDistance)) {
+                            let opacityValue = 1 - (distance / (maxDistance * maxDistance));
+                            let alphaHex = Math.floor(opacityValue * 150).toString(16).padStart(2, '0'); 
+                            if (parseInt(alphaHex, 16) < 0x33) alphaHex = '33'; 
+
+                            ctx.strokeStyle = `${lineColorHex}${alphaHex}`;
+                            ctx.lineWidth = 0.8; 
+                            ctx.beginPath();
+                            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animateParticles() {
+                requestAnimationFrame(animateParticles);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particlesArray.length; i++) {
+                    particlesArray[i].update();
+                }
+                connectParticles();
+            }
+
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                initParticles();
+            });
+
+            initParticles();
+            animateParticles();
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             const heroSlides = document.querySelectorAll('#hero-slideshow .hero-slide');
             let currentSlideIndex = 0;
-            const slideIntervalTime = 5000;
+            const slideIntervalTime = 5000; 
             function showNextSlide() {
-                if (heroSlides.length <= 1) return;
+                if (heroSlides.length <= 1) return; 
                 heroSlides[currentSlideIndex].classList.remove('opacity-100');
                 heroSlides[currentSlideIndex].classList.add('opacity-0');
                 currentSlideIndex = (currentSlideIndex + 1) % heroSlides.length;
@@ -961,14 +993,15 @@
                 heroSlides[currentSlideIndex].classList.add('opacity-100');
             }
             if (heroSlides.length > 1) {
-                setInterval(showNextSlide, slideIntervalTime);
-            } else if (heroSlides.length === 1) {
+                setInterval(showNextSlide, slideIntervalTime); 
+            } else if (heroSlides.length === 1) { 
                  heroSlides[0].classList.remove('opacity-0');
                  heroSlides[0].classList.add('opacity-100');
             }
+            
             const heroSection = document.getElementById('inicio');
             if (heroSection) {
-                setTimeout(() => {
+                setTimeout(() => { 
                     heroSection.classList.add('loaded');
                 }, 200);
             }
@@ -985,12 +1018,12 @@
                     const mensaje = document.getElementById('mensaje').value;
 
                     formMessageEl.textContent = '';
-                    formMessageEl.className = 'text-xs text-center mt-3 h-4';
+                    formMessageEl.className = 'text-xs text-center mt-3 h-4'; 
 
                     if (!nombre || !email || !asunto || !mensaje) {
                         formMessageEl.textContent = 'Por favor, completa todos los campos.';
-                        formMessageEl.classList.add('text-red-600');
-                        setTimeout(() => {
+                        formMessageEl.classList.add('text-red-600'); 
+                        setTimeout(() => { 
                            formMessageEl.textContent = '';
                            formMessageEl.className = 'text-xs text-center mt-3 h-4';
                         }, 3000);
@@ -999,18 +1032,25 @@
                     
                     console.log('Formulario de Contacto Enviado (Simulación):', { nombre, email, asunto, mensaje });
                     formMessageEl.textContent = '¡Gracias! Mensaje enviado (Sin BD).';
-                    formMessageEl.classList.add('text-green-600');
-                    contactForm.reset();
-                    setTimeout(() => {
+                    formMessageEl.classList.add('text-green-600'); 
+                    contactForm.reset(); 
+                    setTimeout(() => { 
                         formMessageEl.textContent = '';
                         formMessageEl.className = 'text-xs text-center mt-3 h-4';
                     }, 4000);
                 });
             }
 
-            const contactoSection = document.getElementById('contacto');
-            if (contactoSection && !contactoSection.classList.contains('is-visible')) {
-                sectionObserver.observe(contactoSection);
+            const contactoSectionElement = document.getElementById('contacto');
+            if (contactoSectionElement) {
+                const contactoEntry = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting && !contactCanvasInitialized) {
+                        initContactCanvasAnimation();
+                        contactCanvasInitialized = true;
+                        contactoEntry.unobserve(contactoSectionElement); 
+                    }
+                }, { threshold: 0.1 });
+                contactoEntry.observe(contactoSectionElement);
             }
         });
     </script>
