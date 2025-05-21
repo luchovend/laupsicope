@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laura Portillo | Psicopedagoga (Mat. 251907)</title>
+    <title>Laura Portillo | Psicopedagoga</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -316,9 +316,9 @@
                     Sobre Mí
                     <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="#servicios" class="text-header-footer hover:text-white relative group opacity-50 cursor-not-allowed">
+                <a href="#servicios" class="text-header-footer hover:text-white relative group">
                     Servicios
-                    <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300"></span>
+                    <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
                 </a>
                 <a href="#contacto" class="text-header-footer hover:text-white relative group opacity-50 cursor-not-allowed">
                     Contacto
@@ -332,7 +332,7 @@
         <div id="mobile-menu" class="hidden md:hidden shadow-lg bg-header-footer"> 
             <a href="#inicio" class="block px-6 py-3 transition-all duration-300" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Inicio</a>
             <a href="#nosotros" class="block px-6 py-3 transition-all duration-300" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Sobre Mí</a>
-            <a href="#servicios" class="block px-6 py-3 transition-all duration-300 opacity-50 cursor-not-allowed" style="color: var(--text-font-on-dark-bg); background-color: transparent;">Servicios</a>
+            <a href="#servicios" class="block px-6 py-3 transition-all duration-300" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Servicios</a>
             <a href="#contacto" class="block px-6 py-3 transition-all duration-300 opacity-50 cursor-not-allowed" style="color: var(--text-font-on-dark-bg); background-color: transparent;">Contacto</a>
         </div>
     </header>
@@ -444,7 +444,6 @@
         </div>
     </section>
 
-    <!--
     <section id="servicios" class="py-16 md:py-24 fade-in-section theme-2">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
@@ -498,6 +497,7 @@
         </div>
     </section>
 
+    <!--
     <section id="enfoque" class="py-16 md:py-24 fade-in-section theme-2">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
@@ -597,11 +597,11 @@
             <div class="space-x-4 mb-4">
                 <a href="#inicio" class="text-header-footer hover:text-white transition-colors duration-300">Inicio</a>
                 <a href="#nosotros" class="text-header-footer hover:text-white transition-colors duration-300">Sobre Mí</a>
-                <a href="#servicios" class="text-header-footer hover:text-white transition-colors duration-300 opacity-50 cursor-not-allowed">Servicios</a>
+                <a href="#servicios" class="text-header-footer hover:text-white transition-colors duration-300">Servicios</a>
                 <a href="#contacto" class="text-header-footer hover:text-white transition-colors duration-300 opacity-50 cursor-not-allowed">Contacto</a>
             </div>
-            <p class="text-sm text-header-footer">&copy; 2024 Laura Portillo Psicopedagoga (Mat. 251907). Todos los derechos reservados.</p>
-            <p class="text-xs mt-1 text-header-footer">Diseñado con <i class="fas fa-heart icon-positive"></i> para el bienestar y aprendizaje.</p>
+            <p class="text-sm text-header-footer">&copy; 2024 Laura Portillo Psicopedagoga. Todos los derechos reservados.</p>
+            <p class="text-xs mt-1 text-header-footer">Diseñado por Luciano Vendrell <i class="fas fa-heart icon-positive"></i>.</p>
         </div>
     </footer>
 
@@ -616,7 +616,7 @@
         mobileMenuLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 const targetId = link.getAttribute('href');
-                if (targetId === '#inicio' || targetId === '#nosotros') { 
+                if (targetId === '#inicio' || targetId === '#nosotros' || targetId === '#servicios') { 
                     e.preventDefault(); 
                     document.querySelector(targetId).scrollIntoView({
                         behavior: 'smooth'
@@ -630,7 +630,7 @@
          desktopMenuLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 const targetId = link.getAttribute('href');
-                if (targetId === '#inicio' || targetId === '#nosotros') {
+                if (targetId === '#inicio' || targetId === '#nosotros' || targetId === '#servicios') {
                     e.preventDefault();
                     document.querySelector(targetId).scrollIntoView({
                         behavior: 'smooth'
