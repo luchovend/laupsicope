@@ -69,11 +69,14 @@
         }
         #servicios.theme-2 {
             background-color: #FFFFFF;
-            position: relative; 
-            overflow: hidden; 
+            position: relative;
+            overflow: hidden;
         }
         #contacto.theme-2 {
-            background-color: #FFFFFF;
+            background-color: #F7F5F2;
+            background-image: radial-gradient(var(--current-secondary-accent-bg-light) 0.7px, transparent 0.7px);
+            background-size: 10px 10px;
+            position: relative;
         }
 
 
@@ -105,10 +108,13 @@
             background-color: #F7F5F2 !important;
             border-color: var(--color-border) !important;
             position: relative;
-            z-index: 1; 
+            z-index: 1;
         }
-        #contacto.theme-2 .max-w-4xl {
-            background-color: #F7F5F2 !important;
+        
+        #contacto.theme-2 .contact-container {
+            background-color: var(--color-bg-alt);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08), 0 5px 10px rgba(0,0,0,0.04);
+            border-radius: 0.75rem;
         }
 
         .theme-2 input,
@@ -116,6 +122,19 @@
             background-color: #FFFFFF !important;
             border-color: var(--color-border-input) !important;
         }
+        
+        #contacto.theme-2 input,
+        #contacto.theme-2 textarea {
+            background-color: #FFFFFF !important;
+            border: 1px solid var(--color-border-input);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        #contacto.theme-2 input:focus,
+        #contacto.theme-2 textarea:focus {
+            border-color: var(--text-font-accent) !important;
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--text-font-accent) 20%, transparent) !important;
+        }
+
 
         body {
             font-family: 'Inter', sans-serif;
@@ -149,9 +168,9 @@
         .focus\:border-primary-accent:focus { border-color: var(--current-primary-accent-bg) !important; }
         .focus\:ring-primary-accent:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--current-primary-accent-bg) 30%, transparent) !important; }
 
-        .placeholder-custom::placeholder { color: var(--color-text-subtle); opacity: 0.8; }
-        input:-ms-input-placeholder.placeholder-custom { color: var(--color-text-subtle); }
-        input::-ms-input-placeholder.placeholder-custom { color: var(--color-text-subtle); }
+        .placeholder-custom::placeholder { color: var(--color-text-subtle); opacity: 0.7; }
+        input:-ms-input-placeholder.placeholder-custom { color: var(--color-text-subtle); opacity: 0.7; }
+        input::-ms-input-placeholder.placeholder-custom { color: var(--color-text-subtle); opacity: 0.7; }
 
         .cta-button {
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
@@ -162,14 +181,19 @@
         }
         #inicio .cta-button:hover {
             background-color: var(--text-font-accent-secondary) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
 
-        form button.bg-primary-accent {
+        #contactoForm button[type="submit"] {
              background-color: var(--text-font-accent) !important;
-             color: var(--color-text-on-accent) !important;
+             color: var(--text-font-on-accent-bg) !important;
+             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
-         form button.bg-primary-accent:hover {
+         #contactoForm button[type="submit"]:hover {
              background-color: var(--text-font-accent-secondary) !important;
+             transform: translateY(-2px);
+             box-shadow: 0 6px 12px color-mix(in srgb, var(--text-font-accent) 30%, transparent);
          }
 
         .service-card, .enfoque-item {
@@ -188,6 +212,14 @@
         .animate-item {
             opacity: 0;
         }
+        .contact-info-item.is-visible {
+            animation: fadeInUpItem 0.6s ease-out forwards;
+        }
+        @keyframes fadeInUpItem {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
 
         .commitment-title {
             position: relative;
@@ -217,6 +249,15 @@
         .icon-pulse {
             animation: pulse 2s infinite ease-in-out;
         }
+        .contact-icon-pulse.is-visible {
+            animation: pulseIcon 1.5s 0.5s ease-in-out;
+        }
+        @keyframes pulseIcon {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
 
         .image-hover-effect { transition: transform 0.35s ease, box-shadow 0.35s ease; }
         .image-hover-effect:hover { transform: scale(1.03); box-shadow: 0 8px 25px rgba(96, 88, 80, 0.1); }
@@ -245,16 +286,26 @@
 
         header nav a span, #mobile-menu a { transition: all 0.3s ease-in-out; }
         .hero-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
-        .whatsapp-button { background-color: #25D366; border-color: #25D366; color: white; }
-        .whatsapp-button:hover { background-color: #1DAE54; border-color: #1DAE54; }
+        .whatsapp-button {
+            background-color: #25D366;
+            border-color: #25D366;
+            color: white;
+            transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .whatsapp-button:hover {
+            background-color: #1DAE54;
+            border-color: #1DAE54;
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 12px rgba(37, 211, 102, 0.3);
+        }
         #inicio .hero-text-animate { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
         #inicio.loaded .hero-text-animate.logo-animate { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
         #inicio.loaded .hero-text-animate.p2 { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
         #inicio.loaded .hero-text-animate.cta { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
 
-        .icon-color-1 { color: var(--icon-main) !important; }
-        .icon-color-2 { color: var(--icon-secondary) !important; }
-        .icon-color-3 { color: var(--icon-tertiary) !important; }
+        .icon-color-1 { color: var(--text-font-accent) !important; }
+        .icon-color-2 { color: var(--text-font-accent-secondary) !important; }
+        .icon-color-3 { color: var(--text-font-accent-darker) !important; }
         .icon-positive  { color: var(--icon-special-positive) !important; }
 
         .section-divider-container {
@@ -311,18 +362,18 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%; 
-            overflow: hidden; 
-            z-index: 0; 
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
         }
         .shape {
             position: absolute;
             list-style: none;
             display: block;
             animation: floatShapes linear infinite;
-            bottom: -250px; 
+            bottom: -250px;
             will-change: transform, opacity;
-            --shape-opacity-val: 0.2; 
+            --shape-opacity-val: 0.2;
         }
         .shape.square {
             background-color: var(--current-secondary-accent-bg-light);
@@ -357,7 +408,6 @@
         .shape:nth-child(10) { left: 92%; width: 160px; height: 160px; animation-delay: 2.5s; animation-duration: 22s; --shape-opacity-val: 0.15;}
         .shape:nth-child(11) { left: 30%; width: 70px; height: 70px; animation-delay: 10s; animation-duration: 26s; --shape-opacity-val: 0.2;}
         .shape:nth-child(12) { left: 60%; width: 110px; height: 110px; animation-delay: 12s; animation-duration: 29s; --shape-opacity-val: 0.17;}
-        /* Adjust triangle border sizes */
         .shape.triangle:nth-child(3) { border-left-width:30px; border-right-width:30px; border-bottom-width:50px;}
         .shape.triangle:nth-child(7) { border-left-width:60px; border-right-width:60px; border-bottom-width:100px;}
         .shape.triangle:nth-child(11) { border-left-width:40px; border-right-width:40px; border-bottom-width:70px;}
@@ -365,19 +415,18 @@
 
         @keyframes floatShapes {
             0% {
-                transform: translateY(0) rotate(0deg); 
-                opacity: 0; 
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
             }
             10% {
                 opacity: var(--shape-opacity-val);
             }
             90% {
-                opacity: var(--shape-opacity-val); 
+                opacity: var(--shape-opacity-val);
             }
             100% {
-
                 transform: translateY(-200vh) rotate(180deg);
-                opacity: 0; 
+                opacity: 0;
             }
         }
 
@@ -385,7 +434,8 @@
 </head>
 <body class="bg-main text-dark">
 
-    <header class="bg-header-footer shadow-md sticky top-0 z-50"> <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+    <header class="bg-header-footer shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#inicio" class="block">
                 <img src="imagenes/logolau.png" alt="Logo Laura Portillo Psicopedagoga" class="h-12 md:h-14 image-hover-effect" onerror="this.onerror=null;this.src='https://placehold.co/150x50/FDFBF8/2A363B?text=LP+Psico';this.style.border='1px solid var(--color-border)';this.style.padding='2px'; this.style.backgroundColor='var(--color-bg-header-footer)';">
             </a>
@@ -402,10 +452,8 @@
                     Servicios
                     <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="#contacto" class="text-header-footer hover:text-white relative group opacity-50 cursor-not-allowed">
-                    Contacto
-                    <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300"></span>
-                </a>
+                <a href="#contacto" class="text-header-footer hover:text-white relative group"> Contacto
+                    <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span> </a>
             </div>
             <button id="mobile-menu-button" class="md:hidden text-header-footer focus:outline-none">
                 <i class="fas fa-bars text-2xl"></i>
@@ -415,8 +463,7 @@
             <a href="#inicio" class="block px-6 py-3 transition-all duration-300" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Inicio</a>
             <a href="#nosotros" class="block px-6 py-3 transition-all duration-300" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Sobre Mí</a>
             <a href="#servicios" class="block px-6 py-3 transition-all duration-300" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Servicios</a>
-            <a href="#contacto" class="block px-6 py-3 transition-all duration-300 opacity-50 cursor-not-allowed" style="color: var(--text-font-on-dark-bg); background-color: transparent;">Contacto</a>
-        </div>
+            <a href="#contacto" class="block px-6 py-3 transition-all duration-300" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Contacto</a> </div>
     </header>
 
     <section id="inicio" class="relative pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden min-h-[85vh] md:min-h-screen flex flex-col items-center text-light"> <div id="hero-slideshow" class="absolute inset-0 w-full h-full z-[-1]">
@@ -541,7 +588,8 @@
             <div class="shape triangle" style="left: 5%; width: 0; height: 0; border-left-width:35px; border-right-width:35px; border-bottom-width:60px; animation-delay: 10s; animation-duration: 29s; --shape-opacity-val: 0.11;"></div>
             <div class="shape square" style="left: 70%; width: 60px; height: 60px; animation-delay: 12s; animation-duration: 17s; --shape-opacity-val: 0.21;"></div>
         </div>
-        <div class="container mx-auto px-6 relative z-10"> <div class="text-center mb-12">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-accent-secondary">Servicios Psicopedagógicos</h2>
                 <p class="text-dark mt-2 text-lg">Apoyo escolar y acompañamiento personalizado para Nivel Primario y hasta 1er año de Secundaria.</p>
             </div>
@@ -592,6 +640,104 @@
         </div>
     </section>
 
+    <section id="contacto" class="py-16 md:py-24 theme-2 fade-in-section">
+        <div class="container mx-auto px-6 relative z-10"> <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-accent-primary">Ponte en Contacto</h2>
+                <p class="text-dark mt-3 text-lg max-w-2xl mx-auto">
+                    Estoy aquí para ayudarte en tu proceso de aprendizaje y desarrollo.
+                    No dudes en consultarme o agendar una cita.
+                </p>
+            </div>
+
+            <div class="max-w-5xl mx-auto p-6 md:p-10 rounded-xl shadow-2xl flex flex-col md:flex-row gap-8 md:gap-12 contact-container">
+                <div class="md:w-2/5 space-y-6">
+                    <h3 class="text-2xl font-semibold text-accent-darker mb-2">Información Directa</h3>
+                    
+                    <div class="contact-info-item bg-white p-5 rounded-lg shadow-md border-l-4 border-accent-primary transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-1">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-accent-primary text-white flex items-center justify-center mr-4 contact-icon-pulse">
+                                <i class="fas fa-phone-alt fa-lg"></i>
+                            </div>
+                            <div>
+                                <span class="font-semibold text-subtle block text-sm">Teléfono:</span>
+                                <a href="tel:+543764243762" class="text-dark hover:text-accent-primary transition-colors duration-300 text-lg font-medium">3764-243762</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item bg-white p-5 rounded-lg shadow-md border-l-4 border-accent-primary transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-1" style="animation-delay: 0.1s;">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-accent-primary text-white flex items-center justify-center mr-4 contact-icon-pulse">
+                                <i class="fab fa-instagram fa-lg"></i>
+                            </div>
+                            <div>
+                                <span class="font-semibold text-subtle block text-sm">Instagram:</span>
+                                <a href="https://www.instagram.com/psicopelauraportillo" target="_blank" rel="noopener noreferrer" class="text-dark hover:text-accent-primary transition-colors duration-300 text-lg font-medium">@psicopelauraportillo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="contact-info-item bg-white p-5 rounded-lg shadow-md border-l-4 border-accent-primary transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-1" style="animation-delay: 0.2s;">
+                        <div class="flex items-center">
+                             <div class="flex-shrink-0 w-12 h-12 rounded-full bg-accent-primary text-white flex items-center justify-center mr-4 contact-icon-pulse">
+                                <i class="fas fa-map-marker-alt fa-lg"></i>
+                            </div>
+                            <div>
+                                <span class="font-semibold text-subtle block text-sm">Ubicación:</span>
+                                <p class="text-dark text-lg font-medium">Posadas, Misiones, Argentina</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 pt-4 border-t border-gray-200">
+                         <a href="https://wa.me/5493764243762?text=Hola%20Lic.%20Laura,%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center justify-center w-full whatsapp-button font-semibold py-3.5 px-6 rounded-lg text-lg shadow-md hover:shadow-lg">
+                            <i class="fab fa-whatsapp mr-3 text-2xl"></i> Contactar por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="md:w-3/5">
+                    <h3 class="text-2xl font-semibold text-accent-darker mb-6">Envíame un Mensaje</h3>
+                    <form id="contactForm" class="space-y-5">
+                        <div>
+                            <label for="nombre" class="block text-sm font-medium text-subtle mb-1.5">Nombre Completo</label>
+                            <input type="text" name="nombre" id="nombre" required
+                                   class="w-full px-4 py-3 rounded-md border-input-custom focus:ring-primary-accent focus:border-primary-accent transition-colors duration-300 placeholder-custom text-dark text-base"
+                                   placeholder="Tu Nombre Completo">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-subtle mb-1.5">Correo Electrónico</label>
+                            <input type="email" name="email" id="email" required
+                                   class="w-full px-4 py-3 rounded-md border-input-custom focus:ring-primary-accent focus:border-primary-accent transition-colors duration-300 placeholder-custom text-dark text-base"
+                                   placeholder="tu@email.com">
+                        </div>
+                        <div>
+                            <label for="asunto" class="block text-sm font-medium text-subtle mb-1.5">Asunto</label>
+                            <input type="text" name="asunto" id="asunto" required
+                                   class="w-full px-4 py-3 rounded-md border-input-custom focus:ring-primary-accent focus:border-primary-accent transition-colors duration-300 placeholder-custom text-dark text-base"
+                                   placeholder="Motivo de tu consulta">
+                        </div>
+                        <div>
+                            <label for="mensaje" class="block text-sm font-medium text-subtle mb-1.5">Mensaje</label>
+                            <textarea name="mensaje" id="mensaje" rows="5" required
+                                      class="w-full px-4 py-3 rounded-md border-input-custom focus:ring-primary-accent focus:border-primary-accent transition-colors duration-300 placeholder-custom text-dark text-base"
+                                      placeholder="Escribe tu mensaje aquí..."></textarea>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                    class="w-full font-semibold py-3.5 px-6 rounded-lg text-lg shadow-md hover:shadow-lg cta-button">
+                                Enviar Mensaje
+                            </button>
+                        </div>
+                        <p id="form-message" class="text-xs text-center text-subtle mt-3 h-4"></p> <p class="text-xs text-center text-subtle mt-1">
+                            Este formulario tiene su demora en respuestas. Para una respuesta más rápida, por favor utiliza WhatsApp o Instagram <i class="fas fa-heart icon-positive"></i>.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
     <footer class="bg-header-footer text-header-footer py-12"> <div class="container mx-auto px-6 text-center">
             <div class="mb-4">
                  <a href="#inicio" class="inline-block">
@@ -602,8 +748,7 @@
                 <a href="#inicio" class="text-header-footer hover:text-white transition-colors duration-300">Inicio</a>
                 <a href="#nosotros" class="text-header-footer hover:text-white transition-colors duration-300">Sobre Mí</a>
                 <a href="#servicios" class="text-header-footer hover:text-white transition-colors duration-300">Servicios</a>
-                <a href="#contacto" class="text-header-footer hover:text-white transition-colors duration-300 opacity-50 cursor-not-allowed">Contacto</a>
-            </div>
+                <a href="#contacto" class="text-header-footer hover:text-white transition-colors duration-300">Contacto</a> </div>
             <p class="text-sm text-header-footer">&copy; 2024 Laura Portillo Psicopedagoga (Mat. 251907). Todos los derechos reservados.</p>
             <p class="text-xs mt-1 text-header-footer">Diseñado por Luciano Vendrel <i class="fas fa-heart icon-positive"></i>.</p>
         </div>
@@ -616,32 +761,25 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(link => {
+        const allMenuLinks = document.querySelectorAll('header nav a, #mobile-menu a, footer a[href^="#"]');
+        allMenuLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 const targetId = link.getAttribute('href');
-                if (targetId === '#inicio' || targetId === '#nosotros' || targetId === '#servicios') {
-                    e.preventDefault();
-                    document.querySelector(targetId).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                if (['#inicio', '#nosotros', '#servicios', '#contacto'].includes(targetId)) {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
                 }
-                mobileMenu.classList.add('hidden');
+                if (mobileMenu && mobileMenu.contains(link) && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
             });
         });
 
-         const desktopMenuLinks = document.querySelectorAll('header nav .hidden a, footer a[href^="#"]');
-         desktopMenuLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                const targetId = link.getAttribute('href');
-                if (targetId === '#inicio' || targetId === '#nosotros' || targetId === '#servicios') {
-                    e.preventDefault();
-                    document.querySelector(targetId).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
 
         const logoLinks = document.querySelectorAll('header a[href="#inicio"], footer a[href="#inicio"]');
         logoLinks.forEach(link => {
@@ -651,11 +789,24 @@
             });
         });
 
-        const sectionsToFade = document.querySelectorAll('.fade-in-section:not(#nosotros)');
+        const sectionsToFade = document.querySelectorAll('.fade-in-section');
         const sectionObserver = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
+                    
+                    if (entry.target.id === 'contacto') {
+                        const contactInfoItems = entry.target.querySelectorAll('.contact-info-item');
+                        contactInfoItems.forEach((item, index) => {
+                            item.style.animationDelay = `${index * 0.15}s`;
+                            item.classList.add('is-visible');
+                        });
+                        const contactIcons = entry.target.querySelectorAll('.contact-icon-pulse');
+                         contactIcons.forEach((icon, index) => {
+                            icon.style.animationDelay = `${0.3 + index * 0.15}s`;
+                            icon.classList.add('is-visible');
+                        });
+                    }
                     observer.unobserve(entry.target);
                 }
             });
@@ -665,10 +816,10 @@
             sectionObserver.observe(section);
         });
 
+
         const nosotrosSection = document.getElementById('nosotros');
         if (nosotrosSection) {
             const animatedItems = nosotrosSection.querySelectorAll('.animate-item');
-
             const nosotrosObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -676,17 +827,14 @@
                             item.style.opacity = '0';
                             item.style.transform = 'translateY(20px)';
                             item.style.transition = `opacity 0.6s ${index * 0.15}s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.6s ${index * 0.15}s cubic-bezier(0.25, 0.8, 0.25, 1)`;
-
                             requestAnimationFrame(() => {
                                 item.style.opacity = '1';
                                 item.style.transform = 'translateY(0px)';
                             });
-
                             if (item.classList.contains('specialty-item')) {
                                 const progressBarFill = item.querySelector('.progress-bar-fill');
                                 const percentageSpan = item.querySelector('.specialty-percentage');
                                 const targetPercentage = parseInt(item.dataset.percentage, 10);
-
                                 setTimeout(() => {
                                     progressBarFill.style.width = targetPercentage + '%';
                                     let currentPercentage = 0;
@@ -706,7 +854,6 @@
                     }
                 });
             }, { threshold: 0.1 });
-
             animatedItems.forEach(item => {
                 item.style.opacity = '0';
             });
@@ -718,31 +865,65 @@
             const heroSlides = document.querySelectorAll('#hero-slideshow .hero-slide');
             let currentSlideIndex = 0;
             const slideIntervalTime = 5000;
-
             function showNextSlide() {
                 if (heroSlides.length <= 1) return;
-
                 heroSlides[currentSlideIndex].classList.remove('opacity-100');
                 heroSlides[currentSlideIndex].classList.add('opacity-0');
-
                 currentSlideIndex = (currentSlideIndex + 1) % heroSlides.length;
-
                 heroSlides[currentSlideIndex].classList.remove('opacity-0');
                 heroSlides[currentSlideIndex].classList.add('opacity-100');
             }
-
             if (heroSlides.length > 1) {
                 setInterval(showNextSlide, slideIntervalTime);
             } else if (heroSlides.length === 1) {
                  heroSlides[0].classList.remove('opacity-0');
                  heroSlides[0].classList.add('opacity-100');
             }
-
             const heroSection = document.getElementById('inicio');
             if (heroSection) {
                 setTimeout(() => {
                     heroSection.classList.add('loaded');
                 }, 200);
+            }
+
+            const contactForm = document.getElementById('contactForm');
+            const formMessageEl = document.getElementById('form-message');
+
+            if (contactForm && formMessageEl) {
+                contactForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); 
+                    const nombre = document.getElementById('nombre').value;
+                    const email = document.getElementById('email').value;
+                    const asunto = document.getElementById('asunto').value;
+                    const mensaje = document.getElementById('mensaje').value;
+
+                    formMessageEl.textContent = '';
+                    formMessageEl.className = 'text-xs text-center mt-3 h-4';
+
+                    if (!nombre || !email || !asunto || !mensaje) {
+                        formMessageEl.textContent = 'Por favor, completa todos los campos.';
+                        formMessageEl.classList.add('text-red-600');
+                        setTimeout(() => {
+                           formMessageEl.textContent = '';
+                           formMessageEl.className = 'text-xs text-center mt-3 h-4';
+                        }, 3000);
+                        return;
+                    }
+                    
+                    console.log('Formulario de Contacto Enviado (Simulación):', { nombre, email, asunto, mensaje });
+                    formMessageEl.textContent = '¡Gracias! Mensaje enviado (simulacion sin bd).';
+                    formMessageEl.classList.add('text-green-600');
+                    contactForm.reset();
+                    setTimeout(() => {
+                        formMessageEl.textContent = '';
+                        formMessageEl.className = 'text-xs text-center mt-3 h-4';
+                    }, 4000);
+                });
+            }
+
+            const contactoSection = document.getElementById('contacto');
+            if (contactoSection && !contactoSection.classList.contains('is-visible')) {
+                sectionObserver.observe(contactoSection);
             }
         });
     </script>
