@@ -67,10 +67,15 @@
         #enfoque.theme-2 { 
             background-color: #F7F5F2; 
         }
-        #servicios.theme-2, 
+        #servicios.theme-2 { 
+            background-color: #FFFFFF; 
+            position: relative; 
+            overflow: hidden; 
+        }
         #contacto.theme-2 { 
             background-color: #FFFFFF; 
         }
+
 
         #nosotros.theme-2 .commitment-text-block { 
             background-color: var(--color-bg-main); 
@@ -99,6 +104,8 @@
         #servicios.theme-2 .service-card {
             background-color: #F7F5F2 !important;
             border-color: var(--color-border) !important; 
+            position: relative; 
+            z-index: 1;
         }
         #contacto.theme-2 .max-w-4xl { 
             background-color: #F7F5F2 !important;
@@ -299,6 +306,78 @@
             transition: width 1.5s cubic-bezier(0.25, 0.8, 0.25, 1); 
         }
 
+        /* Animated Shapes Background */
+        .animated-shapes-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0; 
+        }
+        .shape {
+            position: absolute;
+            list-style: none;
+            display: block;
+            animation: floatShapes linear infinite;
+            bottom: -200px; /* Start further off-screen for smoother entry */
+            will-change: transform, opacity; /* Performance hint */
+             --shape-opacity-val: 0.15; /* Default opacity, can be overridden per shape */
+        }
+        .shape.square {
+            background-color: var(--current-secondary-accent-bg-light); 
+            border-radius: 8px;
+        }
+        .shape.circle {
+            background-color: var(--current-primary-accent-bg);
+            border-radius: 50%;
+        }
+        .shape.triangle {
+            width: 0;
+            height: 0;
+            border-left-style: solid; 
+            border-right-style: solid;
+            border-bottom-style: solid;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            border-bottom-color: var(--current-secondary-accent-bg);
+            background-color: transparent !important;
+            border-radius: 0;
+        }
+
+        /* Shape Instances - Increased sizes, adjusted opacities and durations */
+        .shape:nth-child(1) { left: 20%; width: 100px; height: 100px; animation-delay: 0s; animation-duration: 22s; --shape-opacity-val: 0.2;}
+        .shape:nth-child(2) { left: 5%; width: 40px; height: 40px; animation-delay: 1.5s; animation-duration: 18s; --shape-opacity-val: 0.15;}
+        .shape:nth-child(3) { left: 75%; width: 30px; height: 30px; animation-delay: 3s; animation-duration: 25s; --shape-opacity-val: 0.18;}
+        .shape:nth-child(4) { left: 35%; width: 80px; height: 80px; animation-delay: 0.5s; animation-duration: 20s; --shape-opacity-val: 0.22;}
+        .shape:nth-child(5) { left: 68%; width: 35px; height: 35px; animation-delay: 4s; animation-duration: 16s; --shape-opacity-val: 0.16;}
+        .shape:nth-child(6) { left: 80%; width: 130px; height: 130px; animation-delay: 2s; animation-duration: 28s; --shape-opacity-val: 0.1;}
+        .shape:nth-child(7) { left: 10%; width: 160px; height: 160px; animation-delay: 5s; animation-duration: 30s; --shape-opacity-val: 0.09;}
+        .shape:nth-child(8) { left: 55%; width: 45px; height: 45px; animation-delay: 12s; animation-duration: 32s; --shape-opacity-val: 0.2;}
+        .shape:nth-child(9) { left: 28%; width: 25px; height: 25px; animation-delay: 6s; animation-duration: 26s; --shape-opacity-val: 0.17;}
+        .shape:nth-child(10) { left: 90%; width: 120px; height: 120px; animation-delay: 1s; animation-duration: 19s; --shape-opacity-val: 0.12;}
+        .shape:nth-child(11) { left: 40%; width: 50px; height: 50px; animation-delay: 8s; animation-duration: 23s; --shape-opacity-val: 0.18;}
+        .shape:nth-child(12) { left: 60%; width: 90px; height: 90px; animation-delay: 10s; animation-duration: 27s; --shape-opacity-val: 0.15;}
+
+
+        @keyframes floatShapes {
+            0% {
+                transform: translateY(5vh) rotate(0deg); /* Start slightly within view for smoother entry from bottom */
+                opacity: 0;
+            }
+            15% {
+                opacity: var(--shape-opacity-val); 
+            }
+            85% {
+                opacity: var(--shape-opacity-val);
+            }
+            100% {
+                transform: translateY(-105vh) rotate(220deg); /* Ensure it goes well off-screen, adjusted rotation */
+                opacity: 0;
+            }
+        }
+
     </style>
 </head>
 <body class="bg-main text-dark">
@@ -445,7 +524,21 @@
     </section>
 
     <section id="servicios" class="py-16 md:py-24 fade-in-section theme-2">
-        <div class="container mx-auto px-6">
+        <div class="animated-shapes-bg">
+            <div class="shape square" style="left: 15%; width: 120px; height: 120px; animation-delay: 0s; animation-duration: 20s; --shape-opacity-val: 0.2;"></div>
+            <div class="shape circle" style="left: 5%; width: 60px; height: 60px; animation-delay: 1s; animation-duration: 25s; --shape-opacity-val: 0.18;"></div>
+            <div class="shape triangle" style="left: 80%; width: 0; height: 0; border-left-width:40px; border-right-width:40px; border-bottom-width:70px; animation-delay: 3s; animation-duration: 23s; --shape-opacity-val: 0.15;"></div>
+            <div class="shape square" style="left: 50%; width: 70px; height: 70px; animation-delay: 4s; animation-duration: 18s; --shape-opacity-val: 0.2;"></div>
+            <div class="shape circle" style="left: 90%; width: 50px; height: 50px; animation-delay: 2s;  animation-duration: 26s; --shape-opacity-val: 0.16;"></div>
+            <div class="shape square" style="left: 30%; width: 90px; height: 90px; animation-delay: 7s; animation-duration: 30s; --shape-opacity-val: 0.12;"></div>
+            <div class="shape triangle" style="left: 65%; width: 0; height: 0; border-left-width:50px; border-right-width:50px; border-bottom-width:85px; animation-delay: 9s; animation-duration: 20s; --shape-opacity-val: 0.14;"></div>
+            <div class="shape circle" style="left: 40%; width: 35px; height: 35px; animation-delay: 11s; animation-duration: 28s; --shape-opacity-val: 0.19;"></div>
+            <div class="shape square" style="left: 22%; width: 40px; height: 40px; animation-delay: 13s; animation-duration: 21s; --shape-opacity-val: 0.17;"></div>
+            <div class="shape circle" style="left: 85%; width: 100px; height: 100px; animation-delay: 6s; animation-duration: 24s; --shape-opacity-val: 0.13;"></div>
+            <div class="shape triangle" style="left: 5%; width: 0; height: 0; border-left-width:35px; border-right-width:35px; border-bottom-width:60px; animation-delay: 10s; animation-duration: 29s; --shape-opacity-val: 0.11;"></div>
+            <div class="shape square" style="left: 70%; width: 60px; height: 60px; animation-delay: 12s; animation-duration: 17s; --shape-opacity-val: 0.21;"></div>
+        </div>
+        <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-accent-secondary">Servicios Psicopedagógicos</h2> 
                 <p class="text-dark mt-2 text-lg">Apoyo escolar y acompañamiento personalizado para Nivel Primario y hasta 1er año de Secundaria.</p>
@@ -497,97 +590,6 @@
         </div>
     </section>
 
-    <!--
-    <section id="enfoque" class="py-16 md:py-24 fade-in-section theme-2">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-accent-primary">Mi Enfoque de Trabajo</h2> 
-                <p class="text-dark mt-2 text-lg">Estrategias y metodologías para un aprendizaje efectivo y significativo.</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8 text-center">
-                 <div class="flex flex-col items-center text-center p-6 rounded-xl shadow-lg enfoque-item" style="background-color: #FFFFFF; border-color: var(--color-border);">
-                    <i class="fas fa-diagnoses text-4xl icon-color-1 mb-4"></i>
-                    <h3 class="text-xl font-semibold text-accent-primary mb-2">Intervención Personalizada</h3>
-                    <p class="text-sm text-subtle leading-normal">Diseño y aplico estrategias a medida, partiendo de una evaluación integral para abordar las necesidades específicas de cada estudiante.</p>
-                </div>
-                <div class="flex flex-col items-center text-center p-6 rounded-xl shadow-lg enfoque-item" style="background-color: #FFFFFF; border-color: var(--color-border);">
-                    <i class="fas fa-dice-d6 text-4xl icon-color-1 mb-4"></i> <h3 class="text-xl font-semibold text-accent-primary mb-2">Metodologías Activas y Lúdicas</h3> <p class="text-sm text-subtle leading-normal">Utilizo enfoques participativos y basados en el juego, que fomentan la motivación y un aprendizaje experiencial y memorable.</p>
-                </div>
-                <div class="flex flex-col items-center text-center p-6 rounded-xl shadow-lg enfoque-item" style="background-color: #FFFFFF; border-color: var(--color-border);">
-                    <i class="fas fa-handshake text-4xl icon-color-1 mb-4"></i> <h3 class="text-xl font-semibold text-accent-primary mb-2">Colaboración Familia-Escuela</h3> <p class="text-sm text-subtle leading-normal">Fomento una comunicación fluida y un trabajo en equipo con las familias y los centros educativos para alinear objetivos y potenciar resultados.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contacto" class="py-16 md:py-24 fade-in-section theme-2">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-accent-secondary">Contacto</h2> 
-                <p class="text-dark mt-2 text-lg">Estoy a disposición para cualquier consulta. ¡No dudes en escribirme!</p>
-            </div>
-            <div class="max-w-4xl mx-auto p-8 md:p-12 rounded-xl shadow-2xl" style="background-color: #F7F5F2;">
-                <div class="grid md:grid-cols-2 gap-10 items-start">
-                    <div>
-                        <h3 class="text-2xl font-semibold text-accent-secondary-light mb-6">Envíame un Mensaje</h3>
-                        <form action="https://formsubmit.co/tuemail@example.com" method="POST"> 
-                            <input type="hidden" name="_subject" value="Nuevo Mensaje desde la Web - Laura Portillo Psicopedagoga">
-                            <input type="hidden" name="_next" value="https://lauraportillo.com/gracias.html"> 
-                            <input type="hidden" name="_captcha" value="false"> 
-                            <div class="mb-4">
-                                <label for="name" class="block text-dark font-medium mb-2">Nombre Completo</label>
-                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border rounded-lg focus:ring-primary-accent focus:border-primary-accent transition duration-300 text-dark placeholder-custom" style="background-color: #FFFFFF; border-color: var(--color-border-input);" required>
-                            </div>
-                            <div class="mb-4">
-                                <label for="email" class="block text-dark font-medium mb-2">Correo Electrónico</label>
-                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border rounded-lg focus:ring-primary-accent focus:border-primary-accent transition duration-300 text-dark placeholder-custom" style="background-color: #FFFFFF; border-color: var(--color-border-input);" required>
-                            </div>
-                            <div class="mb-4">
-                                <label for="subject" class="block text-dark font-medium mb-2">Asunto</label>
-                                <input type="text" id="subject" name="subject" class="w-full px-4 py-2 border rounded-lg focus:ring-primary-accent focus:border-primary-accent transition duration-300 text-dark placeholder-custom" style="background-color: #FFFFFF; border-color: var(--color-border-input);">
-                            </div>
-                            <div class="mb-6">
-                                <label for="message" class="block text-dark font-medium mb-2">Mensaje</label>
-                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:ring-primary-accent focus:border-primary-accent transition duration-300 text-dark placeholder-custom" style="background-color: #FFFFFF; border-color: var(--color-border-input);" required></textarea>
-                            </div>
-                            <button type="submit" class="w-full text-text-on-accent font-semibold py-3 px-6 rounded-lg text-lg shadow-md cta-button bg-primary-accent hover:bg-primary-accent-hover">
-                                Enviar Mensaje
-                            </button>
-                        </form>
-                    </div>
-                    <div class="text-dark mt-8 md:mt-0">
-                        <h3 class="text-2xl font-semibold text-accent-secondary-light mb-6">Información de Contacto</h3>
-                        <p class="mb-4 flex items-center text-lg">
-                            <i class="fab fa-instagram text-accent-primary text-2xl mr-3"></i> 
-                            <a href="https://www.instagram.com/PSICOPELAURAPORTILLO" target="_blank" class="hover:text-primary-accent-hover transition duration-300">@PSICOPELAURAPORTILLO</a>
-                        </p>
-                        <p class="mb-4 flex items-center text-lg">
-                            <i class="fas fa-phone-alt text-accent-primary text-2xl mr-3"></i> 
-                            <a href="tel:+543764243762" class="hover:text-primary-accent-hover transition duration-300">3764-243762</a>
-                        </p>
-                         <p class="mb-4 flex items-start text-lg">
-                            <i class="fas fa-map-marker-alt text-accent-primary text-2xl mr-3 mt-1"></i> 
-                            <span>Posadas, Misiones, Argentina</span>
-                        </p>
-                        <p class="mb-6 text-md text-subtle">
-                            (Consultas y coordinación de turnos por mensaje directo de Instagram o WhatsApp)
-                        </p>
-                        <a href="https://wa.me/543764243762?text=Hola%20Laura,%20quisiera%20hacer%20una%20consulta%20sobre%20tus%20servicios%20psicopedagógicos."
-                           target="_blank"
-                           class="w-full flex items-center justify-center whatsapp-button font-semibold py-3 px-6 rounded-lg text-lg shadow-md cta-button mt-6 mb-8">
-                            <i class="fab fa-whatsapp text-xl mr-2"></i> Contactar vía WhatsApp
-                        </a>
-                        <div class="rounded-lg overflow-hidden shadow-md image-hover-effect">
-                             <img src="https://placehold.co/600x300/F7F5F2/423B34?text=Consultorio+Psicopedagógico" alt="Consultorio Psicopedagógico Laura Portillo" class="w-full h-auto" 
-                                  onerror="this.onerror=null;this.src='https://placehold.co/600x300/F7F5F2/423B34?text=Imagen+Consultorio';">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    -->
-
     <footer class="bg-header-footer text-header-footer py-12"> <div class="container mx-auto px-6 text-center">
             <div class="mb-4">
                  <a href="#inicio" class="inline-block">
@@ -600,7 +602,7 @@
                 <a href="#servicios" class="text-header-footer hover:text-white transition-colors duration-300">Servicios</a>
                 <a href="#contacto" class="text-header-footer hover:text-white transition-colors duration-300 opacity-50 cursor-not-allowed">Contacto</a>
             </div>
-            <p class="text-sm text-header-footer">&copy; 2024 Laura Portillo Psicopedagoga. Todos los derechos reservados.</p>
+            <p class="text-sm text-header-footer">&copy; 2024 Laura Portillo Psicopedagoga (Mat. 251907). Todos los derechos reservados.</p>
             <p class="text-xs mt-1 text-header-footer">Diseñado por Luciano Vendrell <i class="fas fa-heart icon-positive"></i>.</p>
         </div>
     </footer>
