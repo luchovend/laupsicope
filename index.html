@@ -22,16 +22,16 @@
 
             --text-font-primary: #2A363B;
             --text-font-subtle: #5A686D;
-            --text-font-accent: #00695C; 
-            --text-font-accent-secondary: #00796B; 
-            --text-font-accent-darker: #004D40; 
+            --text-font-accent: #00695C; /* Color principal de acento para iconos y bordes */
+            --text-font-accent-secondary: #00796B;
+            --text-font-accent-darker: #004D40;
             --text-font-on-dark-bg: #FFFFFF;
             --text-font-on-accent-bg: #FFFFFF;
 
             --icon-main: var(--text-font-accent);
             --icon-secondary: var(--text-font-accent-secondary);
             --icon-tertiary: var(--text-font-accent-darker);
-            --icon-special-positive: #F9A825; 
+            --icon-special-positive: #F9A825;
 
             --color-text-dark: var(--text-font-primary);
             --color-text-light: var(--text-font-on-dark-bg);
@@ -50,14 +50,14 @@
             --current-primary-accent-bg: var(--color-primary-accent-bg);
             --current-primary-accent-bg-hover: var(--color-primary-accent-bg-hover);
             --current-secondary-accent-bg: var(--color-secondary-accent-bg);
-            --current-secondary-accent-bg-light: var(--color-secondary-accent-bg); 
+            --current-secondary-accent-bg-light: var(--color-secondary-accent-bg);
         }
 
         .theme-2 {
-            --current-primary-accent-bg: #A88B70; 
-            --current-primary-accent-bg-hover: #9A7C60; 
-            --current-secondary-accent-bg: #D1C5B8; 
-            --current-secondary-accent-bg-light: #E0D8CE; 
+            --current-primary-accent-bg: #A88B70;
+            --current-primary-accent-bg-hover: #9A7C60;
+            --current-secondary-accent-bg: #D1C5B8;
+            --current-secondary-accent-bg-light: #E0D8CE;
 
             --color-border: #E5E0DA;
             --color-border-input: #D5CCC2;
@@ -65,17 +65,42 @@
 
         #nosotros.theme-2,
         #enfoque.theme-2 {
-            background-color: #F7F5F2; 
+            background-color: #F7F5F2;
+            position: relative;
+            overflow: hidden;
         }
+
+        #juego-didactico.theme-2 {
+            background-image: url('imagenes/otrofondopantalla.png'); 
+            background-size: cover; 
+            background-position: center center; 
+            background-repeat: no-repeat; 
+            background-color: #F7F5F2; 
+            position: relative; 
+            overflow: hidden; 
+            z-index: 0; 
+        }
+
+        #juego-didactico.theme-2::before {
+            content: ""; 
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(247, 245, 242, 0.15); 
+            z-index: 1; 
+        }
+
         #servicios.theme-2 {
-            background-color: #FFFFFF; 
+            background-color: #FFFFFF;
             position: relative;
             overflow: hidden;
         }
         #contacto.theme-2 {
-            background-color: #F7F5F2; 
+            background-color: #F7F5F2;
             position: relative;
-            overflow: hidden; 
+            overflow: hidden;
         }
 
 
@@ -107,11 +132,11 @@
             background-color: #F7F5F2 !important;
             border-color: var(--color-border) !important;
             position: relative;
-            z-index: 1;
+            z-index: 1; 
         }
-        
+
         #contacto.theme-2 .contact-container {
-            background-color: var(--color-bg-alt); 
+            background-color: var(--color-bg-alt);
             box-shadow: 0 10px 25px rgba(0,0,0,0.08), 0 5px 10px rgba(0,0,0,0.04);
             border-radius: 0.75rem;
             position: relative;
@@ -123,7 +148,7 @@
             background-color: #FFFFFF !important;
             border-color: var(--color-border-input) !important;
         }
-        
+
         #contacto.theme-2 input,
         #contacto.theme-2 textarea {
             background-color: #FFFFFF !important;
@@ -148,6 +173,15 @@
         }
 
         .bg-header-footer { background-color: var(--color-bg-header-footer); }
+
+        /* MODIFICACIÓN: Definición de .bg-accent-primary y .border-accent-primary */
+        .bg-accent-primary { 
+            background-color: var(--text-font-accent) !important; /* Asegura que el fondo del círculo del icono se aplique */
+        }
+        .border-accent-primary {
+            border-color: var(--text-font-accent) !important; /* Asegura que el borde del item de contacto se aplique */
+        }
+        /* Fin de la modificación */
 
         .bg-primary-accent { background-color: var(--current-primary-accent-bg); }
         .hover\:bg-primary-accent-hover:hover { background-color: var(--current-primary-accent-bg-hover) !important; }
@@ -365,16 +399,16 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: 0;
+            z-index: 0; 
         }
         .shape {
             position: absolute;
             list-style: none;
             display: block;
             animation: floatShapes linear infinite;
-            bottom: -250px; 
+            bottom: -250px;
             will-change: transform, opacity;
-            --shape-opacity-val: 0.2; 
+            --shape-opacity-val: 0.2;
         }
         .shape.square {
             background-color: var(--current-secondary-accent-bg-light);
@@ -393,7 +427,7 @@
             border-left-color: transparent;
             border-right-color: transparent;
             border-bottom-color: var(--current-secondary-accent-bg);
-            background-color: transparent !important; 
+            background-color: transparent !important;
             border-radius: 0;
         }
 
@@ -416,19 +450,109 @@
         @keyframes floatShapes {
             0% {
                 transform: translateY(0) rotate(0deg);
-                opacity: 0; 
+                opacity: 0;
             }
             10% {
-                opacity: var(--shape-opacity-val); 
+                opacity: var(--shape-opacity-val);
             }
             90% {
-                opacity: var(--shape-opacity-val); 
+                opacity: var(--shape-opacity-val);
             }
             100% {
-                transform: translateY(-200vh) rotate(180deg); 
-                opacity: 0; 
+                transform: translateY(-200vh) rotate(180deg);
+                opacity: 0;
             }
         }
+
+        /* ESTILOS PARA EL JUEGO DIDÁCTICO */
+        .theme-2 #tablero-juego {
+            perspective: 1000px; 
+        }
+
+        .tarjeta-juego {
+            background-color: var(--current-secondary-accent-bg-light);
+            aspect-ratio: 1 / 1; 
+            border-radius: 0.5rem; 
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.3, 1.2, 0.7, 1.2); 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            border: 2px solid transparent;
+        }
+        .tarjeta-juego:hover {
+            border-color: var(--current-primary-accent-bg);
+        }
+         .tarjeta-juego:not(.volteada):not(.igualada):hover { 
+            transform: translateY(-4px) scale(1.03);
+        }
+
+
+        .tarjeta-juego.volteada {
+            transform: rotateY(180deg);
+        }
+
+        .tarjeta-juego.igualada {
+            transform: rotateY(180deg) scale(0.95);
+            opacity: 0.7;
+            cursor: default;
+            border-color: var(--text-font-accent);
+        }
+         .tarjeta-juego.igualada:hover {
+             transform: rotateY(180deg) scale(0.95);
+         }
+
+
+        .cara-tarjeta {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.375rem;
+        }
+
+        .cara-tarjeta.frontal {
+            background-color: var(--current-secondary-accent-bg);
+        }
+         .cara-tarjeta.frontal::before {
+            content: "\f128";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            font-size: 2.5rem;
+            color: var(--current-primary-accent-bg);
+            opacity: 0.6;
+         }
+         @media (max-width: 768px) {
+            .cara-tarjeta.frontal::before {
+                font-size: 1.8rem;
+            }
+            #tablero-juego {
+                gap: 0.5rem;
+            }
+         }
+
+
+        .cara-tarjeta.trasera {
+            background-color: var(--color-bg-alt);
+            transform: rotateY(180deg);
+            padding: 10%;
+        }
+
+        .cara-tarjeta.trasera img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 0.25rem;
+        }
+
+        #reiniciar-juego-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px color-mix(in srgb, var(--current-primary-accent-bg) 30%, transparent);
+        }
+        /* FIN ESTILOS JUEGO DIDÁCTICO */
 
     </style>
 </head>
@@ -452,6 +576,10 @@
                     Servicios
                     <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
                 </a>
+                <a href="#juego-didactico" class="text-header-footer hover:text-white relative group">
+                    Juego Didáctico
+                    <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                </a>
                 <a href="#contacto" class="text-header-footer hover:text-white relative group"> Contacto
                     <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span> </a>
             </div>
@@ -463,6 +591,7 @@
             <a href="#inicio" class="block px-6 py-3 transition-all duration-300" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Inicio</a>
             <a href="#nosotros" class="block px-6 py-3 transition-all duration-300" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Sobre Mí</a>
             <a href="#servicios" class="block px-6 py-3 transition-all duration-300" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Servicios</a>
+            <a href="#juego-didactico" class="block px-6 py-3 transition-all duration-300" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Juego Didáctico</a>
             <a href="#contacto" class="block px-6 py-3 transition-all duration-300" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Contacto</a> </div>
     </header>
 
@@ -638,6 +767,30 @@
         </div>
     </section>
 
+    <section id="juego-didactico" class="py-16 md:py-24 theme-2 fade-in-section">
+        <div class="container mx-auto px-6 relative z-10"> <div class="text-center mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-accent-primary animate-item">Juego Didáctico: Pares de Emociones</h2>
+                <p class="text-dark mt-3 text-lg max-w-2xl mx-auto animate-item" style="animation-delay: 0.1s;">
+                    ¡Pon a prueba tu memoria y encuentra los pares de emociones! Haz clic en las tarjetas para revelar la emoción escondida.
+                </p>
+            </div>
+
+            <div class="max-w-3xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-xl animate-item" style="animation-delay: 0.2s; background-color: rgba(255, 255, 255, 0.95);"> <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <p class="text-subtle">Intentos: <span id="intentos-juego" class="font-semibold text-accent-secondary">0</span></p>
+                        <p class="text-subtle">Pares Encontrados: <span id="pares-encontrados-juego" class="font-semibold text-accent-secondary">0 / 5</span></p>
+                    </div>
+                    <button id="reiniciar-juego-btn" class="bg-primary-accent hover:bg-primary-accent-hover text-on-accent font-semibold py-2 px-5 rounded-lg shadow-md transition-all duration-300 ease-in-out flex items-center">
+                        <i class="fas fa-redo-alt mr-2"></i>Reiniciar
+                    </button>
+                </div>
+
+                <div id="tablero-juego" class="grid grid-cols-5 gap-3 md:gap-4">
+                    </div>
+                 <p id="mensaje-juego-completado" class="text-center text-xl font-semibold text-accent-darker mt-8 hidden animate-item"></p>
+            </div>
+        </div>
+    </section>
     <section id="contacto" class="py-16 md:py-24 theme-2 fade-in-section">
         <canvas id="contact-canvas-bg" class="absolute top-0 left-0 w-full h-full z-0"></canvas> <div class="container mx-auto px-6 relative z-10"> <div class="text-center mb-12 md:mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-accent-primary">Ponte en Contacto</h2>
@@ -650,7 +803,7 @@
             <div class="max-w-5xl mx-auto p-6 md:p-10 rounded-xl shadow-2xl flex flex-col md:flex-row gap-8 md:gap-12 contact-container">
                 <div class="md:w-2/5 space-y-6">
                     <h3 class="text-2xl font-semibold text-accent-darker mb-2">Información Directa</h3>
-                    
+
                     <div class="contact-info-item bg-white p-5 rounded-lg shadow-md border-l-4 border-accent-primary transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-1">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 w-12 h-12 rounded-full bg-accent-primary text-white flex items-center justify-center mr-4 contact-icon-pulse">
@@ -685,18 +838,18 @@
                             </div>
                         </div>
                         <div class="mt-2 rounded-md overflow-hidden shadow-md">
-                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113034.00965689948!2d-55.96999794086913!3d-27.39619381290828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9457be7f080496c3%3A0xccbff374623e7b9a!2sPosadas%2C%20Misiones!5e0!3m2!1ses!2sar!4v1684788000000" 
-                                     width="100%" 
-                                     height="200" 
-                                     style="border:0;" 
-                                     allowfullscreen="" 
-                                     loading="lazy" 
+                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113034.06033072891!2d-55.96997364309998!3d-27.396031999028703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9457be7f080496c3%3A0xccbff374623e7b9a!2sPosadas%2C%20Misiones!5e0!3m2!1ses-419!2sar!4v1716769888343!5m2!1ses-419!2sar"
+                                     width="100%"
+                                     height="200"
+                                     style="border:0;"
+                                     allowfullscreen=""
+                                     loading="lazy"
                                      referrerpolicy="no-referrer-when-downgrade"
                                      title="Mapa de Posadas, Misiones">
                             </iframe>
                         </div>
                     </div>
-                    
+
                     <div class="mt-8 pt-4 border-t border-gray-200">
                          <a href="https://wa.me/5493764243762?text=Hola%20Lic.%20Laura,%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener noreferrer"
                            class="inline-flex items-center justify-center w-full whatsapp-button font-semibold py-3.5 px-6 rounded-lg text-lg shadow-md hover:shadow-lg">
@@ -747,7 +900,7 @@
         </div>
     </section>
 
-    <footer class="w-full bg-header-footer text-header-footer py-12"> 
+    <footer class="w-full bg-header-footer text-header-footer py-12">
         <div class="container mx-auto px-6 text-center">
             <div class="mb-4">
                  <a href="#inicio" class="inline-block">
@@ -758,8 +911,9 @@
                 <a href="#inicio" class="text-header-footer hover:text-white transition-colors duration-300">Inicio</a>
                 <a href="#nosotros" class="text-header-footer hover:text-white transition-colors duration-300">Sobre Mí</a>
                 <a href="#servicios" class="text-header-footer hover:text-white transition-colors duration-300">Servicios</a>
+                <a href="#juego-didactico" class="text-header-footer hover:text-white transition-colors duration-300">Juego Didáctico</a>
                 <a href="#contacto" class="text-header-footer hover:text-white transition-colors duration-300">Contacto</a> </div>
-            <p class="text-sm text-header-footer">&copy; 2024 Laura Portillo Psicopedagoga. Todos los derechos reservados.</p>
+            <p class="text-sm text-header-footer">© 2025 Laura Portillo Psicopedagoga. Todos los derechos reservados.</p>
             <p class="text-xs mt-1 text-header-footer">Diseñado por Luciano Vendrell <i class="fas fa-heart icon-positive"></i>.</p>
         </div>
     </footer>
@@ -767,19 +921,21 @@
     <script>
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
 
         const allMenuLinks = document.querySelectorAll('header nav a, #mobile-menu a, footer a[href^="#"]');
         allMenuLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 const targetId = link.getAttribute('href');
-                if (['#inicio', '#nosotros', '#servicios', '#contacto'].includes(targetId)) {
+                if (['#inicio', '#nosotros', '#servicios', '#juego-didactico', '#contacto'].includes(targetId)) {
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         e.preventDefault();
-                        targetElement.scrollIntoView({ 
+                        targetElement.scrollIntoView({
                             behavior: 'smooth'
                         });
                     }
@@ -799,22 +955,22 @@
         });
 
         const sectionsToFade = document.querySelectorAll('.fade-in-section');
-        let contactCanvasInitialized = false; 
+        let contactCanvasInitialized = false;
 
         const sectionObserver = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
-                if (entry.isIntersecting) { 
-                    entry.target.classList.add('is-visible'); 
-                    
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+
                     if (entry.target.id === 'contacto') {
                         const contactInfoItems = entry.target.querySelectorAll('.contact-info-item');
                         contactInfoItems.forEach((item, index) => {
-                            item.style.animationDelay = `${index * 0.15}s`; 
+                            item.style.animationDelay = `${index * 0.15}s`;
                             item.classList.add('is-visible');
                         });
                         const contactIcons = entry.target.querySelectorAll('.contact-icon-pulse');
                          contactIcons.forEach((icon, index) => {
-                            icon.style.animationDelay = `${0.3 + index * 0.15}s`; 
+                            icon.style.animationDelay = `${0.3 + index * 0.15}s`;
                             icon.classList.add('is-visible');
                         });
 
@@ -823,22 +979,21 @@
                             contactCanvasInitialized = true;
                         }
                     }
-                    observer.unobserve(entry.target); 
                 }
             });
-        }, { threshold: 0.1 }); 
+        }, { threshold: 0.1 });
 
         sectionsToFade.forEach(section => {
-            sectionObserver.observe(section); 
+            sectionObserver.observe(section);
         });
 
         const nosotrosSection = document.getElementById('nosotros');
         if (nosotrosSection) {
-            const animatedItems = nosotrosSection.querySelectorAll('.animate-item');
+            const animatedItemsNosotros = nosotrosSection.querySelectorAll('.animate-item');
             const nosotrosObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        animatedItems.forEach((item, index) => {
+                        animatedItemsNosotros.forEach((item, index) => {
                             item.style.opacity = '0';
                             item.style.transform = 'translateY(20px)';
                             item.style.transition = `opacity 0.6s ${index * 0.15}s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.6s ${index * 0.15}s cubic-bezier(0.25, 0.8, 0.25, 1)`;
@@ -850,10 +1005,10 @@
                                 const progressBarFill = item.querySelector('.progress-bar-fill');
                                 const percentageSpan = item.querySelector('.specialty-percentage');
                                 const targetPercentage = parseInt(item.dataset.percentage, 10);
-                                setTimeout(() => { 
+                                setTimeout(() => {
                                     progressBarFill.style.width = targetPercentage + '%';
                                     let currentPercentage = 0;
-                                    const interval = setInterval(() => { 
+                                    const interval = setInterval(() => {
                                         if (currentPercentage >= targetPercentage) {
                                             clearInterval(interval);
                                             percentageSpan.textContent = targetPercentage + '%';
@@ -861,18 +1016,18 @@
                                         }
                                         currentPercentage++;
                                         percentageSpan.textContent = currentPercentage + '%';
-                                    }, 1500 / targetPercentage); 
-                                }, (index * 0.15 * 1000) + 100); 
+                                    }, 1500 / targetPercentage);
+                                }, (index * 0.15 * 1000) + 100);
                             }
                         });
-                        nosotrosObserver.unobserve(entry.target); 
+                        nosotrosObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 }); 
-            animatedItems.forEach(item => {
+            }, { threshold: 0.1 });
+            animatedItemsNosotros.forEach(item => {
                 item.style.opacity = '0';
             });
-            nosotrosObserver.observe(nosotrosSection); 
+            nosotrosObserver.observe(nosotrosSection);
         }
 
         function initContactCanvasAnimation() {
@@ -891,10 +1046,10 @@
 
             const computedStyles = getComputedStyle(document.documentElement);
             const particleColorHex = computedStyles.getPropertyValue('--current-primary-accent-bg').trim() || '#A88B70';
-            const particleColor = `${particleColorHex}99`; 
+            const particleColor = `${particleColorHex}99`;
 
             const lineColorHex = computedStyles.getPropertyValue('--text-font-accent').trim() || '#00695C';
-            
+
 
             class Particle {
                 constructor(x, y, directionX, directionY, size, color) {
@@ -926,33 +1081,33 @@
 
             function initParticles() {
                 particlesArray = [];
-                let numberOfParticles = (canvas.height * canvas.width) / 10000; 
-                if (numberOfParticles > 150) numberOfParticles = 150; 
-                if (numberOfParticles < 40) numberOfParticles = 40;   
+                let numberOfParticles = (canvas.height * canvas.width) / 10000;
+                if (numberOfParticles > 150) numberOfParticles = 150;
+                if (numberOfParticles < 40) numberOfParticles = 40;
 
                 for (let i = 0; i < numberOfParticles; i++) {
-                    let size = (Math.random() * 3) + 1.5; 
+                    let size = (Math.random() * 3) + 1.5;
                     let x = (Math.random() * ((canvas.width - size * 2) - (size * 2)) + size * 2);
                     let y = (Math.random() * ((canvas.height - size * 2) - (size * 2)) + size * 2);
-                    let directionX = (Math.random() * .5) - 0.25; 
+                    let directionX = (Math.random() * .5) - 0.25;
                     let directionY = (Math.random() * .5) - 0.25;
                     particlesArray.push(new Particle(x, y, directionX, directionY, size, particleColor));
                 }
             }
 
             function connectParticles() {
-                const maxDistance = 130; 
+                const maxDistance = 130;
                 for (let a = 0; a < particlesArray.length; a++) {
                     for (let b = a; b < particlesArray.length; b++) {
                         let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
                                      + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
                         if (distance < (maxDistance * maxDistance)) {
                             let opacityValue = 1 - (distance / (maxDistance * maxDistance));
-                            let alphaHex = Math.floor(opacityValue * 150).toString(16).padStart(2, '0'); 
-                            if (parseInt(alphaHex, 16) < 0x33) alphaHex = '33'; 
+                            let alphaHex = Math.floor(opacityValue * 150).toString(16).padStart(2, '0');
+                            if (parseInt(alphaHex, 16) < 0x33) alphaHex = '33';
 
                             ctx.strokeStyle = `${lineColorHex}${alphaHex}`;
-                            ctx.lineWidth = 0.8; 
+                            ctx.lineWidth = 0.8;
                             ctx.beginPath();
                             ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
                             ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
@@ -983,9 +1138,9 @@
         document.addEventListener('DOMContentLoaded', () => {
             const heroSlides = document.querySelectorAll('#hero-slideshow .hero-slide');
             let currentSlideIndex = 0;
-            const slideIntervalTime = 5000; 
+            const slideIntervalTime = 5000;
             function showNextSlide() {
-                if (heroSlides.length <= 1) return; 
+                if (heroSlides.length <= 1) return;
                 heroSlides[currentSlideIndex].classList.remove('opacity-100');
                 heroSlides[currentSlideIndex].classList.add('opacity-0');
                 currentSlideIndex = (currentSlideIndex + 1) % heroSlides.length;
@@ -993,15 +1148,15 @@
                 heroSlides[currentSlideIndex].classList.add('opacity-100');
             }
             if (heroSlides.length > 1) {
-                setInterval(showNextSlide, slideIntervalTime); 
-            } else if (heroSlides.length === 1) { 
+                setInterval(showNextSlide, slideIntervalTime);
+            } else if (heroSlides.length === 1) {
                  heroSlides[0].classList.remove('opacity-0');
                  heroSlides[0].classList.add('opacity-100');
             }
-            
+
             const heroSection = document.getElementById('inicio');
             if (heroSection) {
-                setTimeout(() => { 
+                setTimeout(() => {
                     heroSection.classList.add('loaded');
                 }, 200);
             }
@@ -1011,30 +1166,30 @@
 
             if (contactForm && formMessageEl) {
                 contactForm.addEventListener('submit', function(event) {
-                    event.preventDefault(); 
+                    event.preventDefault();
                     const nombre = document.getElementById('nombre').value;
                     const email = document.getElementById('email').value;
                     const asunto = document.getElementById('asunto').value;
                     const mensaje = document.getElementById('mensaje').value;
 
                     formMessageEl.textContent = '';
-                    formMessageEl.className = 'text-xs text-center mt-3 h-4'; 
+                    formMessageEl.className = 'text-xs text-center mt-3 h-4';
 
                     if (!nombre || !email || !asunto || !mensaje) {
                         formMessageEl.textContent = 'Por favor, completa todos los campos.';
-                        formMessageEl.classList.add('text-red-600'); 
-                        setTimeout(() => { 
+                        formMessageEl.classList.add('text-red-600');
+                        setTimeout(() => {
                            formMessageEl.textContent = '';
                            formMessageEl.className = 'text-xs text-center mt-3 h-4';
                         }, 3000);
                         return;
                     }
-                    
+
                     console.log('Formulario de Contacto Enviado (Simulación):', { nombre, email, asunto, mensaje });
                     formMessageEl.textContent = '¡Gracias! Mensaje enviado (Sin BD).';
-                    formMessageEl.classList.add('text-green-600'); 
-                    contactForm.reset(); 
-                    setTimeout(() => { 
+                    formMessageEl.classList.add('text-green-600');
+                    contactForm.reset();
+                    setTimeout(() => {
                         formMessageEl.textContent = '';
                         formMessageEl.className = 'text-xs text-center mt-3 h-4';
                     }, 4000);
@@ -1047,10 +1202,181 @@
                     if (entries[0].isIntersecting && !contactCanvasInitialized) {
                         initContactCanvasAnimation();
                         contactCanvasInitialized = true;
-                        contactoEntry.unobserve(contactoSectionElement); 
                     }
                 }, { threshold: 0.1 });
                 contactoEntry.observe(contactoSectionElement);
+            }
+
+            const tableroJuego = document.getElementById('tablero-juego');
+            const intentosDisplay = document.getElementById('intentos-juego');
+            const paresEncontradosDisplay = document.getElementById('pares-encontrados-juego');
+            const reiniciarJuegoBtn = document.getElementById('reiniciar-juego-btn');
+            const mensajeCompletado = document.getElementById('mensaje-juego-completado');
+
+            const nombresEmociones = ['ASUSTADO', 'BESO', 'LENGUITA', 'RISA', 'SONRIENTE'];
+            let tarjetasVolteadas = [];
+            let paresEncontrados = 0;
+            let intentos = 0;
+            let puedeVoltear = true;
+            const totalPares = nombresEmociones.length;
+
+            function actualizarContadorPares() {
+                if(paresEncontradosDisplay) {
+                    paresEncontradosDisplay.textContent = `${paresEncontrados} / ${totalPares}`;
+                }
+            }
+            
+
+            function crearTablero() {
+                paresEncontrados = 0;
+                intentos = 0;
+                puedeVoltear = true;
+                if (!tableroJuego || !intentosDisplay || !paresEncontradosDisplay || !mensajeCompletado) {
+                    console.error("Faltan elementos del DOM para el juego.");
+                    return;
+                }
+                tableroJuego.innerHTML = ''; 
+                intentosDisplay.textContent = intentos;
+                actualizarContadorPares();
+                mensajeCompletado.classList.add('hidden');
+                mensajeCompletado.textContent = '';
+
+                let emocionesParaJuego = [...nombresEmociones, ...nombresEmociones]; 
+                emocionesParaJuego.sort(() => 0.5 - Math.random()); 
+
+                emocionesParaJuego.forEach((nombreEmocion, i) => { 
+                    const tarjeta = document.createElement('div');
+                    tarjeta.classList.add('tarjeta-juego'); 
+                    tarjeta.dataset.emocion = nombreEmocion;
+
+                    const caraFrontal = document.createElement('div');
+                    caraFrontal.classList.add('cara-tarjeta', 'frontal');
+
+                    const caraTrasera = document.createElement('div');
+                    caraTrasera.classList.add('cara-tarjeta', 'trasera');
+                    const imgEmocion = document.createElement('img');
+                    imgEmocion.src = `imagenesjuego/${nombreEmocion}.png`;
+                    imgEmocion.alt = `Emoción ${nombreEmocion}`;
+                    imgEmocion.onerror = function() {
+                        this.src='https://placehold.co/100x100/E0D8CE/A88B70?text=?';
+                        this.alt='Error al cargar imagen';
+                        this.style.border='1px solid var(--current-primary-accent-bg)';
+                    };
+                    caraTrasera.appendChild(imgEmocion);
+
+                    tarjeta.appendChild(caraFrontal);
+                    tarjeta.appendChild(caraTrasera);
+                    tableroJuego.appendChild(tarjeta);
+
+                    tarjeta.addEventListener('click', () => voltearTarjeta(tarjeta));
+
+                    tarjeta.style.opacity = '0';
+                    tarjeta.style.transform = 'translateY(20px) scale(0.9)';
+                    const entryAnimationDelay = i * 0.06; 
+                    const entryAnimationDuration = 400; 
+                    tarjeta.style.transition = `opacity 0.4s ${entryAnimationDelay}s ease-out, transform 0.4s ${entryAnimationDelay}s ease-out`;
+                    
+                    requestAnimationFrame(() => {
+                        tarjeta.style.opacity = '1';
+                        tarjeta.style.transform = 'translateY(0px) scale(1)';
+                        setTimeout(() => {
+                            tarjeta.style.transform = '';
+                            tarjeta.style.transition = 'transform 0.6s cubic-bezier(0.3, 1.2, 0.7, 1.2)'; 
+                        }, entryAnimationDuration + (entryAnimationDelay * 1000) + 50); 
+                    });
+                });
+            }
+
+            function voltearTarjeta(tarjeta) {
+                if (!puedeVoltear || tarjeta.classList.contains('volteada') || tarjeta.classList.contains('igualada')) {
+                    return;
+                }
+                tarjeta.classList.add('volteada');
+                tarjetasVolteadas.push(tarjeta);
+
+                if (tarjetasVolteadas.length === 2) {
+                    puedeVoltear = false;
+                    intentos++;
+                    if(intentosDisplay) intentosDisplay.textContent = intentos;
+                    comprobarPareja();
+                }
+            }
+
+            function comprobarPareja() {
+                const [tarjeta1, tarjeta2] = tarjetasVolteadas;
+
+                if (tarjeta1.dataset.emocion === tarjeta2.dataset.emocion) {
+                    tarjeta1.classList.add('igualada');
+                    tarjeta2.classList.add('igualada');
+                    paresEncontrados++;
+                    actualizarContadorPares();
+                    tarjetasVolteadas = [];
+                    puedeVoltear = true;
+
+                    if (paresEncontrados === totalPares) {
+                        setTimeout(() => {
+                            if(mensajeCompletado) {
+                                mensajeCompletado.textContent = '¡Felicidades! ¡Has encontrado todos los pares!';
+                                mensajeCompletado.classList.remove('hidden');
+                                mensajeCompletado.style.opacity = '0';
+                                mensajeCompletado.style.transform = 'translateY(10px)';
+                                requestAnimationFrame(() => {
+                                    mensajeCompletado.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                                    mensajeCompletado.style.opacity = '1';
+                                    mensajeCompletado.style.transform = 'translateY(0px)';
+
+                                    setTimeout(() => {
+                                        crearTablero(); 
+                                    }, 3000); 
+
+                                });
+                            }
+                        }, 600); 
+                    }
+                } else {
+                    setTimeout(() => {
+                        tarjeta1.classList.remove('volteada');
+                        tarjeta2.classList.remove('volteada');
+                        tarjetasVolteadas = [];
+                        puedeVoltear = true;
+                    }, 1200);
+                }
+            }
+
+            if (tableroJuego) {
+                actualizarContadorPares(); 
+                crearTablero(); 
+                if (reiniciarJuegoBtn) {
+                    reiniciarJuegoBtn.addEventListener('click', crearTablero);
+                }
+
+                const juegoSection = document.getElementById('juego-didactico');
+                if (juegoSection) {
+                    const animatedItemsJuego = juegoSection.querySelectorAll('.animate-item:not(.tarjeta-juego)'); 
+                    const juegoObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                animatedItemsJuego.forEach((item) => {
+                                    const delay = parseFloat(item.style.animationDelay) || 0; 
+                                    if (item.style.opacity !== '1') { 
+                                        item.style.opacity = '0';
+                                        item.style.transform = 'translateY(20px)';
+                                        item.style.transition = `opacity 0.6s ${delay}s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.6s ${delay}s cubic-bezier(0.25, 0.8, 0.25, 1)`;
+                                        requestAnimationFrame(() => {
+                                            item.style.opacity = '1';
+                                            item.style.transform = 'translateY(0px)';
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    }, { threshold: 0.1 });
+
+                    animatedItemsJuego.forEach(item => { 
+                        item.style.opacity = '0'; 
+                    });
+                    juegoObserver.observe(juegoSection);
+                }
             }
         });
     </script>
