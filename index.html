@@ -174,14 +174,12 @@
 
         .bg-header-footer { background-color: var(--color-bg-header-footer); }
 
-        /* MODIFICACIÓN: Definición de .bg-accent-primary y .border-accent-primary */
         .bg-accent-primary { 
-            background-color: var(--text-font-accent) !important; /* Asegura que el fondo del círculo del icono se aplique */
+            background-color: var(--text-font-accent) !important; 
         }
         .border-accent-primary {
-            border-color: var(--text-font-accent) !important; /* Asegura que el borde del item de contacto se aplique */
+            border-color: var(--text-font-accent) !important; 
         }
-        /* Fin de la modificación */
 
         .bg-primary-accent { background-color: var(--current-primary-accent-bg); }
         .hover\:bg-primary-accent-hover:hover { background-color: var(--current-primary-accent-bg-hover) !important; }
@@ -659,9 +657,9 @@
                     <div class="specialties-container animate-item mt-8">
                         <h3 class="text-xl font-semibold text-accent-primary mb-5 text-center animate-item">Mis Especialidades</h3>
                         <div class="space-y-4">
-                            <div class="specialty-item animate-item" data-percentage="95">
+                            <div class="specialty-item animate-item" data-percentage="96">
                                 <div class="specialty-name">
-                                    <span>Evaluación Psicopedagógica</span>
+                                    <span>Dificultades Específicas del Aprendizaje (DEA)</span>
                                     <span class="specialty-percentage">0%</span>
                                 </div>
                                 <div class="progress-bar-bg">
@@ -919,6 +917,7 @@
     </footer>
 
     <script>
+        // Script para menú móvil y scroll suave (existente)
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         if (mobileMenuButton && mobileMenu) {
