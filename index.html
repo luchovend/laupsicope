@@ -693,6 +693,27 @@
         }
         /* Fin de estilos para el menú móvil animado */
 
+        /* Footer adjustments */
+        footer .footer-column h4 {
+            font-family: 'Poppins', sans-serif; /* Asegurar que los títulos del footer usen Poppins */
+            font-weight: 600; /* Hacer los títulos un poco más prominentes */
+            margin-bottom: 0.75rem; /* Espacio debajo de los títulos */
+            color: var(--text-font-on-dark-bg); /* Color del texto del header/footer */
+        }
+        footer .footer-column a, footer .footer-column p {
+            color: var(--text-font-on-dark-bg); /* Color del texto del header/footer */
+            opacity: 0.9; /* Ligeramente menos opaco que los títulos */
+            transition: opacity 0.3s ease;
+        }
+        footer .footer-column a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+         /* Estilo para la línea divisoria del footer */
+        .footer-bottom-line {
+            border-top: 1px solid rgba(255, 255, 255, 0.2); /* Línea divisoria sutil */
+        }
+
     </style>
 </head>
 <body class="bg-main text-dark"> 
@@ -1054,29 +1075,54 @@
             </div>
         </section>
 
-        <footer class="w-full bg-header-footer text-header-footer py-12">
-            <div class="container mx-auto px-6 text-center">
-                <div class="mb-4">
-                     <a href="#inicio" class="inline-block main-nav-link">
-                        <img src="imagenes/logolau.png" alt="Logotipo Laura Portillo Psicopedagoga" class="h-12 md:h-14 mx-auto image-hover-effect" onerror="this.onerror=null;this.src='https://placehold.co/150x50/FDFBF8/2A363B?text=LP+Psico';this.style.border='1px solid var(--color-border)';this.style.padding='2px'; this.style.backgroundColor='var(--color-bg-header-footer)';">
-                    </a>
+        <footer class="w-full bg-header-footer text-header-footer py-12 md:py-16">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-start gap-10 md:gap-8 mb-8 md:mb-12">
+                    <div class="w-full md:w-1/3 lg:w-1/4 footer-column text-center md:text-left">
+                        <a href="#inicio" class="inline-block mb-4 main-nav-link">
+                            <img src="imagenes/logolau.png" alt="Logotipo Laura Portillo Psicopedagoga" class="h-14 mx-auto md:mx-0 image-hover-effect" onerror="this.onerror=null;this.src='https://placehold.co/150x50/FDFBF8/2A363B?text=LP+Psico';this.style.border='1px solid var(--color-border)';this.style.padding='2px'; this.style.backgroundColor='var(--color-bg-header-footer)';">
+                        </a>
+                        <p class="text-sm opacity-80 leading-relaxed">
+                            Acompañamiento psicopedagógico para potenciar el aprendizaje y bienestar.
+                        </p>
+                    </div>
+
+                    <div class="w-full md:w-auto footer-column text-center md:text-left">
+                        <h4 class="text-lg font-semibold mb-3">Navegación</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#inicio" class="text-sm hover:text-white transition-colors duration-300 main-nav-link">Inicio</a></li>
+                            <li><a href="#nosotros" class="text-sm hover:text-white transition-colors duration-300 main-nav-link">Sobre Mí</a></li>
+                            <li><a href="#servicios" class="text-sm hover:text-white transition-colors duration-300 main-nav-link">Servicios</a></li>
+                            <li><a href="#juego-didactico" class="text-sm hover:text-white transition-colors duration-300 main-nav-link">Juego Didáctico</a></li>
+                            <li><a href="#contacto" class="text-sm hover:text-white transition-colors duration-300 main-nav-link">Contacto</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="w-full md:w-auto footer-column text-center md:text-left">
+                        <h4 class="text-lg font-semibold mb-3">Legal</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" id="open-terminos-btn" class="text-sm hover:text-white transition-colors duration-300">Términos y Condiciones</a></li>
+                            <li><a href="#" id="open-privacidad-btn" class="text-sm hover:text-white transition-colors duration-300">Política de Privacidad</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="w-full md:w-1/3 lg:w-1/4 footer-column text-center md:text-left">
+                        <h4 class="text-lg font-semibold mb-3">Contacto Rápido</h4>
+                        <p class="text-sm mb-1"><i class="fas fa-phone fa-fw mr-2 opacity-80"></i> <a href="tel:+543764243762" class="hover:text-white">3764-243762</a></p>
+                        <p class="text-sm mb-1"><i class="fab fa-instagram fa-fw mr-2 opacity-80"></i> <a href="https://www.instagram.com/psicopelauraportillo" target="_blank" rel="noopener noreferrer" class="hover:text-white">@psicopelauraportillo</a></p>
+                        <p class="text-sm"><i class="fas fa-map-marker-alt fa-fw mr-2 opacity-80"></i> Posadas, Misiones</p>
+                    </div>
                 </div>
-                <div class="space-x-4 mb-6"> 
-                    <a href="#inicio" class="text-header-footer hover:text-white transition-colors duration-300 main-nav-link">Inicio</a>
-                    <a href="#nosotros" class="text-header-footer hover:text-white transition-colors duration-300 main-nav-link">Sobre Mí</a>
-                    <a href="#servicios" class="text-header-footer hover:text-white transition-colors duration-300 main-nav-link">Servicios</a>
-                    <a href="#juego-didactico" class="text-header-footer hover:text-white transition-colors duration-300 main-nav-link">Juego Didáctico</a>
-                    <a href="#contacto" class="text-header-footer hover:text-white transition-colors duration-300 main-nav-link">Contacto</a>
+
+                <div class="footer-bottom-line pt-8 mt-8">
+                    <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                        <p class="text-xs opacity-70 mb-2 md:mb-0">© 2025 Laura Portillo Psicopedagoga. Todos los derechos reservados.</p>
+                        <p class="text-xs opacity-70">Diseñado por Luciano Vendrell <i class="fas fa-heart icon-positive"></i>.</p>
+                    </div>
                 </div>
-                <div class="mb-4 space-x-4"> 
-                    <a href="#" id="open-terminos-btn" class="text-header-footer hover:text-white transition-colors duration-300 text-sm">Términos y Condiciones</a>
-                     <a href="#" id="open-privacidad-btn" class="text-header-footer hover:text-white transition-colors duration-300 text-sm">Política de Privacidad</a>
-                </div>
-                <p class="text-sm text-header-footer">© 2025 Laura Portillo Psicopedagoga. Todos los derechos reservados.</p>
-                <p class="text-xs mt-1 text-header-footer">Diseñado por Luciano Vendrell <i class="fas fa-heart icon-positive"></i>.</p>
             </div>
         </footer>
-    </div> 
+        </div> 
 
     <div id="terminos-overlay" class="legal-overlay"> 
         <div id="terminos-condiciones-modal" class="legal-modal"> 
