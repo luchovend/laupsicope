@@ -22,7 +22,7 @@
 
             --text-font-primary: #2A363B;
             --text-font-subtle: #5A686D;
-            --text-font-accent: #00695C; /* Color principal de acento para iconos y bordes */
+            --text-font-accent: #00695C; 
             --text-font-accent-secondary: #00796B;
             --text-font-accent-darker: #004D40;
             --text-font-on-dark-bg: #FFFFFF;
@@ -101,6 +101,112 @@
             background-color: #F7F5F2;
             position: relative;
             overflow: hidden;
+        }
+        
+        .legal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(42, 54, 59, 0.85); 
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            padding: 1rem; 
+        }
+        .legal-overlay.is-visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .legal-modal { 
+            background-color: var(--color-bg-main);
+            padding: 2rem 2.5rem; 
+            border-radius: 0.75rem; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh; 
+            overflow-y: auto; 
+            position: relative; 
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .legal-overlay.is-visible .legal-modal {
+            transform: scale(1);
+        }
+
+        .legal-modal h2 {
+            color: var(--text-font-accent-darker); 
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem; 
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .legal-modal h3 {
+            color: var(--text-font-accent); 
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem; 
+            font-weight: 600;
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+            border-bottom: 2px solid var(--current-primary-accent-bg);
+            padding-bottom: 0.4rem;
+        }
+        .legal-modal p, .legal-modal ul li {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem; 
+            line-height: 1.65;
+            color: var(--text-font-subtle); 
+            margin-bottom: 0.8rem;
+        }
+        .legal-modal ul {
+            list-style-type: disc;
+            padding-left: 1.25rem; 
+            margin-bottom: 0.8rem;
+        }
+        .legal-modal strong {
+            color: var(--text-font-primary);
+            font-weight: 600;
+        }
+        .legal-modal a {
+            color: var(--text-font-accent-secondary);
+            text-decoration: underline;
+        }
+        .legal-modal a:hover {
+            color: var(--text-font-accent-darker);
+        }
+        .legal-modal .last-updated-text {
+            text-align: center;
+            font-style: italic;
+            color: var(--text-font-subtle);
+            margin-bottom: 2rem;
+            font-size: 0.85rem; 
+        }
+        .legal-close-btn { 
+            position: absolute;
+            top: 1rem;
+            right: 1.25rem;
+            background: none;
+            border: none;
+            font-size: 1.75rem;
+            color: var(--text-font-subtle);
+            cursor: pointer;
+            padding: 0.5rem;
+            line-height: 1;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .legal-close-btn:hover {
+            color: var(--text-font-accent-darker);
+            transform: scale(1.1);
+        }
+        body.modal-open { 
+            overflow: hidden; 
         }
 
 
@@ -219,14 +325,26 @@
         }
 
         #contactoForm button[type="submit"] {
-             background-color: var(--text-font-accent) !important;
-             color: var(--text-font-on-accent-bg) !important;
-             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+             background-color: #A88B70 !important; 
+             color: #FFFFFF !important; 
+             border: 1px solid #A88B70 !important; 
+             padding-top: 0.875rem; 
+             padding-bottom: 0.875rem; 
+             padding-left: 1.5rem; 
+             padding-right: 1.5rem; 
+             border-radius: 0.5rem; 
+             font-weight: 600; 
+             font-size: 1.125rem; 
+             width: 100%; 
+             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
+             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
          #contactoForm button[type="submit"]:hover {
-             background-color: var(--text-font-accent-secondary) !important;
+             background-color: #9A7C60 !important; 
+             border-color: #9A7C60 !important; 
+             color: #FFFFFF !important; 
              transform: translateY(-2px);
-             box-shadow: 0 6px 12px color-mix(in srgb, var(--text-font-accent) 30%, transparent);
+             box-shadow: 0 10px 15px -3px rgba(168, 139, 112, 0.2), 0 4px 6px -2px rgba(168, 139, 112, 0.15) !important; 
          }
 
         .service-card, .enfoque-item {
@@ -317,7 +435,7 @@
             box-shadow: 0 15px 35px rgba(42, 54, 59, 0.25);
         }
 
-        header nav a span, #mobile-menu a { transition: all 0.3s ease-in-out; }
+        header nav a span { transition: all 0.3s ease-in-out; }
         .hero-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
         .whatsapp-button {
             background-color: #25D366;
@@ -462,7 +580,6 @@
             }
         }
 
-        /* ESTILOS PARA EL JUEGO DIDÁCTICO */
         .theme-2 #tablero-juego {
             perspective: 1000px; 
         }
@@ -550,408 +667,702 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 12px color-mix(in srgb, var(--current-primary-accent-bg) 30%, transparent);
         }
-        /* FIN ESTILOS JUEGO DIDÁCTICO */
+
+        #mobile-menu {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s ease-out 0.1s;
+        }
+
+        #mobile-menu.mobile-menu-open {
+            max-height: 350px; 
+            opacity: 1;
+        }
+
+        #mobile-menu a {
+            opacity: 0;
+            transform: translateY(-15px);
+            color: var(--text-font-on-dark-bg);
+            background-color: transparent;
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out, background-color 0.2s ease-in-out;
+        }
+        #mobile-menu a:hover {
+            background-color: var(--color-mobile-menu-link-hover-bg);
+        }
+
+        #mobile-menu.mobile-menu-open a {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #mobile-menu.mobile-menu-open a:nth-child(1) { transition-delay: 0.15s, 0.15s, 0s; }
+        #mobile-menu.mobile-menu-open a:nth-child(2) { transition-delay: 0.20s, 0.20s, 0s; }
+        #mobile-menu.mobile-menu-open a:nth-child(3) { transition-delay: 0.25s, 0.25s, 0s; }
+        #mobile-menu.mobile-menu-open a:nth-child(4) { transition-delay: 0.30s, 0.30s, 0s; }
+        #mobile-menu.mobile-menu-open a:nth-child(5) { transition-delay: 0.35s, 0.35s, 0s; }
+
+        #mobile-menu-button {
+            position: relative; 
+            width: 2rem; 
+            height: 2rem; 
+            display: inline-flex; 
+            align-items: center;
+            justify-content: center;
+        }
+
+        #mobile-menu-button .fas { 
+            position: absolute; 
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        #mobile-menu-button .fa-bars {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+        #mobile-menu-button .fa-times {
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.5);
+        }
+
+        #mobile-menu-button.menu-active .fa-bars {
+            opacity: 0;
+            transform: rotate(90deg) scale(0.5);
+        }
+        #mobile-menu-button.menu-active .fa-times {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
 
     </style>
 </head>
-<body class="bg-main text-dark">
-
-    <header class="bg-header-footer shadow-md sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#inicio" class="block">
-                <img src="imagenes/logolau.png" alt="Logotipo Laura Portillo Psicopedagoga" class="h-12 md:h-14 image-hover-effect" onerror="this.onerror=null;this.src='https://placehold.co/150x50/FDFBF8/2A363B?text=LP+Psico';this.style.border='1px solid var(--color-border)';this.style.padding='2px'; this.style.backgroundColor='var(--color-bg-header-footer)';">
-            </a>
-            <div class="space-x-6 hidden md:flex">
-                <a href="#inicio" class="text-header-footer hover:text-white relative group">
-                    Inicio
-                    <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+<body class="bg-main text-dark"> 
+    <div id="main-content">
+        <header class="bg-header-footer shadow-md sticky top-0 z-50">
+            <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+                <a href="#inicio" class="block main-nav-link">
+                    <img src="imagenes/logolau.png" alt="Logotipo Laura Portillo Psicopedagoga" class="h-12 md:h-14 image-hover-effect" onerror="this.onerror=null;this.src='https://placehold.co/150x50/FDFBF8/2A363B?text=LP+Psico';this.style.border='1px solid var(--color-border)';this.style.padding='2px'; this.style.backgroundColor='var(--color-bg-header-footer)';">
                 </a>
-                <a href="#nosotros" class="text-header-footer hover:text-white relative group">
-                    Sobre Mí
-                    <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#servicios" class="text-header-footer hover:text-white relative group">
-                    Servicios
-                    <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#juego-didactico" class="text-header-footer hover:text-white relative group">
-                    Juego Didáctico
-                    <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#contacto" class="text-header-footer hover:text-white relative group"> Contacto
-                    <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span> </a>
-            </div>
-            <button id="mobile-menu-button" class="md:hidden text-header-footer focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
-        </nav>
-        <div id="mobile-menu" class="hidden md:hidden shadow-lg bg-header-footer">
-            <a href="#inicio" class="block px-6 py-3 transition-all duration-300" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Inicio</a>
-            <a href="#nosotros" class="block px-6 py-3 transition-all duration-300" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Sobre Mí</a>
-            <a href="#servicios" class="block px-6 py-3 transition-all duration-300" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Servicios</a>
-            <a href="#juego-didactico" class="block px-6 py-3 transition-all duration-300" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Juego Didáctico</a>
-            <a href="#contacto" class="block px-6 py-3 transition-all duration-300" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Contacto</a> </div>
-    </header>
-
-    <section id="inicio" class="relative pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden min-h-[85vh] md:min-h-screen flex flex-col items-center text-light"> <div id="hero-slideshow" class="absolute inset-0 w-full h-full z-[-1]">
-            <img src="imagenes/carrusel1.png"
-                 alt="Imagen de fondo carrusel 1 - Consultorio de psicopedagogía Laura Portillo"
-                 class="hero-slide transition-opacity duration-1000 ease-in-out opacity-100"
-                 onerror="this.onerror=null; this.src='https://placehold.co/1920x1080/C8A58C/FDFBF8?text=Imagen+Principal+1';">
-            <img src="imagenes/carrusel2.png"
-                 alt="Imagen de fondo carrusel 2 - Apoyo escolar y desarrollo integral"
-                 class="hero-slide transition-opacity duration-1000 ease-in-out opacity-0"
-                 onerror="this.onerror=null; this.src='https://placehold.co/1920x1080/D4BBAF/FDFBF8?text=Imagen+Principal+2';">
-        </div>
-        <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-[rgba(96,88,80,0.85)] via-[rgba(200,165,140,0.7)] to-[rgba(96,88,80,0.85)] z-0"></div>
-
-        <div class="container mx-auto px-6 text-center relative z-10 mt-8 md:mt-12">
-            <img src="imagenes/logolau.png" alt="Logotipo Laura Portillo Psicopedagoga" class="h-24 md:h-32 mx-auto mb-8 hero-text-animate logo-animate image-hover-effect" onerror="this.onerror=null;this.src='https://placehold.co/300x100/FDFBF8/2A363B?text=Laura+Portillo';this.style.border='1px solid var(--color-border)';this.style.padding='10px'; this.style.backgroundColor='rgba(42,54,59,0.5)';">
-
-            <p class="hero-text-animate p2 text-md md:text-lg mb-10 max-w-2xl mx-auto font-light" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.35);">
-                Acompañamiento psicopedagógico profesional y personalizado para niños y adolescentes. Descubrí cómo juntos podemos impulsar el aprendizaje y bienestar.
-            </p>
-            <a href="#servicios" class="hero-text-animate cta font-semibold py-3 px-10 rounded-lg text-lg shadow-xl cta-button inline-flex items-center transform hover:scale-105">
-                Conoce Mis Servicios <i class="fas fa-arrow-right ml-3"></i>
-            </a>
-        </div>
-    </section>
-
-    <section id="nosotros" class="py-16 md:py-24 theme-2"> <div class="container mx-auto px-6">
-            <div class="section-divider-container">
-                <div class="section-divider"></div>
-            </div>
-            <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-accent-primary animate-item">Sobre Mí</h2>
-                <p class="text-dark mt-2 text-lg animate-item">Lic. Laura Portillo, Psicopedagoga (Mat. 251907)</p>
-            </div>
-            <div class="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-12">
-                <div class="md:w-2/5 lg:w-1/3 flex justify-center items-center py-8 px-4 animate-item">
-                    <div class="relative group profile-image-container w-full max-w-md sm:max-w-lg mx-auto aspect-[3/4]">
-                        <div class="decorative-shape-1 absolute top-1/2 left-1/2 w-[105%] h-[75%] -translate-x-1/2 -translate-y-1/2 transform -rotate-6 rounded-lg opacity-50"
-                             style="background-color: var(--current-secondary-accent-bg-light);">
-                        </div>
-                        <div class="decorative-shape-2 absolute top-1/2 left-1/2 w-[75%] h-[105%] -translate-x-1/2 -translate-y-1/2 transform rotate-6 rounded-lg opacity-80"
-                             style="background-color: var(--current-primary-accent-bg);">
-                        </div>
-                        <img src="imagenes/liclaura.jpeg"
-                             alt="Lic. Laura Portillo - Psicopedagoga"
-                             class="profile-image relative w-full h-full rounded-lg shadow-2xl object-cover z-10 border-4 border-white"
-                             onerror="this.onerror=null;this.src='https://placehold.co/480x640/A88B70/FFFFFF?text=Lic.+Laura+Portillo';this.style.border='2px solid white';">
-                    </div>
+                <div class="space-x-6 hidden md:flex">
+                    <a href="#inicio" class="text-header-footer hover:text-white relative group main-nav-link">
+                        Inicio
+                        <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#nosotros" class="text-header-footer hover:text-white relative group main-nav-link">
+                        Sobre Mí
+                        <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#servicios" class="text-header-footer hover:text-white relative group main-nav-link">
+                        Servicios
+                        <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#juego-didactico" class="text-header-footer hover:text-white relative group main-nav-link">
+                        Juego Didáctico
+                        <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#contacto" class="text-header-footer hover:text-white relative group main-nav-link"> Contacto
+                        <span class="block absolute bottom-[-5px] left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span> </a>
                 </div>
-                <div class="md:w-3/5 lg:w-2/3 text-left animate-item commitment-text-block">
-                    <h3 class="commitment-title text-2xl lg:text-3xl font-semibold mb-4 text-accent-primary animate-item">
-                        <i class="fas fa-briefcase icon-color-1"></i>Mi Compromiso Profesional
-                    </h3>
-                    <p class="mb-3 leading-relaxed text-dark animate-item">
-                        Como psicopedagoga, mi vocación es acompañar a cada niño y adolescente en su singular proceso de aprendizaje. Creo firmemente en el potencial inherente a cada persona y me dedico a brindar las herramientas y estrategias necesarias para superar desafíos, fortaleciendo las capacidades y fortalezas que permiten alcanzar un desarrollo significativo y pleno.
-                    </p>
-                    <div class="my-6 p-4 border-l-4 rounded-r-lg shadow-sm animate-item quote-block">
-                        <p class="leading-relaxed text-accent-secondary italic flex items-start">
-                            <i class="fas fa-lightbulb text-xl icon-positive icon-pulse mr-3 mt-1"></i>
-                            <span>Busco fomentar la autonomía, la autoestima y la motivación, pilares esenciales para que los estudiantes se conviertan en protagonistas activos de su propio aprendizaje y desarrollo socioemocional.</span>
-                        </p>
-                    </div>
-
-                    <div class="specialties-container animate-item mt-8">
-                        <h3 class="text-xl font-semibold text-accent-primary mb-5 text-center animate-item">Mis Especialidades</h3>
-                        <div class="space-y-4">
-                            <div class="specialty-item animate-item" data-percentage="96">
-                                <div class="specialty-name">
-                                    <span>Dificultades Específicas del Aprendizaje (DEA)</span>
-                                    <span class="specialty-percentage">0%</span>
-                                </div>
-                                <div class="progress-bar-bg">
-                                    <div class="progress-bar-fill"></div>
-                                </div>
-                            </div>
-                            <div class="specialty-item animate-item" data-percentage="92">
-                                <div class="specialty-name">
-                                    <span>Intervenciones Personalizadas</span>
-                                    <span class="specialty-percentage">0%</span>
-                                </div>
-                                <div class="progress-bar-bg">
-                                    <div class="progress-bar-fill"></div>
-                                </div>
-                            </div>
-                            <div class="specialty-item animate-item" data-percentage="88">
-                                <div class="specialty-name">
-                                    <span>Técnicas de Estudio Avanzadas</span>
-                                    <span class="specialty-percentage">0%</span>
-                                </div>
-                                <div class="progress-bar-bg">
-                                    <div class="progress-bar-fill"></div>
-                                </div>
-                            </div>
-                            <div class="specialty-item animate-item" data-percentage="90">
-                                <div class="specialty-name">
-                                    <span>Orientación a Familias y Docentes</span>
-                                    <span class="specialty-percentage">0%</span>
-                                </div>
-                                <div class="progress-bar-bg">
-                                    <div class="progress-bar-fill"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="servicios" class="py-16 md:py-24 fade-in-section theme-2">
-        <div class="animated-shapes-bg"> <div class="shape square"></div>
-            <div class="shape circle"></div>
-            <div class="shape triangle"></div>
-            <div class="shape square"></div>
-            <div class="shape circle"></div>
-            <div class="shape square"></div>
-            <div class="shape triangle"></div>
-            <div class="shape circle"></div>
-            <div class="shape square"></div>
-            <div class="shape circle"></div>
-            <div class="shape triangle"></div>
-            <div class="shape square"></div>
-        </div>
-        <div class="container mx-auto px-6 relative z-10"> <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-accent-secondary">Servicios Psicopedagógicos</h2>
-                <p class="text-dark mt-2 text-lg">Apoyo escolar y acompañamiento personalizado para Nivel Primario y hasta 1er año de Secundaria.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="p-8 rounded-xl shadow-lg service-card" style="background-color: #F7F5F2; border-color: var(--color-border);">
-                    <div class="text-4xl icon-color-1 mb-4 text-center"><i class="fas fa-tasks"></i></div>
-                    <h3 class="text-xl font-semibold text-accent-primary mb-3 text-center">Acompañamiento en Tareas</h3>
-                    <p class="text-subtle text-sm leading-relaxed">
-                        Soporte individualizado en la realización de tareas escolares, brindando los apoyos necesarios para la comprensión y ejecución.
-                    </p>
-                </div>
-                <div class="p-8 rounded-xl shadow-lg service-card" style="background-color: #F7F5F2; border-color: var(--color-border);">
-                    <div class="text-4xl icon-color-1 mb-4 text-center"><i class="fas fa-spell-check"></i></div>
-                    <h3 class="text-xl font-semibold text-accent-primary mb-3 text-center">Alfabetización</h3>
-                    <p class="text-subtle text-sm leading-relaxed">
-                        Procesos de iniciación y consolidación de la lectura y escritura, adaptados al ritmo y estilo de aprendizaje de cada niño.
-                    </p>
-                </div>
-                <div class="p-8 rounded-xl shadow-lg service-card" style="background-color: #F7F5F2; border-color: var(--color-border);">
-                    <div class="text-4xl icon-color-1 mb-4 text-center"><i class="fas fa-book-reader"></i></div>
-                    <h3 class="text-xl font-semibold text-accent-primary mb-3 text-center">Estimulación de Lecto-escritura y Cálculo</h3>
-                    <p class="text-subtle text-sm leading-relaxed">
-                        Actividades y estrategias para desarrollar y fortalecer las habilidades de lectura, escritura y razonamiento matemático.
-                    </p>
-                </div>
-                <div class="p-8 rounded-xl shadow-lg service-card" style="background-color: #F7F5F2; border-color: var(--color-border);">
-                    <div class="text-4xl icon-color-1 mb-4 text-center"><i class="fas fa-chalkboard-teacher"></i></div>
-                    <h3 class="text-xl font-semibold text-accent-primary mb-3 text-center">Refuerzo de Contenidos</h3>
-                    <p class="text-subtle text-sm leading-relaxed">
-                        Apoyo específico en áreas y temas escolares que presenten dificultad, asegurando la comprensión y asimilación de los contenidos.
-                    </p>
-                </div>
-                <div class="p-8 rounded-xl shadow-lg service-card" style="background-color: #F7F5F2; border-color: var(--color-border);">
-                    <div class="text-4xl icon-color-1 mb-4 text-center"><i class="fas fa-graduation-cap"></i></div>
-                    <h3 class="text-xl font-semibold text-accent-primary mb-3 text-center">Técnicas de Estudio</h3>
-                    <p class="text-subtle text-sm leading-relaxed">
-                        Enseñanza y práctica de métodos y estrategias efectivas para organizar el estudio, mejorar la comprensión y optimizar el tiempo.
-                    </p>
-                </div>
-                <div class="p-8 rounded-xl shadow-lg service-card" style="background-color: #F7F5F2; border-color: var(--color-border);">
-                    <div class="text-4xl icon-color-1 mb-4 text-center"><i class="fas fa-calendar-alt"></i></div>
-                    <h3 class="text-xl font-semibold text-accent-primary mb-3 text-center">Habilidades de Organización y Planificación</h3>
-                    <p class="text-subtle text-sm leading-relaxed">
-                        Desarrollo de competencias para planificar actividades, gestionar el tiempo y organizar materiales de estudio de forma autónoma.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="juego-didactico" class="py-16 md:py-24 theme-2 fade-in-section">
-        <div class="container mx-auto px-6 relative z-10"> <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-accent-primary animate-item">Juego Didáctico: Pares de Emociones</h2>
-                <p class="text-dark mt-3 text-lg max-w-2xl mx-auto animate-item" style="animation-delay: 0.1s;">
-                    ¡Pon a prueba tu memoria y encuentra los pares de emociones! Haz clic en las tarjetas para revelar la emoción escondida.
-                </p>
-            </div>
-
-            <div class="max-w-3xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-xl animate-item" style="animation-delay: 0.2s; background-color: rgba(255, 255, 255, 0.95);"> <div class="flex justify-between items-center mb-6">
-                    <div>
-                        <p class="text-subtle">Intentos: <span id="intentos-juego" class="font-semibold text-accent-secondary">0</span></p>
-                        <p class="text-subtle">Pares Encontrados: <span id="pares-encontrados-juego" class="font-semibold text-accent-secondary">0 / 5</span></p>
-                    </div>
-                    <button id="reiniciar-juego-btn" class="bg-primary-accent hover:bg-primary-accent-hover text-on-accent font-semibold py-2 px-5 rounded-lg shadow-md transition-all duration-300 ease-in-out flex items-center">
-                        <i class="fas fa-redo-alt mr-2"></i>Reiniciar
+                <button id="mobile-menu-button" class="md:hidden text-header-footer focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
                     </button>
-                </div>
-
-                <div id="tablero-juego" class="grid grid-cols-5 gap-3 md:gap-4">
-                    </div>
-                 <p id="mensaje-juego-completado" class="text-center text-xl font-semibold text-accent-darker mt-8 hidden animate-item"></p>
+            </nav>
+            <div id="mobile-menu" class="md:hidden shadow-lg bg-header-footer">
+                <a href="#inicio" class="block px-6 py-3 text-header-footer main-nav-link">Inicio</a>
+                <a href="#nosotros" class="block px-6 py-3 text-header-footer main-nav-link">Sobre Mí</a>
+                <a href="#servicios" class="block px-6 py-3 text-header-footer main-nav-link">Servicios</a>
+                <a href="#juego-didactico" class="block px-6 py-3 text-header-footer main-nav-link">Juego Didáctico</a>
+                <a href="#contacto" class="block px-6 py-3 text-header-footer main-nav-link">Contacto</a>
             </div>
-        </div>
-    </section>
-    <section id="contacto" class="py-16 md:py-24 theme-2 fade-in-section">
-        <canvas id="contact-canvas-bg" class="absolute top-0 left-0 w-full h-full z-0"></canvas> <div class="container mx-auto px-6 relative z-10"> <div class="text-center mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-accent-primary">Ponte en Contacto</h2>
-                <p class="text-dark mt-3 text-lg max-w-2xl mx-auto">
-                    Estoy aquí para ayudarte en tu proceso de aprendizaje y desarrollo.
-                    No dudes en consultarme o agendar una cita.
+        </header>
+
+        <section id="inicio" class="relative pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden min-h-[85vh] md:min-h-screen flex flex-col items-center text-light"> <div id="hero-slideshow" class="absolute inset-0 w-full h-full z-[-1]">
+                <img src="imagenes/carrusel1.png"
+                     alt="Imagen de fondo carrusel 1 - Consultorio de psicopedagogía Laura Portillo"
+                     class="hero-slide transition-opacity duration-1000 ease-in-out opacity-100"
+                     onerror="this.onerror=null; this.src='https://placehold.co/1920x1080/C8A58C/FDFBF8?text=Imagen+Principal+1';">
+                <img src="imagenes/carrusel2.png"
+                     alt="Imagen de fondo carrusel 2 - Apoyo escolar y desarrollo integral"
+                     class="hero-slide transition-opacity duration-1000 ease-in-out opacity-0"
+                     onerror="this.onerror=null; this.src='https://placehold.co/1920x1080/D4BBAF/FDFBF8?text=Imagen+Principal+2';">
+            </div>
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-br from-[rgba(96,88,80,0.85)] via-[rgba(200,165,140,0.7)] to-[rgba(96,88,80,0.85)] z-0"></div>
+
+            <div class="container mx-auto px-6 text-center relative z-10 mt-8 md:mt-12">
+                <img src="imagenes/logolau.png" alt="Logotipo Laura Portillo Psicopedagoga" class="h-24 md:h-32 mx-auto mb-8 hero-text-animate logo-animate image-hover-effect" onerror="this.onerror=null;this.src='https://placehold.co/300x100/FDFBF8/2A363B?text=Laura+Portillo';this.style.border='1px solid var(--color-border)';this.style.padding='10px'; this.style.backgroundColor='rgba(42,54,59,0.5)';">
+
+                <p class="hero-text-animate p2 text-md md:text-lg mb-10 max-w-2xl mx-auto font-light" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.35);">
+                    Acompañamiento psicopedagógico profesional y personalizado para niños y adolescentes. Descubrí cómo juntos podemos impulsar el aprendizaje y bienestar.
                 </p>
-            </div>
-
-            <div class="max-w-5xl mx-auto p-6 md:p-10 rounded-xl shadow-2xl flex flex-col md:flex-row gap-8 md:gap-12 contact-container">
-                <div class="md:w-2/5 space-y-6">
-                    <h3 class="text-2xl font-semibold text-accent-darker mb-2">Información Directa</h3>
-
-                    <div class="contact-info-item bg-white p-5 rounded-lg shadow-md border-l-4 border-accent-primary transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-1">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-accent-primary text-white flex items-center justify-center mr-4 contact-icon-pulse">
-                                <i class="fas fa-phone-alt fa-lg"></i>
-                            </div>
-                            <div>
-                                <span class="font-semibold text-subtle block text-sm">Teléfono:</span>
-                                <a href="tel:+543764243762" class="text-dark hover:text-accent-primary transition-colors duration-300 text-lg font-medium">3764-243762</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="contact-info-item bg-white p-5 rounded-lg shadow-md border-l-4 border-accent-primary transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-1" style="animation-delay: 0.1s;">
-                        <div class="flex items-center">
-                            <div class="flex-shrink-0 w-12 h-12 rounded-full bg-accent-primary text-white flex items-center justify-center mr-4 contact-icon-pulse">
-                                <i class="fab fa-instagram fa-lg"></i>
-                            </div>
-                            <div>
-                                <span class="font-semibold text-subtle block text-sm">Instagram:</span>
-                                <a href="https://www.instagram.com/psicopelauraportillo" target="_blank" rel="noopener noreferrer" class="text-dark hover:text-accent-primary transition-colors duration-300 text-lg font-medium">@psicopelauraportillo</a>
-                            </div>
-                        </div>
-                    </div>
-
-                     <div class="contact-info-item bg-white p-5 rounded-lg shadow-md border-l-4 border-accent-primary transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-1" style="animation-delay: 0.2s;">
-                        <div class="flex items-center mb-3"> <div class="flex-shrink-0 w-12 h-12 rounded-full bg-accent-primary text-white flex items-center justify-center mr-4 contact-icon-pulse">
-                                <i class="fas fa-map-marker-alt fa-lg"></i>
-                            </div>
-                            <div>
-                                <span class="font-semibold text-subtle block text-sm">Ubicación:</span>
-                                <p class="text-dark text-lg font-medium">Posadas, Misiones, Argentina</p>
-                            </div>
-                        </div>
-                        <div class="mt-2 rounded-md overflow-hidden shadow-md">
-                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113034.06033072891!2d-55.96997364309998!3d-27.396031999028703!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9457be7f080496c3%3A0xccbff374623e7b9a!2sPosadas%2C%20Misiones!5e0!3m2!1ses-419!2sar!4v1716769888343!5m2!1ses-419!2sar"
-                                     width="100%"
-                                     height="200"
-                                     style="border:0;"
-                                     allowfullscreen=""
-                                     loading="lazy"
-                                     referrerpolicy="no-referrer-when-downgrade"
-                                     title="Mapa de Posadas, Misiones">
-                            </iframe>
-                        </div>
-                    </div>
-
-                    <div class="mt-8 pt-4 border-t border-gray-200">
-                         <a href="https://wa.me/5493764243762?text=Hola%20Lic.%20Laura,%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener noreferrer"
-                           class="inline-flex items-center justify-center w-full whatsapp-button font-semibold py-3.5 px-6 rounded-lg text-lg shadow-md hover:shadow-lg">
-                            <i class="fab fa-whatsapp mr-3 text-2xl"></i> Contactar por WhatsApp
-                        </a>
-                    </div>
-                </div>
-
-                <div class="md:w-3/5">
-                    <h3 class="text-2xl font-semibold text-accent-darker mb-6">Envíame un Mensaje</h3>
-                    <form id="contactForm" class="space-y-5">
-                        <div>
-                            <label for="nombre" class="block text-sm font-medium text-subtle mb-1.5">Nombre Completo</label>
-                            <input type="text" name="nombre" id="nombre" required
-                                   class="w-full px-4 py-3 rounded-md border-input-custom focus:ring-primary-accent focus:border-primary-accent transition-colors duration-300 placeholder-custom text-dark text-base"
-                                   placeholder="Tu Nombre Completo">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-subtle mb-1.5">Correo Electrónico</label>
-                            <input type="email" name="email" id="email" required
-                                   class="w-full px-4 py-3 rounded-md border-input-custom focus:ring-primary-accent focus:border-primary-accent transition-colors duration-300 placeholder-custom text-dark text-base"
-                                   placeholder="tu@email.com">
-                        </div>
-                        <div>
-                            <label for="asunto" class="block text-sm font-medium text-subtle mb-1.5">Asunto</label>
-                            <input type="text" name="asunto" id="asunto" required
-                                   class="w-full px-4 py-3 rounded-md border-input-custom focus:ring-primary-accent focus:border-primary-accent transition-colors duration-300 placeholder-custom text-dark text-base"
-                                   placeholder="Motivo de tu consulta">
-                        </div>
-                        <div>
-                            <label for="mensaje" class="block text-sm font-medium text-subtle mb-1.5">Mensaje</label>
-                            <textarea name="mensaje" id="mensaje" rows="5" required
-                                      class="w-full px-4 py-3 rounded-md border-input-custom focus:ring-primary-accent focus:border-primary-accent transition-colors duration-300 placeholder-custom text-dark text-base"
-                                      placeholder="Escribe tu mensaje aquí..."></textarea>
-                        </div>
-                        <div>
-                            <button type="submit"
-                                    class="w-full font-semibold py-3.5 px-6 rounded-lg text-lg shadow-md hover:shadow-lg cta-button">
-                                Enviar Mensaje
-                            </button>
-                        </div>
-                        <p id="form-message" class="text-xs text-center text-subtle mt-3 h-4"></p> <p class="text-xs text-center text-subtle mt-1">
-                            Este formulario tiene su demora en respuestas. Para una respuesta más rápida, por favor utiliza WhatsApp o Instagram <i class="fas fa-heart icon-positive"></i>.
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="w-full bg-header-footer text-header-footer py-12">
-        <div class="container mx-auto px-6 text-center">
-            <div class="mb-4">
-                 <a href="#inicio" class="inline-block">
-                    <img src="imagenes/logolau.png" alt="Logotipo Laura Portillo Psicopedagoga" class="h-12 md:h-14 mx-auto image-hover-effect" onerror="this.onerror=null;this.src='https://placehold.co/150x50/FDFBF8/2A363B?text=LP+Psico';this.style.border='1px solid var(--color-border)';this.style.padding='2px'; this.style.backgroundColor='var(--color-bg-header-footer)';">
+                <a href="#servicios" class="main-nav-link hero-text-animate cta font-semibold py-3 px-10 rounded-lg text-lg shadow-xl cta-button inline-flex items-center transform hover:scale-105">
+                    Conoce Mis Servicios <i class="fas fa-arrow-right ml-3"></i>
                 </a>
             </div>
-            <div class="space-x-4 mb-4">
-                <a href="#inicio" class="text-header-footer hover:text-white transition-colors duration-300">Inicio</a>
-                <a href="#nosotros" class="text-header-footer hover:text-white transition-colors duration-300">Sobre Mí</a>
-                <a href="#servicios" class="text-header-footer hover:text-white transition-colors duration-300">Servicios</a>
-                <a href="#juego-didactico" class="text-header-footer hover:text-white transition-colors duration-300">Juego Didáctico</a>
-                <a href="#contacto" class="text-header-footer hover:text-white transition-colors duration-300">Contacto</a> </div>
-            <p class="text-sm text-header-footer">© 2025 Laura Portillo Psicopedagoga. Todos los derechos reservados.</p>
-            <p class="text-xs mt-1 text-header-footer">Diseñado por Luciano Vendrell <i class="fas fa-heart icon-positive"></i>.</p>
+        </section>
+
+        <section id="nosotros" class="py-16 md:py-24 theme-2"> <div class="container mx-auto px-6">
+                <div class="section-divider-container">
+                    <div class="section-divider"></div>
+                </div>
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-accent-primary animate-item">Sobre Mí</h2>
+                    <p class="text-dark mt-2 text-lg animate-item">Lic. Laura Portillo, Psicopedagoga (Mat. 251907)</p>
+                </div>
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-12">
+                    <div class="md:w-2/5 lg:w-1/3 flex justify-center items-center py-8 px-4 animate-item">
+                        <div class="relative group profile-image-container w-full max-w-md sm:max-w-lg mx-auto aspect-[3/4]">
+                            <div class="decorative-shape-1 absolute top-1/2 left-1/2 w-[105%] h-[75%] -translate-x-1/2 -translate-y-1/2 transform -rotate-6 rounded-lg opacity-50"
+                                 style="background-color: var(--current-secondary-accent-bg-light);">
+                            </div>
+                            <div class="decorative-shape-2 absolute top-1/2 left-1/2 w-[75%] h-[105%] -translate-x-1/2 -translate-y-1/2 transform rotate-6 rounded-lg opacity-80"
+                                 style="background-color: var(--current-primary-accent-bg);">
+                            </div>
+                            <img src="imagenes/liclaura.jpeg"
+                                 alt="Lic. Laura Portillo - Psicopedagoga"
+                                 class="profile-image relative w-full h-full rounded-lg shadow-2xl object-cover z-10 border-4 border-white"
+                                 onerror="this.onerror=null;this.src='https://placehold.co/480x640/A88B70/FFFFFF?text=Lic.+Laura+Portillo';this.style.border='2px solid white';">
+                        </div>
+                    </div>
+                    <div class="md:w-3/5 lg:w-2/3 text-left animate-item commitment-text-block">
+                        <h3 class="commitment-title text-2xl lg:text-3xl font-semibold mb-4 text-accent-primary animate-item">
+                            <i class="fas fa-briefcase icon-color-1"></i>Mi Compromiso Profesional
+                        </h3>
+                        <p class="mb-3 leading-relaxed text-dark animate-item">
+                            Como psicopedagoga, mi vocación es acompañar a cada niño y adolescente en su singular proceso de aprendizaje. Creo firmemente en el potencial inherente a cada persona y me dedico a brindar las herramientas y estrategias necesarias para superar desafíos, fortaleciendo las capacidades y fortalezas que permiten alcanzar un desarrollo significativo y pleno.
+                        </p>
+                        <div class="my-6 p-4 border-l-4 rounded-r-lg shadow-sm animate-item quote-block">
+                            <p class="leading-relaxed text-accent-secondary italic flex items-start">
+                                <i class="fas fa-lightbulb text-xl icon-positive icon-pulse mr-3 mt-1"></i>
+                                <span>Busco fomentar la autonomía, la autoestima y la motivación, pilares esenciales para que los estudiantes se conviertan en protagonistas activos de su propio aprendizaje y desarrollo socioemocional.</span>
+                            </p>
+                        </div>
+
+                        <div class="specialties-container animate-item mt-8">
+                            <h3 class="text-xl font-semibold text-accent-primary mb-5 text-center animate-item">Mis Especialidades</h3>
+                            <div class="space-y-4">
+                                <div class="specialty-item animate-item" data-percentage="96">
+                                    <div class="specialty-name">
+                                        <span>Dificultades Específicas del Aprendizaje (DEA)</span>
+                                        <span class="specialty-percentage">0%</span>
+                                    </div>
+                                    <div class="progress-bar-bg">
+                                        <div class="progress-bar-fill"></div>
+                                    </div>
+                                </div>
+                                <div class="specialty-item animate-item" data-percentage="92">
+                                    <div class="specialty-name">
+                                        <span>Intervenciones Personalizadas</span>
+                                        <span class="specialty-percentage">0%</span>
+                                    </div>
+                                    <div class="progress-bar-bg">
+                                        <div class="progress-bar-fill"></div>
+                                    </div>
+                                </div>
+                                <div class="specialty-item animate-item" data-percentage="88">
+                                    <div class="specialty-name">
+                                        <span>Técnicas de Estudio Avanzadas</span>
+                                        <span class="specialty-percentage">0%</span>
+                                    </div>
+                                    <div class="progress-bar-bg">
+                                        <div class="progress-bar-fill"></div>
+                                    </div>
+                                </div>
+                                <div class="specialty-item animate-item" data-percentage="90">
+                                    <div class="specialty-name">
+                                        <span>Orientación a Familias y Docentes</span>
+                                        <span class="specialty-percentage">0%</span>
+                                    </div>
+                                    <div class="progress-bar-bg">
+                                        <div class="progress-bar-fill"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="py-16 md:py-24 fade-in-section theme-2">
+            <div class="animated-shapes-bg"> <div class="shape square"></div>
+                <div class="shape circle"></div>
+                <div class="shape triangle"></div>
+                <div class="shape square"></div>
+                <div class="shape circle"></div>
+                <div class="shape square"></div>
+                <div class="shape triangle"></div>
+                <div class="shape circle"></div>
+                <div class="shape square"></div>
+                <div class="shape circle"></div>
+                <div class="shape triangle"></div>
+                <div class="shape square"></div>
+            </div>
+            <div class="container mx-auto px-6 relative z-10"> <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-accent-secondary">Servicios Psicopedagógicos</h2>
+                    <p class="text-dark mt-2 text-lg">Apoyo escolar y acompañamiento personalizado para Nivel Primario y hasta 1er año de Secundaria.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="p-8 rounded-xl shadow-lg service-card" style="background-color: #F7F5F2; border-color: var(--color-border);">
+                        <div class="text-4xl icon-color-1 mb-4 text-center"><i class="fas fa-tasks"></i></div>
+                        <h3 class="text-xl font-semibold text-accent-primary mb-3 text-center">Acompañamiento en Tareas</h3>
+                        <p class="text-subtle text-sm leading-relaxed">
+                            Soporte individualizado en la realización de tareas escolares, brindando los apoyos necesarios para la comprensión y ejecución.
+                        </p>
+                    </div>
+                    <div class="p-8 rounded-xl shadow-lg service-card" style="background-color: #F7F5F2; border-color: var(--color-border);">
+                        <div class="text-4xl icon-color-1 mb-4 text-center"><i class="fas fa-spell-check"></i></div>
+                        <h3 class="text-xl font-semibold text-accent-primary mb-3 text-center">Alfabetización</h3>
+                        <p class="text-subtle text-sm leading-relaxed">
+                            Procesos de iniciación y consolidación de la lectura y escritura, adaptados al ritmo y estilo de aprendizaje de cada niño.
+                        </p>
+                    </div>
+                    <div class="p-8 rounded-xl shadow-lg service-card" style="background-color: #F7F5F2; border-color: var(--color-border);">
+                        <div class="text-4xl icon-color-1 mb-4 text-center"><i class="fas fa-book-reader"></i></div>
+                        <h3 class="text-xl font-semibold text-accent-primary mb-3 text-center">Estimulación de Lecto-escritura y Cálculo</h3>
+                        <p class="text-subtle text-sm leading-relaxed">
+                            Actividades y estrategias para desarrollar y fortalecer las habilidades de lectura, escritura y razonamiento matemático.
+                        </p>
+                    </div>
+                    <div class="p-8 rounded-xl shadow-lg service-card" style="background-color: #F7F5F2; border-color: var(--color-border);">
+                        <div class="text-4xl icon-color-1 mb-4 text-center"><i class="fas fa-chalkboard-teacher"></i></div>
+                        <h3 class="text-xl font-semibold text-accent-primary mb-3 text-center">Refuerzo de Contenidos</h3>
+                        <p class="text-subtle text-sm leading-relaxed">
+                            Apoyo específico en áreas y temas escolares que presenten dificultad, asegurando la comprensión y asimilación de los contenidos.
+                        </p>
+                    </div>
+                    <div class="p-8 rounded-xl shadow-lg service-card" style="background-color: #F7F5F2; border-color: var(--color-border);">
+                        <div class="text-4xl icon-color-1 mb-4 text-center"><i class="fas fa-graduation-cap"></i></div>
+                        <h3 class="text-xl font-semibold text-accent-primary mb-3 text-center">Técnicas de Estudio</h3>
+                        <p class="text-subtle text-sm leading-relaxed">
+                            Enseñanza y práctica de métodos y estrategias efectivas para organizar el estudio, mejorar la comprensión y optimizar el tiempo.
+                        </p>
+                    </div>
+                    <div class="p-8 rounded-xl shadow-lg service-card" style="background-color: #F7F5F2; border-color: var(--color-border);">
+                        <div class="text-4xl icon-color-1 mb-4 text-center"><i class="fas fa-calendar-alt"></i></div>
+                        <h3 class="text-xl font-semibold text-accent-primary mb-3 text-center">Habilidades de Organización y Planificación</h3>
+                        <p class="text-subtle text-sm leading-relaxed">
+                            Desarrollo de competencias para planificar actividades, gestionar el tiempo y organizar materiales de estudio de forma autónoma.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="juego-didactico" class="py-16 md:py-24 theme-2 fade-in-section">
+            <div class="container mx-auto px-6 relative z-10"> <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-accent-primary animate-item">Juego Didáctico: Pares de Emociones</h2>
+                    <p class="text-dark mt-3 text-lg max-w-2xl mx-auto animate-item" style="animation-delay: 0.1s;">
+                        ¡Pon a prueba tu memoria y encuentra los pares de emociones! Haz clic en las tarjetas para revelar la emoción escondida.
+                    </p>
+                </div>
+
+                <div class="max-w-3xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-xl animate-item" style="animation-delay: 0.2s; background-color: rgba(255, 255, 255, 0.95);"> <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <p class="text-subtle">Intentos: <span id="intentos-juego" class="font-semibold text-accent-secondary">0</span></p>
+                            <p class="text-subtle">Pares Encontrados: <span id="pares-encontrados-juego" class="font-semibold text-accent-secondary">0 / 5</span></p>
+                        </div>
+                        <button id="reiniciar-juego-btn" class="bg-primary-accent hover:bg-primary-accent-hover text-on-accent font-semibold py-2 px-5 rounded-lg shadow-md transition-all duration-300 ease-in-out flex items-center">
+                            <i class="fas fa-redo-alt mr-2"></i>Reiniciar
+                        </button>
+                    </div>
+
+                    <div id="tablero-juego" class="grid grid-cols-5 gap-3 md:gap-4">
+                        </div>
+                     <p id="mensaje-juego-completado" class="text-center text-xl font-semibold text-accent-darker mt-8 hidden animate-item"></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="py-16 md:py-24 theme-2 fade-in-section">
+            <canvas id="contact-canvas-bg" class="absolute top-0 left-0 w-full h-full z-0"></canvas> <div class="container mx-auto px-6 relative z-10"> <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-accent-primary">Ponte en Contacto</h2>
+                    <p class="text-dark mt-3 text-lg max-w-2xl mx-auto">
+                        Estoy aquí para ayudarte en tu proceso de aprendizaje y desarrollo.
+                        No dudes en consultarme o agendar una cita.
+                    </p>
+                </div>
+
+                <div class="max-w-5xl mx-auto p-6 md:p-10 rounded-xl shadow-2xl flex flex-col md:flex-row gap-8 md:gap-12 contact-container">
+                    <div class="md:w-2/5 space-y-6">
+                        <h3 class="text-2xl font-semibold text-accent-darker mb-2">Información Directa</h3>
+
+                        <div class="contact-info-item bg-white p-5 rounded-lg shadow-md border-l-4 border-accent-primary transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-1">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-accent-primary text-white flex items-center justify-center mr-4 contact-icon-pulse">
+                                    <i class="fas fa-phone-alt fa-lg"></i>
+                                </div>
+                                <div>
+                                    <span class="font-semibold text-subtle block text-sm">Teléfono:</span>
+                                    <a href="tel:+543764243762" class="text-dark hover:text-accent-primary transition-colors duration-300 text-lg font-medium">3764-243762</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item bg-white p-5 rounded-lg shadow-md border-l-4 border-accent-primary transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-1" style="animation-delay: 0.1s;">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 w-12 h-12 rounded-full bg-accent-primary text-white flex items-center justify-center mr-4 contact-icon-pulse">
+                                    <i class="fab fa-instagram fa-lg"></i>
+                                </div>
+                                <div>
+                                    <span class="font-semibold text-subtle block text-sm">Instagram:</span>
+                                    <a href="https://www.instagram.com/psicopelauraportillo" target="_blank" rel="noopener noreferrer" class="text-dark hover:text-accent-primary transition-colors duration-300 text-lg font-medium">@psicopelauraportillo</a>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="contact-info-item bg-white p-5 rounded-lg shadow-md border-l-4 border-accent-primary transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-1" style="animation-delay: 0.2s;">
+                            <div class="flex items-center mb-3"> <div class="flex-shrink-0 w-12 h-12 rounded-full bg-accent-primary text-white flex items-center justify-center mr-4 contact-icon-pulse">
+                                    <i class="fas fa-map-marker-alt fa-lg"></i>
+                                </div>
+                                <div>
+                                    <span class="font-semibold text-subtle block text-sm">Ubicación:</span>
+                                    <p class="text-dark text-lg font-medium">Posadas, Misiones, Argentina</p>
+                                </div>
+                            </div>
+                            <div class="mt-2 rounded-md overflow-hidden shadow-md">
+                                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113032.65657924124!2d-55.9692409473817!3d-27.39610847043978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9457be7f080496c3%3A0xccbff374623e7b9a!2sPosadas%2C%20Misiones%2C%20Argentina!5e0!3m2!1ses-419!2sus!4v1685300000000!5m2!1ses-419!2sus"
+                                         width="100%"
+                                         height="200"
+                                         style="border:0;"
+                                         allowfullscreen=""
+                                         loading="lazy"
+                                         referrerpolicy="no-referrer-when-downgrade"
+                                         title="Mapa de Posadas, Misiones">
+                                </iframe>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-4 border-t border-gray-200">
+                             <a href="https://wa.me/5493764243762?text=Hola%20Lic.%20Laura,%20quisiera%20hacer%20una%20consulta." target="_blank" rel="noopener noreferrer"
+                               class="inline-flex items-center justify-center w-full whatsapp-button font-semibold py-3.5 px-6 rounded-lg text-lg shadow-md hover:shadow-lg">
+                                <i class="fab fa-whatsapp mr-3 text-2xl"></i> Contactar por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="md:w-3/5">
+                        <h3 class="text-2xl font-semibold text-accent-darker mb-6">Envíame un Mensaje</h3>
+                        <form id="contactForm" class="space-y-5">
+                            <div>
+                                <label for="nombre" class="block text-sm font-medium text-subtle mb-1.5">Nombre Completo</label>
+                                <input type="text" name="nombre" id="nombre" required
+                                       class="w-full px-4 py-3 rounded-md border-input-custom focus:ring-primary-accent focus:border-primary-accent transition-colors duration-300 placeholder-custom text-dark text-base"
+                                       placeholder="Tu Nombre Completo">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-subtle mb-1.5">Correo Electrónico</label>
+                                <input type="email" name="email" id="email" required
+                                       class="w-full px-4 py-3 rounded-md border-input-custom focus:ring-primary-accent focus:border-primary-accent transition-colors duration-300 placeholder-custom text-dark text-base"
+                                       placeholder="tu@email.com">
+                            </div>
+                            <div>
+                                <label for="asunto" class="block text-sm font-medium text-subtle mb-1.5">Asunto</label>
+                                <input type="text" name="asunto" id="asunto" required
+                                       class="w-full px-4 py-3 rounded-md border-input-custom focus:ring-primary-accent focus:border-primary-accent transition-colors duration-300 placeholder-custom text-dark text-base"
+                                       placeholder="Motivo de tu consulta">
+                            </div>
+                            <div>
+                                <label for="mensaje" class="block text-sm font-medium text-subtle mb-1.5">Mensaje</label>
+                                <textarea name="mensaje" id="mensaje" rows="5" required
+                                          class="w-full px-4 py-3 rounded-md border-input-custom focus:ring-primary-accent focus:border-primary-accent transition-colors duration-300 placeholder-custom text-dark text-base"
+                                          placeholder="Escribe tu mensaje aquí..."></textarea>
+                            </div>
+                             <p class="text-xs text-center text-subtle">
+                                <i class="fas fa-info-circle mr-1 text-accent-secondary"></i>Nota: Para una respuesta más ágil, considera usar WhatsApp o Instagram. El formulario puede tener demoras.
+                            </p>
+                            <div>
+                                <button type="submit"
+                                        class="w-full font-semibold py-3.5 px-6 rounded-lg text-lg shadow-md hover:shadow-lg cta-button">
+                                    Enviar Mensaje
+                                </button>
+                            </div>
+                            <p class="text-xs text-center text-subtle mt-2"> Al enviar este mensaje, usted acepta nuestros 
+                                <a href="#" id="contact-form-open-terminos-link" class="underline hover:text-accent-primary transition-colors duration-300">Términos y Condiciones</a> y nuestra 
+                                <a href="#" id="contact-form-open-privacidad-link" class="underline hover:text-accent-primary transition-colors duration-300">Política de Privacidad</a>.
+                            </p>
+                            <p id="form-message" class="text-xs text-center text-subtle mt-3 h-4"></p> 
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="w-full bg-header-footer text-header-footer py-12">
+            <div class="container mx-auto px-6 text-center">
+                <div class="mb-4">
+                     <a href="#inicio" class="inline-block main-nav-link">
+                        <img src="imagenes/logolau.png" alt="Logotipo Laura Portillo Psicopedagoga" class="h-12 md:h-14 mx-auto image-hover-effect" onerror="this.onerror=null;this.src='https://placehold.co/150x50/FDFBF8/2A363B?text=LP+Psico';this.style.border='1px solid var(--color-border)';this.style.padding='2px'; this.style.backgroundColor='var(--color-bg-header-footer)';">
+                    </a>
+                </div>
+                <div class="space-x-4 mb-6"> 
+                    <a href="#inicio" class="text-header-footer hover:text-white transition-colors duration-300 main-nav-link">Inicio</a>
+                    <a href="#nosotros" class="text-header-footer hover:text-white transition-colors duration-300 main-nav-link">Sobre Mí</a>
+                    <a href="#servicios" class="text-header-footer hover:text-white transition-colors duration-300 main-nav-link">Servicios</a>
+                    <a href="#juego-didactico" class="text-header-footer hover:text-white transition-colors duration-300 main-nav-link">Juego Didáctico</a>
+                    <a href="#contacto" class="text-header-footer hover:text-white transition-colors duration-300 main-nav-link">Contacto</a>
+                </div>
+                <div class="mb-4 space-x-4"> <a href="#" id="open-terminos-btn" class="text-header-footer hover:text-white transition-colors duration-300 text-sm">Términos y Condiciones</a>
+                     <a href="#" id="open-privacidad-btn" class="text-header-footer hover:text-white transition-colors duration-300 text-sm">Política de Privacidad</a>
+                </div>
+                <p class="text-sm text-header-footer">© 2025 Laura Portillo Psicopedagoga. Todos los derechos reservados.</p>
+                <p class="text-xs mt-1 text-header-footer">Diseñado por Luciano Vendrell <i class="fas fa-heart icon-positive"></i>.</p>
+            </div>
+        </footer>
+    </div> 
+
+    <div id="terminos-overlay" class="legal-overlay"> <div id="terminos-condiciones-modal" class="legal-modal"> <button id="close-terminos-btn" class="legal-close-btn" aria-label="Cerrar Términos y Condiciones">×</button> <h2>Términos y Condiciones</h2>
+            <p class="last-updated-text">Última actualización: 28 de mayo de 2025</p>
+
+            <p>Bienvenido/a al sitio web de Laura Portillo, Psicopedagoga. Al acceder y utilizar este sitio web (en adelante, el "Sitio"), usted (en adelante, el "Usuario") acepta y se compromete a cumplir con los siguientes términos y condiciones de uso. Si no está de acuerdo con alguno de estos términos, por favor, no utilice el Sitio.</p>
+            <h3>1. Uso del Sitio Web</h3>
+            <p>El Sitio tiene como objetivo principal proporcionar información sobre los servicios psicopedagógicos ofrecidos por la Lic. Laura Portillo, así como ofrecer recursos y un juego didáctico con fines educativos y de entretenimiento.</p>
+            <ul>
+                <li>El Usuario se compromete a utilizar el Sitio de manera lícita, de acuerdo con la moral, las buenas costumbres y el orden público.</li>
+                <li>El contenido del Sitio, incluyendo textos, gráficos, imágenes, logotipos y el juego didáctico, es propiedad de Laura Portillo o cuenta con las licencias correspondientes, y está protegido por las leyes de propiedad intelectual. No se permite su reproducción, distribución o modificación sin autorización previa y por escrito.</li>
+                <li>El Sitio no está destinado a ser utilizado para emergencias médicas o psicológicas. En caso de una emergencia, por favor contacte a los servicios de emergencia locales correspondientes.</li>
+            </ul>
+            <h3>2. Servicios Psicopedagógicos</h3>
+            <p>La información proporcionada en el Sitio sobre los servicios psicopedagógicos es de carácter general y no constituye una promesa o garantía de resultados específicos. Cada intervención es personalizada y adaptada a las necesidades individuales.</p>
+            <p>La relación profesional se establecerá formalmente tras una consulta inicial y acuerdo entre las partes, y se regirá por los principios éticos y de confidencialidad propios de la profesión psicopedagógica.</p>
+            <h3>3. Juego Didáctico "Pares de Emociones"</h3>
+            <p>El juego "Pares de Emociones" se ofrece como una herramienta lúdica y educativa. Su propósito es el entretenimiento y la estimulación cognitiva.</p>
+            <ul>
+                <li>El juego no recopila datos personales identificables de los usuarios.</li>
+                <li>Laura Portillo no se responsabiliza por el uso o interpretación que el Usuario dé a los resultados o experiencias derivadas del juego.</li>
+            </ul>
+            <h3>4. Formulario de Contacto y Comunicaciones</h3>
+            <p>El Sitio incluye un formulario de contacto para que los Usuarios puedan realizar consultas o solicitar información. Al utilizar este formulario, el Usuario proporciona voluntariamente datos como nombre, correo electrónico y mensaje.</p>
+            <ul>
+                <li>Estos datos serán utilizados exclusivamente para responder a la consulta del Usuario.</li>
+                <li>Se informa que el formulario de contacto puede tener demoras en las respuestas. Para consultas urgentes o una comunicación más ágil, se recomienda utilizar los canales de WhatsApp o Instagram indicados en el Sitio.</li>
+                <li>El tratamiento de los datos personales se realizará de conformidad con la legislación argentina aplicable en materia de protección de datos personales. Para más información, consulte nuestra <a href="#" class="privacidad-link-in-modal">Política de Privacidad</a>.</li>
+            </ul>
+            <h3>5. Enlaces a Terceros</h3>
+            <p>El Sitio puede contener enlaces a sitios web de terceros (por ejemplo, Instagram, WhatsApp, Google Maps). Estos enlaces se proporcionan únicamente para la conveniencia del Usuario. Laura Portillo no controla ni se responsabiliza por el contenido, las políticas de privacidad o las prácticas de los sitios web de terceros.</p>
+            <h3>6. Limitación de Responsabilidad</h3>
+            <p>Laura Portillo se esfuerza por mantener la información del Sitio actualizada y precisa. Sin embargo, no garantiza la ausencia de errores o la disponibilidad ininterrumpida del Sitio. El uso del Sitio es bajo la exclusiva responsabilidad del Usuario.</p>
+            <p>En ningún caso Laura Portillo será responsable por daños directos, indirectos, incidentales, especiales o consecuentes que surjan del uso o la imposibilidad de uso del Sitio.</p>
+            <h3>7. Modificaciones a los Términos y Condiciones</h3>
+            <p>Laura Portillo se reserva el derecho de modificar estos Términos y Condiciones en cualquier momento y sin previo aviso. Las modificaciones entrarán en vigor desde su publicación en el Sitio. Se recomienda al Usuario revisar periódicamente esta sección.</p>
+            <h3>8. Ley Aplicable y Jurisdicción</h3>
+            <p>Estos Términos y Condiciones se rigen por las leyes de la República Argentina. Cualquier disputa que surja en relación con el Sitio o estos términos será sometida a la jurisdicción de los tribunales competentes de la ciudad de Posadas, Provincia de Misiones, Argentina, renunciando a cualquier otro fuero o jurisdicción que pudiera corresponder.</p>
+            <h3>9. Contacto</h3>
+            <p>Si tiene alguna pregunta o inquietud sobre estos Términos y Condiciones, puede contactar a Laura Portillo a través de los medios proporcionados en la sección de <a href="#contacto" class="legal-modal-contact-link">Contacto</a> de este Sitio.</p>
         </div>
-    </footer>
+    </div>
+
+    <div id="privacidad-overlay" class="legal-overlay"> <div id="politica-privacidad-modal" class="legal-modal"> <button id="close-privacidad-btn" class="legal-close-btn" aria-label="Cerrar Política de Privacidad">×</button> <h2>Política de Privacidad</h2>
+            <p class="last-updated-text">Última actualización: 28 de mayo de 2025</p>
+
+            <p>La Lic. Laura Portillo (en adelante, "nosotros", "nuestro/a" o "el Titular") se compromete a proteger la privacidad de los usuarios (en adelante, "usted" o "el Usuario") de su sitio web (en adelante, "el Sitio"). Esta Política de Privacidad describe cómo recopilamos, usamos, protegemos y compartimos su información personal.</p>
+
+            <h3>1. Responsable del Tratamiento de Datos</h3>
+            <p>La responsable del tratamiento de sus datos personales es Laura Portillo, Psicopedagoga, con domicilio profesional en Posadas, Misiones, Argentina. Puede contactarnos a través de los medios indicados en la sección <a href="#contacto" class="legal-modal-contact-link">Contacto</a> del Sitio.</p>
+
+            <h3>2. Información que Recopilamos</h3>
+            <p>Recopilamos información personal que usted nos proporciona voluntariamente a través de:</p>
+            <ul>
+                <li><strong>Formulario de Contacto:</strong> Cuando utiliza nuestro formulario de contacto, podemos recopilar su nombre completo, dirección de correo electrónico, asunto y el mensaje que nos envíe.</li>
+                <li><strong>Comunicaciones Directas:</strong> Si nos contacta por otros medios como WhatsApp o Instagram (enlazados desde el Sitio), recopilaremos la información que nos proporcione a través de dichos canales.</li>
+            </ul>
+            <p><strong>Información no personal:</strong> El juego didáctico "Pares de Emociones" presente en el Sitio está diseñado para ser una herramienta educativa y de entretenimiento y no recopila información personal identificable de los usuarios.</p>
+            <p>No utilizamos cookies de seguimiento ni otras tecnologías para recopilar información personal de forma automática mientras navega por el Sitio, más allá de las que puedan ser estrictamente necesarias para el funcionamiento técnico básico del mismo o las utilizadas por servicios de terceros embebidos (como Google Maps, si se implementara su funcionalidad completa).</p>
+
+            <h3>3. Finalidad del Tratamiento de Datos</h3>
+            <p>Utilizamos la información personal recopilada con las siguientes finalidades:</p>
+            <ul>
+                <li>Responder a sus consultas, solicitudes de información o citas.</li>
+                <li>Proporcionarle los servicios psicopedagógicos solicitados, previo acuerdo formal.</li>
+                <li>Gestionar la comunicación con usted.</li>
+                <li>Cumplir con nuestras obligaciones legales y regulatorias.</li>
+            </ul>
+
+            <h3>4. Base Legal para el Tratamiento</h3>
+            <p>La base legal para el tratamiento de sus datos personales es principalmente su <strong>consentimiento</strong>, otorgado al proporcionarnos voluntariamente su información a través del formulario de contacto o al iniciar una comunicación directa. También podemos tratar sus datos para la ejecución de un contrato de servicios (si se establece) o por nuestro interés legítimo en responder a sus solicitudes.</p>
+
+            <h3>5. Conservación de los Datos</h3>
+            <p>Conservaremos sus datos personales durante el tiempo estrictamente necesario para cumplir con las finalidades para las que fueron recopilados, así como para cumplir con las obligaciones legales aplicables. Una vez que sus datos ya no sean necesarios, serán eliminados de forma segura.</p>
+            
+            <h3>6. Seguridad de los Datos</h3>
+            <p>Hemos implementado medidas técnicas y organizativas apropiadas para proteger su información personal contra el acceso no autorizado, la alteración, divulgación o destrucción. Sin embargo, ningún sistema de transmisión o almacenamiento electrónico es completamente seguro, por lo que no podemos garantizar una seguridad absoluta.</p>
+
+            <h3>7. Derechos del Usuario</h3>
+            <p>De conformidad con la Ley de Protección de Datos Personales N° 25.326 de la República Argentina, usted tiene derecho a:</p>
+            <ul>
+                <li><strong>Acceder</strong> a sus datos personales.</li>
+                <li>Solicitar la <strong>rectificación</strong> de datos inexactos o incompletos.</li>
+                <li>Solicitar la <strong>supresión</strong> de sus datos cuando, entre otros motivos, ya no sean necesarios para los fines que fueron recogidos.</li>
+                <li>Solicitar la <strong>limitación</strong> del tratamiento de sus datos en determinadas circunstancias.</li>
+                <li>Oponerse al tratamiento de sus datos por motivos relacionados con su situación particular.</li>
+                <li>Solicitar la <strong>portabilidad</strong> de sus datos.</li>
+                <li>Retirar el consentimiento otorgado en cualquier momento, sin que ello afecte a la licitud del tratamiento basado en el consentimiento previo a su retirada.</li>
+            </ul>
+            <p>Para ejercer estos derechos, puede enviar una solicitud por escrito a través de los canales de contacto indicados en el Sitio.</p>
+
+            <h3>8. Compartir Información con Terceros</h3>
+            <p>No vendemos, alquilamos ni compartimos su información personal con terceros con fines de marketing. Su información solo será compartida si es necesario para cumplir con una obligación legal, por requerimiento judicial, o con proveedores de servicios que actúen en nuestro nombre y bajo nuestras instrucciones (por ejemplo, servicios de hosting), siempre garantizando la confidencialidad y seguridad de sus datos.</p>
+            <p>El Sitio puede contener enlaces a plataformas de terceros como Instagram o WhatsApp. Estas plataformas tienen sus propias políticas de privacidad, sobre las cuales no tenemos control.</p>
+
+            <h3>9. Cambios en esta Política de Privacidad</h3>
+            <p>Podemos actualizar esta Política de Privacidad ocasionalmente. Le notificaremos cualquier cambio publicando la nueva política en el Sitio con una fecha de "última actualización" revisada. Le recomendamos revisar esta política periódicamente.</p>
+
+            <h3>10. Contacto</h3>
+            <p>Si tiene alguna pregunta, comentario o inquietud sobre esta Política de Privacidad o nuestras prácticas de tratamiento de datos, por favor contáctenos a través de los medios indicados en la sección de <a href="#contacto" class="legal-modal-contact-link">Contacto</a> de este Sitio.</p>
+        </div>
+    </div>
+
 
     <script>
-        // Script para menú móvil y scroll suave (existente)
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
+
         if (mobileMenuButton && mobileMenu) {
+            let timesIcon = mobileMenuButton.querySelector('.fa-times');
+            if (!timesIcon) {
+                timesIcon = document.createElement('i');
+                timesIcon.classList.add('fas', 'fa-times', 'text-2xl');
+                mobileMenuButton.appendChild(timesIcon);
+            }
+
             mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+                const isOpen = mobileMenu.classList.toggle('mobile-menu-open');
+                mobileMenuButton.classList.toggle('menu-active', isOpen);
             });
         }
 
-        const allMenuLinks = document.querySelectorAll('header nav a, #mobile-menu a, footer a[href^="#"]');
-        allMenuLinks.forEach(link => {
+        const allNavLinks = document.querySelectorAll('.main-nav-link');
+        allNavLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 const targetId = link.getAttribute('href');
-                if (['#inicio', '#nosotros', '#servicios', '#juego-didactico', '#contacto'].includes(targetId)) {
+                if (targetId && targetId.startsWith('#')) {
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         e.preventDefault();
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
+                        
+                        const isMobileMenuLink = mobileMenu && link.closest('#mobile-menu') === mobileMenu;
+                        const isMobileMenuOpen = mobileMenu && mobileMenu.classList.contains('mobile-menu-open');
+
+                        if (isMobileMenuLink && isMobileMenuOpen) {
+                            mobileMenu.classList.remove('mobile-menu-open');
+                            if (mobileMenuButton) {
+                                 mobileMenuButton.classList.remove('menu-active');
+                            }
+                            setTimeout(() => {
+                                targetElement.scrollIntoView({ behavior: 'smooth' });
+                            }, 400);
+                        } else {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
                     }
                 }
-                if (mobileMenu && mobileMenu.contains(link) && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        const openTerminosBtn = document.getElementById('open-terminos-btn');
+        const closeTerminosBtn = document.getElementById('close-terminos-btn');
+        const terminosOverlay = document.getElementById('terminos-overlay');
+        
+        const openPrivacidadBtn = document.getElementById('open-privacidad-btn');
+        const closePrivacidadBtn = document.getElementById('close-privacidad-btn');
+        const privacidadOverlay = document.getElementById('privacidad-overlay');
+
+        const allLegalModalContactLinks = document.querySelectorAll('.legal-modal-contact-link');
+        const privacidadLinkInTerminosModal = document.querySelector('.privacidad-link-in-modal');
+
+        const contactFormOpenTerminosLink = document.getElementById('contact-form-open-terminos-link');
+        const contactFormOpenPrivacidadLink = document.getElementById('contact-form-open-privacidad-link');
+
+
+        function openModal(overlayElement) {
+            if (overlayElement) {
+                overlayElement.classList.add('is-visible');
+                document.body.classList.add('modal-open');
+            }
+        }
+
+        function closeModal(overlayElement) {
+            if (overlayElement) {
+                overlayElement.classList.remove('is-visible');
+                document.body.classList.remove('modal-open');
+            }
+        }
+
+        if (openTerminosBtn && terminosOverlay) {
+            openTerminosBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(terminosOverlay);
+            });
+        }
+        if (closeTerminosBtn && terminosOverlay) {
+            closeTerminosBtn.addEventListener('click', () => closeModal(terminosOverlay));
+        }
+        if (terminosOverlay) {
+            terminosOverlay.addEventListener('click', (event) => {
+                if (event.target === terminosOverlay) {
+                    closeModal(terminosOverlay);
+                }
+            });
+        }
+
+        if (openPrivacidadBtn && privacidadOverlay) {
+            openPrivacidadBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(privacidadOverlay);
+            });
+        }
+        if (closePrivacidadBtn && privacidadOverlay) {
+            closePrivacidadBtn.addEventListener('click', () => closeModal(privacidadOverlay));
+        }
+        if (privacidadOverlay) {
+            privacidadOverlay.addEventListener('click', (event) => {
+                if (event.target === privacidadOverlay) {
+                    closeModal(privacidadOverlay);
+                }
+            });
+        }
+
+        if (contactFormOpenTerminosLink && terminosOverlay) {
+            contactFormOpenTerminosLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(terminosOverlay);
+            });
+        }
+
+        if (contactFormOpenPrivacidadLink && privacidadOverlay) {
+            contactFormOpenPrivacidadLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                openModal(privacidadOverlay);
+            });
+        }
+
+        allLegalModalContactLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (terminosOverlay && terminosOverlay.classList.contains('is-visible')) {
+                    closeModal(terminosOverlay);
+                }
+                if (privacidadOverlay && privacidadOverlay.classList.contains('is-visible')) {
+                    closeModal(privacidadOverlay);
+                }
+                
+                const contactoSection = document.getElementById('contacto');
+                if (contactoSection) {
+                    setTimeout(() => {
+                        contactoSection.scrollIntoView({ behavior: 'smooth' });
+                    }, 100); 
                 }
             });
         });
-
-        const logoLinks = document.querySelectorAll('header a[href="#inicio"], footer a[href="#inicio"]');
-        logoLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
+        
+        if (privacidadLinkInTerminosModal && terminosOverlay && privacidadOverlay) {
+            privacidadLinkInTerminosModal.addEventListener('click', (e) => {
                 e.preventDefault();
-                document.querySelector('#inicio').scrollIntoView({ behavior: 'smooth'});
+                closeModal(terminosOverlay); 
+                setTimeout(() => { 
+                    openModal(privacidadOverlay); 
+                }, 150); 
             });
-        });
+        }
 
         const sectionsToFade = document.querySelectorAll('.fade-in-section');
         let contactCanvasInitialized = false;
@@ -1045,7 +1456,7 @@
 
             const computedStyles = getComputedStyle(document.documentElement);
             const particleColorHex = computedStyles.getPropertyValue('--current-primary-accent-bg').trim() || '#A88B70';
-            const particleColor = `${particleColorHex}99`;
+            const particleColor = `${particleColorHex}99`; 
 
             const lineColorHex = computedStyles.getPropertyValue('--text-font-accent').trim() || '#00695C';
 
@@ -1080,32 +1491,32 @@
 
             function initParticles() {
                 particlesArray = [];
-                let numberOfParticles = (canvas.height * canvas.width) / 10000;
-                if (numberOfParticles > 150) numberOfParticles = 150;
-                if (numberOfParticles < 40) numberOfParticles = 40;
+                let numberOfParticles = (canvas.height * canvas.width) / 10000; 
+                if (numberOfParticles > 150) numberOfParticles = 150; 
+                if (numberOfParticles < 40) numberOfParticles = 40; 
 
                 for (let i = 0; i < numberOfParticles; i++) {
-                    let size = (Math.random() * 3) + 1.5;
+                    let size = (Math.random() * 3) + 1.5; 
                     let x = (Math.random() * ((canvas.width - size * 2) - (size * 2)) + size * 2);
                     let y = (Math.random() * ((canvas.height - size * 2) - (size * 2)) + size * 2);
-                    let directionX = (Math.random() * .5) - 0.25;
-                    let directionY = (Math.random() * .5) - 0.25;
+                    let directionX = (Math.random() * .5) - 0.25; 
+                    let directionY = (Math.random() * .5) - 0.25; 
                     particlesArray.push(new Particle(x, y, directionX, directionY, size, particleColor));
                 }
             }
 
             function connectParticles() {
-                const maxDistance = 130;
+                const maxDistance = 130; 
                 for (let a = 0; a < particlesArray.length; a++) {
                     for (let b = a; b < particlesArray.length; b++) {
                         let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x))
                                      + ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
                         if (distance < (maxDistance * maxDistance)) {
                             let opacityValue = 1 - (distance / (maxDistance * maxDistance));
-                            let alphaHex = Math.floor(opacityValue * 150).toString(16).padStart(2, '0');
-                            if (parseInt(alphaHex, 16) < 0x33) alphaHex = '33';
+                            let alphaHex = Math.floor(opacityValue * 150).toString(16).padStart(2, '0'); 
+                            if (parseInt(alphaHex, 16) < 0x33) alphaHex = '33'; 
 
-                            ctx.strokeStyle = `${lineColorHex}${alphaHex}`;
+                            ctx.strokeStyle = `${lineColorHex}${alphaHex}`; 
                             ctx.lineWidth = 0.8;
                             ctx.beginPath();
                             ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
@@ -1137,26 +1548,28 @@
         document.addEventListener('DOMContentLoaded', () => {
             const heroSlides = document.querySelectorAll('#hero-slideshow .hero-slide');
             let currentSlideIndex = 0;
-            const slideIntervalTime = 5000;
+            const slideIntervalTime = 5000; 
+
             function showNextSlide() {
-                if (heroSlides.length <= 1) return;
+                if (heroSlides.length <= 1) return; 
                 heroSlides[currentSlideIndex].classList.remove('opacity-100');
                 heroSlides[currentSlideIndex].classList.add('opacity-0');
                 currentSlideIndex = (currentSlideIndex + 1) % heroSlides.length;
                 heroSlides[currentSlideIndex].classList.remove('opacity-0');
                 heroSlides[currentSlideIndex].classList.add('opacity-100');
             }
+
             if (heroSlides.length > 1) {
                 setInterval(showNextSlide, slideIntervalTime);
             } else if (heroSlides.length === 1) {
-                 heroSlides[0].classList.remove('opacity-0');
+                 heroSlides[0].classList.remove('opacity-0'); 
                  heroSlides[0].classList.add('opacity-100');
             }
 
             const heroSection = document.getElementById('inicio');
             if (heroSection) {
                 setTimeout(() => {
-                    heroSection.classList.add('loaded');
+                    heroSection.classList.add('loaded'); 
                 }, 200);
             }
 
@@ -1165,18 +1578,18 @@
 
             if (contactForm && formMessageEl) {
                 contactForm.addEventListener('submit', function(event) {
-                    event.preventDefault();
+                    event.preventDefault(); 
                     const nombre = document.getElementById('nombre').value;
                     const email = document.getElementById('email').value;
                     const asunto = document.getElementById('asunto').value;
                     const mensaje = document.getElementById('mensaje').value;
 
-                    formMessageEl.textContent = '';
-                    formMessageEl.className = 'text-xs text-center mt-3 h-4';
+                    formMessageEl.textContent = ''; 
+                    formMessageEl.className = 'text-xs text-center mt-3 h-4'; 
 
                     if (!nombre || !email || !asunto || !mensaje) {
                         formMessageEl.textContent = 'Por favor, completa todos los campos.';
-                        formMessageEl.classList.add('text-red-600');
+                        formMessageEl.classList.add('text-red-600'); 
                         setTimeout(() => {
                            formMessageEl.textContent = '';
                            formMessageEl.className = 'text-xs text-center mt-3 h-4';
@@ -1186,9 +1599,10 @@
 
                     console.log('Formulario de Contacto Enviado (Simulación):', { nombre, email, asunto, mensaje });
                     formMessageEl.textContent = '¡Gracias! Mensaje enviado (Sin BD).';
-                    formMessageEl.classList.add('text-green-600');
-                    contactForm.reset();
-                    setTimeout(() => {
+                    formMessageEl.classList.add('text-green-600'); 
+                    contactForm.reset(); 
+
+                    setTimeout(() => { 
                         formMessageEl.textContent = '';
                         formMessageEl.className = 'text-xs text-center mt-3 h-4';
                     }, 4000);
@@ -1205,14 +1619,14 @@
                 }, { threshold: 0.1 });
                 contactoEntry.observe(contactoSectionElement);
             }
-
+            
             const tableroJuego = document.getElementById('tablero-juego');
             const intentosDisplay = document.getElementById('intentos-juego');
             const paresEncontradosDisplay = document.getElementById('pares-encontrados-juego');
             const reiniciarJuegoBtn = document.getElementById('reiniciar-juego-btn');
             const mensajeCompletado = document.getElementById('mensaje-juego-completado');
 
-            const nombresEmociones = ['ASUSTADO', 'BESO', 'LENGUITA', 'RISA', 'SONRIENTE'];
+            const nombresEmociones = ['ASUSTADO', 'BESO', 'LENGUITA', 'RISA', 'SONRIENTE']; 
             let tarjetasVolteadas = [];
             let paresEncontrados = 0;
             let intentos = 0;
@@ -1246,17 +1660,17 @@
                 emocionesParaJuego.forEach((nombreEmocion, i) => { 
                     const tarjeta = document.createElement('div');
                     tarjeta.classList.add('tarjeta-juego'); 
-                    tarjeta.dataset.emocion = nombreEmocion;
+                    tarjeta.dataset.emocion = nombreEmocion; 
 
                     const caraFrontal = document.createElement('div');
-                    caraFrontal.classList.add('cara-tarjeta', 'frontal');
+                    caraFrontal.classList.add('cara-tarjeta', 'frontal'); 
 
                     const caraTrasera = document.createElement('div');
-                    caraTrasera.classList.add('cara-tarjeta', 'trasera');
+                    caraTrasera.classList.add('cara-tarjeta', 'trasera'); 
                     const imgEmocion = document.createElement('img');
-                    imgEmocion.src = `imagenesjuego/${nombreEmocion}.png`;
+                    imgEmocion.src = `imagenesjuego/${nombreEmocion}.png`; 
                     imgEmocion.alt = `Emoción ${nombreEmocion}`;
-                    imgEmocion.onerror = function() {
+                    imgEmocion.onerror = function() { 
                         this.src='https://placehold.co/100x100/E0D8CE/A88B70?text=?';
                         this.alt='Error al cargar imagen';
                         this.style.border='1px solid var(--current-primary-accent-bg)';
@@ -1275,7 +1689,7 @@
                     const entryAnimationDuration = 400; 
                     tarjeta.style.transition = `opacity 0.4s ${entryAnimationDelay}s ease-out, transform 0.4s ${entryAnimationDelay}s ease-out`;
                     
-                    requestAnimationFrame(() => {
+                    requestAnimationFrame(() => { 
                         tarjeta.style.opacity = '1';
                         tarjeta.style.transform = 'translateY(0px) scale(1)';
                         setTimeout(() => {
@@ -1288,13 +1702,13 @@
 
             function voltearTarjeta(tarjeta) {
                 if (!puedeVoltear || tarjeta.classList.contains('volteada') || tarjeta.classList.contains('igualada')) {
-                    return;
+                    return; 
                 }
-                tarjeta.classList.add('volteada');
+                tarjeta.classList.add('volteada'); 
                 tarjetasVolteadas.push(tarjeta);
 
-                if (tarjetasVolteadas.length === 2) {
-                    puedeVoltear = false;
+                if (tarjetasVolteadas.length === 2) { 
+                    puedeVoltear = false; 
                     intentos++;
                     if(intentosDisplay) intentosDisplay.textContent = intentos;
                     comprobarPareja();
@@ -1304,15 +1718,15 @@
             function comprobarPareja() {
                 const [tarjeta1, tarjeta2] = tarjetasVolteadas;
 
-                if (tarjeta1.dataset.emocion === tarjeta2.dataset.emocion) {
+                if (tarjeta1.dataset.emocion === tarjeta2.dataset.emocion) { 
                     tarjeta1.classList.add('igualada');
                     tarjeta2.classList.add('igualada');
                     paresEncontrados++;
                     actualizarContadorPares();
-                    tarjetasVolteadas = [];
-                    puedeVoltear = true;
+                    tarjetasVolteadas = []; 
+                    puedeVoltear = true; 
 
-                    if (paresEncontrados === totalPares) {
+                    if (paresEncontrados === totalPares) { 
                         setTimeout(() => {
                             if(mensajeCompletado) {
                                 mensajeCompletado.textContent = '¡Felicidades! ¡Has encontrado todos los pares!';
@@ -1324,7 +1738,7 @@
                                     mensajeCompletado.style.opacity = '1';
                                     mensajeCompletado.style.transform = 'translateY(0px)';
 
-                                    setTimeout(() => {
+                                    setTimeout(() => { 
                                         crearTablero(); 
                                     }, 3000); 
 
@@ -1332,8 +1746,8 @@
                             }
                         }, 600); 
                     }
-                } else {
-                    setTimeout(() => {
+                } else { 
+                    setTimeout(() => { 
                         tarjeta1.classList.remove('volteada');
                         tarjeta2.classList.remove('volteada');
                         tarjetasVolteadas = [];
@@ -1346,7 +1760,7 @@
                 actualizarContadorPares(); 
                 crearTablero(); 
                 if (reiniciarJuegoBtn) {
-                    reiniciarJuegoBtn.addEventListener('click', crearTablero);
+                    reiniciarJuegoBtn.addEventListener('click', crearTablero); 
                 }
 
                 const juegoSection = document.getElementById('juego-didactico');
