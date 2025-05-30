@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         :root {
             --color-bg-main: #FDFBF8;
@@ -71,25 +72,25 @@
         }
 
         #juego-didactico.theme-2 {
-            background-image: url('imagenes/otrofondopantalla.png'); 
-            background-size: cover; 
-            background-position: center center; 
-            background-repeat: no-repeat; 
-            background-color: #F7F5F2; 
-            position: relative; 
-            overflow: hidden; 
-            z-index: 0; 
+            background-image: url('imagenes/otrofondopantalla.png');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-color: #F7F5F2;
+            position: relative;
+            overflow: hidden;
+            z-index: 0;
         }
 
         #juego-didactico.theme-2::before {
-            content: ""; 
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(247, 245, 242, 0.15); 
-            z-index: 1; 
+            background-color: rgba(247, 245, 242, 0.15);
+            z-index: 1;
         }
 
         #servicios.theme-2 {
@@ -102,7 +103,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         /* Estilos para el overlay/modal (reutilizables para T&C y Privacidad) */
         .legal-overlay { /* Clase genérica para overlays */
             position: fixed;
@@ -110,7 +111,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(42, 54, 59, 0.85); 
+            background-color: rgba(42, 54, 59, 0.85);
             z-index: 1000;
             display: flex;
             align-items: center;
@@ -118,7 +119,7 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
-            padding: 1rem; 
+            padding: 1rem;
         }
         .legal-overlay.is-visible {
             opacity: 1;
@@ -126,14 +127,14 @@
         }
         .legal-modal { /* Clase genérica para modales */
             background-color: var(--color-bg-main);
-            padding: 2rem 2.5rem; 
-            border-radius: 0.75rem; 
+            padding: 2rem 2.5rem;
+            border-radius: 0.75rem;
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
             width: 90%;
             max-width: 800px;
-            max-height: 90vh; 
-            overflow-y: auto; 
-            position: relative; 
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
             transform: scale(0.95);
             transition: transform 0.3s ease;
         }
@@ -142,17 +143,17 @@
         }
 
         .legal-modal h2 {
-            color: var(--text-font-accent-darker); 
+            color: var(--text-font-accent-darker);
             font-family: 'Poppins', sans-serif;
-            font-size: 2rem; 
+            font-size: 2rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
             text-align: center;
         }
         .legal-modal h3 {
-            color: var(--text-font-accent); 
+            color: var(--text-font-accent);
             font-family: 'Poppins', sans-serif;
-            font-size: 1.3rem; 
+            font-size: 1.3rem;
             font-weight: 600;
             margin-top: 1.8rem;
             margin-bottom: 0.8rem;
@@ -161,14 +162,14 @@
         }
         .legal-modal p, .legal-modal ul li {
             font-family: 'Inter', sans-serif;
-            font-size: 0.95rem; 
+            font-size: 0.95rem;
             line-height: 1.65;
-            color: var(--text-font-subtle); 
+            color: var(--text-font-subtle);
             margin-bottom: 0.8rem;
         }
         .legal-modal ul {
             list-style-type: disc;
-            padding-left: 1.25rem; 
+            padding-left: 1.25rem;
             margin-bottom: 0.8rem;
         }
         .legal-modal strong {
@@ -187,7 +188,7 @@
             font-style: italic;
             color: var(--text-font-subtle);
             margin-bottom: 2rem;
-            font-size: 0.85rem; 
+            font-size: 0.85rem;
         }
         .legal-close-btn { /* Clase genérica para botones de cierre */
             position: absolute;
@@ -207,7 +208,7 @@
             transform: scale(1.1);
         }
         body.modal-open { /* Clase genérica para bloquear scroll */
-            overflow: hidden; 
+            overflow: hidden;
         }
 
 
@@ -239,7 +240,7 @@
             background-color: #F7F5F2 !important;
             border-color: var(--color-border) !important;
             position: relative;
-            z-index: 1; 
+            z-index: 1;
         }
 
         #contacto.theme-2 .contact-container {
@@ -247,7 +248,7 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.08), 0 5px 10px rgba(0,0,0,0.04);
             border-radius: 0.75rem;
             position: relative;
-            z-index: 10; 
+            z-index: 10;
         }
 
         .theme-2 input,
@@ -284,11 +285,11 @@
 
         .bg-header-footer { background-color: var(--color-bg-header-footer); }
 
-        .bg-accent-primary { 
-            background-color: var(--text-font-accent) !important; 
+        .bg-accent-primary {
+            background-color: var(--text-font-accent) !important;
         }
         .border-accent-primary {
-            border-color: var(--text-font-accent) !important; 
+            border-color: var(--text-font-accent) !important;
         }
 
         .bg-primary-accent { background-color: var(--current-primary-accent-bg); }
@@ -521,7 +522,7 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            z-index: 0; 
+            z-index: 0;
         }
         .shape {
             position: absolute;
@@ -588,24 +589,24 @@
 
         /* ESTILOS PARA EL JUEGO DIDÁCTICO */
         .theme-2 #tablero-juego {
-            perspective: 1000px; 
+            perspective: 1000px;
         }
 
         .tarjeta-juego {
             background-color: var(--current-secondary-accent-bg-light);
-            aspect-ratio: 1 / 1; 
-            border-radius: 0.5rem; 
+            aspect-ratio: 1 / 1;
+            border-radius: 0.5rem;
             cursor: pointer;
             position: relative;
             transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.3, 1.2, 0.7, 1.2); 
+            transition: transform 0.6s cubic-bezier(0.3, 1.2, 0.7, 1.2);
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             border: 2px solid transparent;
         }
         .tarjeta-juego:hover {
             border-color: var(--current-primary-accent-bg);
         }
-         .tarjeta-juego:not(.volteada):not(.igualada):hover { 
+         .tarjeta-juego:not(.volteada):not(.igualada):hover {
             transform: translateY(-4px) scale(1.03);
         }
 
@@ -716,7 +717,7 @@
 
     </style>
 </head>
-<body class="bg-main text-dark"> 
+<body class="bg-main text-dark">
     <div id="main-content">
         <header class="bg-header-footer shadow-md sticky top-0 z-50">
             <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
@@ -752,11 +753,11 @@
                 <a href="#nosotros" class="block px-6 py-3 transition-all duration-300 main-nav-link" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Sobre Mí</a>
                 <a href="#servicios" class="block px-6 py-3 transition-all duration-300 main-nav-link" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Servicios</a>
                 <a href="#juego-didactico" class="block px-6 py-3 transition-all duration-300 main-nav-link" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Juego Didáctico</a>
-                <a href="#contacto" class="block px-6 py-3 transition-all duration-300 main-nav-link" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Contacto</a> 
+                <a href="#contacto" class="block px-6 py-3 transition-all duration-300 main-nav-link" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Contacto</a>
             </div>
         </header>
 
-        <section id="inicio" class="relative pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden min-h-[85vh] md:min-h-screen flex flex-col items-center text-light"> 
+        <section id="inicio" class="relative pt-24 md:pt-32 pb-16 md:pb-24 overflow-hidden min-h-[85vh] md:min-h-screen flex flex-col items-center text-light">
             <div id="hero-slideshow" class="absolute inset-0 w-full h-full z-[-1]">
                 <img src="imagenes/carrusel1.png"
                      alt="Imagen de fondo carrusel 1 - Consultorio de psicopedagogía Laura Portillo"
@@ -781,7 +782,7 @@
             </div>
         </section>
 
-        <section id="nosotros" class="py-16 md:py-24 theme-2"> 
+        <section id="nosotros" class="py-16 md:py-24 theme-2">
             <div class="container mx-auto px-6">
                 <div class="section-divider-container">
                     <div class="section-divider"></div>
@@ -879,7 +880,7 @@
                 <div class="shape triangle"></div>
                 <div class="shape square"></div>
             </div>
-            <div class="container mx-auto px-6 relative z-10"> 
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center mb-12">
                     <h2 class="text-3xl md:text-4xl font-bold text-accent-secondary">Servicios Psicopedagógicos</h2>
                     <p class="text-dark mt-2 text-lg">Apoyo escolar y acompañamiento personalizado para Nivel Primario y hasta 1er año de Secundaria.</p>
@@ -932,7 +933,7 @@
         </section>
 
         <section id="juego-didactico" class="py-16 md:py-24 theme-2 fade-in-section">
-            <div class="container mx-auto px-6 relative z-10"> 
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center mb-12 md:mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-accent-primary animate-item">Juego Didáctico: Pares de Emociones</h2>
                     <p class="text-dark mt-3 text-lg max-w-2xl mx-auto animate-item" style="animation-delay: 0.1s;">
@@ -940,7 +941,7 @@
                     </p>
                 </div>
 
-                <div class="max-w-3xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-xl animate-item" style="animation-delay: 0.2s; background-color: rgba(255, 255, 255, 0.95);"> 
+                <div class="max-w-3xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-xl animate-item" style="animation-delay: 0.2s; background-color: rgba(255, 255, 255, 0.95);">
                     <div class="flex justify-between items-center mb-6">
                         <div>
                             <p class="text-subtle">Intentos: <span id="intentos-juego" class="font-semibold text-accent-secondary">0</span></p>
@@ -959,8 +960,8 @@
         </section>
 
         <section id="contacto" class="py-16 md:py-24 theme-2 fade-in-section">
-            <canvas id="contact-canvas-bg" class="absolute top-0 left-0 w-full h-full z-0"></canvas> 
-            <div class="container mx-auto px-6 relative z-10"> 
+            <canvas id="contact-canvas-bg" class="absolute top-0 left-0 w-full h-full z-0"></canvas>
+            <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center mb-12 md:mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-accent-primary">Ponte en Contacto</h2>
                     <p class="text-dark mt-3 text-lg max-w-2xl mx-auto">
@@ -998,7 +999,7 @@
                         </div>
 
                         <div class="contact-info-item bg-white p-5 rounded-lg shadow-md border-l-4 border-accent-primary transition-all duration-300 hover:shadow-lg hover:transform hover:-translate-y-1" style="animation-delay: 0.2s;">
-                            <div class="flex items-center mb-3"> 
+                            <div class="flex items-center mb-3">
                                 <div class="flex-shrink-0 w-12 h-12 rounded-full bg-accent-primary text-white flex items-center justify-center mr-4 contact-icon-pulse">
                                     <i class="fas fa-map-marker-alt fa-lg"></i>
                                 </div>
@@ -1064,11 +1065,11 @@
                                     Enviar Mensaje
                                 </button>
                             </div>
-                            <p class="text-xs text-center text-subtle mt-2"> Al enviar este mensaje, usted acepta nuestros 
-                                <a href="#" id="contact-form-open-terminos-link" class="underline hover:text-accent-primary transition-colors duration-300">Términos y Condiciones</a> y nuestra 
+                            <p class="text-xs text-center text-subtle mt-2"> Al enviar este mensaje, usted acepta nuestros
+                                <a href="#" id="contact-form-open-terminos-link" class="underline hover:text-accent-primary transition-colors duration-300">Términos y Condiciones</a> y nuestra
                                 <a href="#" id="contact-form-open-privacidad-link" class="underline hover:text-accent-primary transition-colors duration-300">Política de Privacidad</a>.
                             </p>
-                            <p id="form-message" class="text-xs text-center text-subtle mt-3 h-4"></p> 
+                            <p id="form-message" class="text-xs text-center text-subtle mt-3 h-4"></p>
                         </form>
                     </div>
                 </div>
@@ -1105,7 +1106,7 @@
                             <li><a href="#" id="open-privacidad-btn" class="text-sm hover:text-white transition-colors duration-300">Política de Privacidad</a></li>
                         </ul>
                     </div>
-                    
+
                     <div class="w-full md:w-1/3 lg:w-1/4 footer-column text-center md:text-left">
                         <h4 class="text-lg font-semibold mb-3">Contacto Rápido</h4>
                         <p class="text-sm mb-1"><i class="fas fa-phone fa-fw mr-2 opacity-80"></i> <a href="tel:+543764243762" class="hover:text-white">3764-243762</a></p>
@@ -1122,11 +1123,11 @@
                 </div>
             </div>
         </footer>
-        </div> 
+        </div>
 
-    <div id="terminos-overlay" class="legal-overlay"> 
-        <div id="terminos-condiciones-modal" class="legal-modal"> 
-            <button id="close-terminos-btn" class="legal-close-btn" aria-label="Cerrar Términos y Condiciones">×</button> 
+    <div id="terminos-overlay" class="legal-overlay">
+        <div id="terminos-condiciones-modal" class="legal-modal">
+            <button id="close-terminos-btn" class="legal-close-btn" aria-label="Cerrar Términos y Condiciones">×</button>
             <h2>Términos y Condiciones</h2>
             <p class="last-updated-text">Última actualización: 28 de mayo de 2025</p>
 
@@ -1168,9 +1169,9 @@
         </div>
     </div>
 
-    <div id="privacidad-overlay" class="legal-overlay"> 
-        <div id="politica-privacidad-modal" class="legal-modal"> 
-            <button id="close-privacidad-btn" class="legal-close-btn" aria-label="Cerrar Política de Privacidad">×</button> 
+    <div id="privacidad-overlay" class="legal-overlay">
+        <div id="politica-privacidad-modal" class="legal-modal">
+            <button id="close-privacidad-btn" class="legal-close-btn" aria-label="Cerrar Política de Privacidad">×</button>
             <h2>Política de Privacidad</h2>
             <p class="last-updated-text">Última actualización: 28 de mayo de 2025</p>
 
@@ -1202,7 +1203,7 @@
 
             <h3>5. Conservación de los Datos</h3>
             <p>Conservaremos sus datos personales durante el tiempo estrictamente necesario para cumplir con las finalidades para las que fueron recopilados, así como para cumplir con las obligaciones legales aplicables. Una vez que sus datos ya no sean necesarios, serán eliminados de forma segura.</p>
-            
+
             <h3>6. Seguridad de los Datos</h3>
             <p>Hemos implementado medidas técnicas y organizativas apropiadas para proteger su información personal contra el acceso no autorizado, la alteración, divulgación o destrucción. Sin embargo, ningún sistema de transmisión o almacenamiento electrónico es completamente seguro, por lo que no podemos garantizar una seguridad absoluta.</p>
 
@@ -1233,18 +1234,51 @@
 
 
     <script>
+        // ---------- INICIO CONFIGURACIÓN SUPABASE ----------
+        // IMPORTANTE: Reemplaza estos valores con tu URL y Clave Anónima de Supabase reales.
+        // Ejemplo URL: 'https://abcdefghijklmnop.supabase.co'
+        // Ejemplo ANON KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIs[...]your_rest_of_the_key'
+
+        const SUPABASE_URL = 'https://wwukwwlrceszawotljau.supabase.co'; // <-- ¡¡¡REEMPLAZA ESTO!!!
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3dWt3d2xyY2VzemF3b3RsamF1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1NzE5OTQsImV4cCI6MjA2NDE0Nzk5NH0.w85OwTsxhWNMWqKNPQAyQ_GSnXf_SGjcb-FAP4D6nAs'; // <-- ¡¡¡Y REEMPLAZA ESTO!!!
+
+        let supabase = null;
+        // Verificar que las constantes no sean los placeholders
+        if (SUPABASE_URL === 'TU_SUPABASE_URL' || SUPABASE_ANON_KEY === 'TU_SUPABASE_ANON_KEY') {
+            console.error('***************************************************************************');
+            console.error('ERROR: Debes reemplazar TU_SUPABASE_URL y TU_SUPABASE_ANON_KEY con tus credenciales reales de Supabase en el script.');
+            console.error('El formulario de contacto NO funcionará hasta que esto se corrija.');
+            console.error('***************************************************************************');
+        } else {
+            try {
+                if (window.supabase && typeof window.supabase.createClient === 'function') {
+                     supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                     console.log('Supabase Client inicializado correctamente.');
+                } else {
+                    console.error('La librería Supabase no se cargó correctamente o createClient no está disponible en window.supabase.');
+                    if (typeof createClient === 'function') { // Intento de fallback
+                         supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                         console.log('Supabase Client inicializado correctamente (accedido globalmente).');
+                    } else {
+                        console.error('createClient tampoco está disponible globalmente. Verifica la carga de la librería Supabase JS en el <head>.');
+                    }
+                }
+            } catch (error) {
+                console.error('Error inicializando Supabase Client:', error.message);
+            }
+        }
+        // ---------- FIN CONFIGURACIÓN SUPABASE ----------
+
+
         // Script para menú móvil
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileMenuIcon = mobileMenuButton ? mobileMenuButton.querySelector('i') : null;
-        const header = document.querySelector('header'); // Obtener el elemento header
+        const header = document.querySelector('header'); 
 
         if (mobileMenuButton && mobileMenu && mobileMenuIcon) {
             mobileMenuButton.addEventListener('click', () => {
-                // Alternar la clase 'menu-open' para la animación CSS
                 mobileMenu.classList.toggle('menu-open');
-                
-                // Cambiar el ícono del botón del menú
                 if (mobileMenu.classList.contains('menu-open')) {
                     mobileMenuIcon.classList.remove('fa-bars');
                     mobileMenuIcon.classList.add('fa-times');
@@ -1255,30 +1289,19 @@
             });
         }
 
-        // Scroll suave para enlaces de navegación principal y cierre del menú móvil
         const mainNavLinks = document.querySelectorAll('.main-nav-link');
         mainNavLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 const targetId = link.getAttribute('href');
-                // Asegurarse de que el targetId es un selector válido (comienza con #)
                 if (targetId && targetId.startsWith('#')) {
-                    e.preventDefault(); // Prevenir el comportamiento por defecto del ancla
-                    const targetSectionElement = document.querySelector(targetId); 
-
+                    e.preventDefault();
+                    const targetSectionElement = document.querySelector(targetId);
                     if (targetSectionElement && header) {
                         const headerOffset = header.offsetHeight;
-                        // Calcula la posición del elemento relativa al documento
                         const elementPosition = targetSectionElement.getBoundingClientRect().top + window.pageYOffset;
-                        const desiredGapBelowHeader = 24; // Espacio deseado debajo de la cabecera
-                        // Calcula la posición final del scroll, restando la altura de la cabecera y el espacio deseado
+                        const desiredGapBelowHeader = 24;
                         const offsetPosition = elementPosition - headerOffset - desiredGapBelowHeader;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth' // Comportamiento de scroll suave
-                        });
-
-                        // Si el menú móvil está abierto, ciérralo
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                         if (mobileMenu && mobileMenu.classList.contains('menu-open')) {
                              mobileMenu.classList.remove('menu-open');
                              if (mobileMenuIcon) {
@@ -1286,9 +1309,8 @@
                                 mobileMenuIcon.classList.add('fa-bars');
                              }
                         }
-                    } else if (targetSectionElement) { // Si no hay header o no se encontró, scroll directo
+                    } else if (targetSectionElement) {
                          targetSectionElement.scrollIntoView({ behavior: 'smooth' });
-                         // Cierra el menú móvil si está abierto
                          if (mobileMenu && mobileMenu.classList.contains('menu-open')) {
                              mobileMenu.classList.remove('menu-open');
                              if (mobileMenuIcon) {
@@ -1300,180 +1322,94 @@
                 }
             });
         });
-        
-        // Lógica para modales (Términos y Condiciones, Política de Privacidad)
+
         const openTerminosBtn = document.getElementById('open-terminos-btn');
         const closeTerminosBtn = document.getElementById('close-terminos-btn');
         const terminosOverlay = document.getElementById('terminos-overlay');
-        
         const openPrivacidadBtn = document.getElementById('open-privacidad-btn');
         const closePrivacidadBtn = document.getElementById('close-privacidad-btn');
         const privacidadOverlay = document.getElementById('privacidad-overlay');
-
         const allLegalModalContactLinks = document.querySelectorAll('.legal-modal-contact-link');
         const privacidadLinkInTerminosModal = document.querySelector('.privacidad-link-in-modal');
-
-        // Nuevos elementos para los enlaces en el formulario de contacto
         const contactFormOpenTerminosLink = document.getElementById('contact-form-open-terminos-link');
         const contactFormOpenPrivacidadLink = document.getElementById('contact-form-open-privacidad-link');
-
 
         function openModal(overlayElement) {
             if (overlayElement) {
                 overlayElement.classList.add('is-visible');
-                document.body.classList.add('modal-open'); // Evita el scroll del body cuando el modal está abierto
+                document.body.classList.add('modal-open');
             }
         }
-
         function closeModal(overlayElement) {
             if (overlayElement) {
                 overlayElement.classList.remove('is-visible');
-                // Solo remover 'modal-open' si no hay otros modales visibles
                 if (!document.querySelector('.legal-overlay.is-visible')) {
                     document.body.classList.remove('modal-open');
                 }
             }
         }
+        if (openTerminosBtn && terminosOverlay) openTerminosBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(terminosOverlay); });
+        if (closeTerminosBtn && terminosOverlay) closeTerminosBtn.addEventListener('click', () => closeModal(terminosOverlay));
+        if (terminosOverlay) terminosOverlay.addEventListener('click', (event) => { if (event.target === terminosOverlay) closeModal(terminosOverlay); });
+        if (openPrivacidadBtn && privacidadOverlay) openPrivacidadBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(privacidadOverlay); });
+        if (closePrivacidadBtn && privacidadOverlay) closePrivacidadBtn.addEventListener('click', () => closeModal(privacidadOverlay));
+        if (privacidadOverlay) privacidadOverlay.addEventListener('click', (event) => { if (event.target === privacidadOverlay) closeModal(privacidadOverlay); });
+        if (contactFormOpenTerminosLink && terminosOverlay) contactFormOpenTerminosLink.addEventListener('click', (e) => { e.preventDefault(); openModal(terminosOverlay); });
+        if (contactFormOpenPrivacidadLink && privacidadOverlay) contactFormOpenPrivacidadLink.addEventListener('click', (e) => { e.preventDefault(); openModal(privacidadOverlay); });
 
-        if (openTerminosBtn && terminosOverlay) {
-            openTerminosBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                openModal(terminosOverlay);
-            });
-        }
-        if (closeTerminosBtn && terminosOverlay) {
-            closeTerminosBtn.addEventListener('click', () => closeModal(terminosOverlay));
-        }
-        // Cerrar modal al hacer clic fuera del contenido del modal
-        if (terminosOverlay) {
-            terminosOverlay.addEventListener('click', (event) => {
-                if (event.target === terminosOverlay) { // Asegurarse que el clic es en el overlay y no en un hijo
-                    closeModal(terminosOverlay);
-                }
-            });
-        }
-
-        if (openPrivacidadBtn && privacidadOverlay) {
-            openPrivacidadBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                openModal(privacidadOverlay);
-            });
-        }
-        if (closePrivacidadBtn && privacidadOverlay) {
-            closePrivacidadBtn.addEventListener('click', () => closeModal(privacidadOverlay));
-        }
-        if (privacidadOverlay) {
-            privacidadOverlay.addEventListener('click', (event) => {
-                if (event.target === privacidadOverlay) {
-                    closeModal(privacidadOverlay);
-                }
-            });
-        }
-
-        // Event listeners para los enlaces dentro del formulario de contacto
-        if (contactFormOpenTerminosLink && terminosOverlay) {
-            contactFormOpenTerminosLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                openModal(terminosOverlay);
-            });
-        }
-
-        if (contactFormOpenPrivacidadLink && privacidadOverlay) {
-            contactFormOpenPrivacidadLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                openModal(privacidadOverlay);
-            });
-        }
-
-
-        // Enlaces de contacto dentro de los modales
         allLegalModalContactLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 const targetId = link.getAttribute('href');
                  if (targetId && targetId.startsWith('#')) {
                     e.preventDefault();
-                    // Cerrar cualquier modal que esté abierto
-                    if (terminosOverlay && terminosOverlay.classList.contains('is-visible')) {
-                        closeModal(terminosOverlay);
-                    }
-                    if (privacidadOverlay && privacidadOverlay.classList.contains('is-visible')) {
-                        closeModal(privacidadOverlay);
-                    }
-                    
-                    const targetSectionElement = document.querySelector(targetId); 
+                    if (terminosOverlay && terminosOverlay.classList.contains('is-visible')) closeModal(terminosOverlay);
+                    if (privacidadOverlay && privacidadOverlay.classList.contains('is-visible')) closeModal(privacidadOverlay);
+                    const targetSectionElement = document.querySelector(targetId);
                     if (targetSectionElement && header) {
                         const headerOffset = header.offsetHeight;
                         const elementPosition = targetSectionElement.getBoundingClientRect().top + window.pageYOffset;
-                        const desiredGapBelowHeader = 24; 
+                        const desiredGapBelowHeader = 24;
                         const offsetPosition = elementPosition - headerOffset - desiredGapBelowHeader;
-
-                        // Pequeño delay para asegurar que los modales se cierren antes del scroll
-                        setTimeout(() => {
-                             window.scrollTo({
-                                top: offsetPosition,
-                                behavior: 'smooth'
-                            });
-                        }, 150); 
+                        setTimeout(() => window.scrollTo({ top: offsetPosition, behavior: 'smooth' }), 150);
                     } else if (targetSectionElement) {
-                        setTimeout(() => {
-                            targetSectionElement.scrollIntoView({ behavior: 'smooth' });
-                        },150);
+                        setTimeout(() => targetSectionElement.scrollIntoView({ behavior: 'smooth' }),150);
                     }
                 }
             });
         });
-        
-        // Enlace de Política de Privacidad dentro del modal de Términos y Condiciones
+
         if (privacidadLinkInTerminosModal && terminosOverlay && privacidadOverlay) {
             privacidadLinkInTerminosModal.addEventListener('click', (e) => {
                 e.preventDefault();
-                closeModal(terminosOverlay); // Cierra el modal de T&C
-                setTimeout(() => { // Pequeño delay para asegurar la transición
-                    openModal(privacidadOverlay); // Abre el modal de Privacidad
-                }, 150); 
+                closeModal(terminosOverlay);
+                setTimeout(() => openModal(privacidadOverlay), 150);
             });
         }
 
-
-        // Animaciones de entrada para secciones usando Intersection Observer
         const sectionsToFade = document.querySelectorAll('.fade-in-section');
-        let contactCanvasInitialized = false; // Flag para inicializar el canvas de contacto solo una vez
+        let contactCanvasInitialized = false;
 
         const sectionObserver = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-
-                    // Lógica específica para la sección de contacto (animar items e inicializar canvas)
                     if (entry.target.id === 'contacto') {
                         const contactInfoItems = entry.target.querySelectorAll('.contact-info-item');
                         contactInfoItems.forEach((item, index) => {
-                            item.style.animationDelay = `${index * 0.15}s`; // Delay escalonado para los items
+                            item.style.animationDelay = `${index * 0.15}s`;
                             item.classList.add('is-visible');
                         });
                         const contactIcons = entry.target.querySelectorAll('.contact-icon-pulse');
                          contactIcons.forEach((icon, index) => {
-                            icon.style.animationDelay = `${0.3 + index * 0.15}s`; // Delay para los iconos
+                            icon.style.animationDelay = `${0.3 + index * 0.15}s`;
                             icon.classList.add('is-visible');
                         });
-
-                        // Inicializar animación del canvas de fondo si no se ha hecho antes
-                        if (!contactCanvasInitialized) {
-                            initContactCanvasAnimation();
-                            contactCanvasInitialized = true;
-                        }
                     }
-                    // Descomentar la siguiente línea si solo se quiere la animación una vez
-                    // observer.unobserve(entry.target); 
                 }
             });
-        }, { threshold: 0.1 }); // El callback se ejecuta cuando el 10% de la sección es visible
+        }, { threshold: 0.1 });
+        sectionsToFade.forEach(section => sectionObserver.observe(section));
 
-        sectionsToFade.forEach(section => {
-            sectionObserver.observe(section);
-        });
-
-        // Animación específica para la sección "Nosotros" y barras de progreso
         const nosotrosSection = document.getElementById('nosotros');
         if (nosotrosSection) {
             const animatedItemsNosotros = nosotrosSection.querySelectorAll('.animate-item');
@@ -1481,27 +1417,17 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         animatedItemsNosotros.forEach((item, index) => {
-                            // Aplicar estilos para la animación de entrada
                             item.style.opacity = '0';
                             item.style.transform = 'translateY(20px)';
                             item.style.transition = `opacity 0.6s ${index * 0.15}s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.6s ${index * 0.15}s cubic-bezier(0.25, 0.8, 0.25, 1)`;
-                            
-                            // Usar requestAnimationFrame para asegurar que los estilos iniciales se apliquen antes de la transición
-                            requestAnimationFrame(() => {
-                                item.style.opacity = '1';
-                                item.style.transform = 'translateY(0px)';
-                            });
-
-                            // Lógica para animar las barras de progreso si el item es una especialidad
+                            requestAnimationFrame(() => { item.style.opacity = '1'; item.style.transform = 'translateY(0px)'; });
                             if (item.classList.contains('specialty-item')) {
                                 const progressBarFill = item.querySelector('.progress-bar-fill');
                                 const percentageSpan = item.querySelector('.specialty-percentage');
                                 const targetPercentage = parseInt(item.dataset.percentage, 10);
-                                // Delay para la animación de la barra de progreso
                                 setTimeout(() => {
                                     if (progressBarFill) progressBarFill.style.width = targetPercentage + '%';
                                     let currentPercentage = 0;
-                                    // Intervalo para animar el número del porcentaje
                                     const interval = setInterval(() => {
                                         if (currentPercentage >= targetPercentage) {
                                             clearInterval(interval);
@@ -1510,202 +1436,200 @@
                                         }
                                         currentPercentage++;
                                         if (percentageSpan) percentageSpan.textContent = currentPercentage + '%';
-                                    }, (1500 / targetPercentage) || 20); // Ajustar velocidad de animación del número, con fallback
-                                }, (index * 0.15 * 1000) + 100); // Sincronizar con la aparición del item
+                                    }, (1500 / targetPercentage) || 20);
+                                }, (index * 0.15 * 1000) + 100);
                             }
                         });
-                        nosotrosObserver.unobserve(entry.target); // Dejar de observar una vez animado
+                        nosotrosObserver.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
-            // Ocultar items inicialmente antes de la animación
-            animatedItemsNosotros.forEach(item => {
-                item.style.opacity = '0';
-            });
+            animatedItemsNosotros.forEach(item => item.style.opacity = '0');
             nosotrosObserver.observe(nosotrosSection);
         }
 
-        // Función para inicializar la animación del canvas de fondo en la sección de contacto
         function initContactCanvasAnimation() {
             const canvas = document.getElementById('contact-canvas-bg');
-            const contactoSection = document.getElementById('contacto'); 
+            const contactoSection = document.getElementById('contacto');
             if (!canvas || !contactoSection) return;
-
             const ctx = canvas.getContext('2d');
-            let particlesArray; 
-
-            function resizeCanvas() {
-                canvas.width = contactoSection.offsetWidth;
-                canvas.height = contactoSection.offsetHeight;
-            }
-            resizeCanvas(); 
-
+            let particlesArray;
+            function resizeCanvas() { canvas.width = contactoSection.offsetWidth; canvas.height = contactoSection.offsetHeight; }
+            resizeCanvas();
             const computedStyles = getComputedStyle(document.documentElement);
             const particleColorHex = computedStyles.getPropertyValue('--current-primary-accent-bg').trim() || '#A88B70';
-            const particleColor = `${particleColorHex}99`; 
-
+            const particleColor = `${particleColorHex}99`;
             const lineColorHex = computedStyles.getPropertyValue('--text-font-accent').trim() || '#00695C';
-
-
             class Particle {
                 constructor(x, y, directionX, directionY, size, color) {
-                    this.x = x;
-                    this.y = y;
-                    this.directionX = directionX; 
-                    this.directionY = directionY; 
-                    this.size = size; 
-                    this.color = color; 
+                    this.x = x; this.y = y; this.directionX = directionX; this.directionY = directionY; this.size = size; this.color = color;
                 }
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                    ctx.fillStyle = this.color;
-                    ctx.fill();
-                }
+                draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false); ctx.fillStyle = this.color; ctx.fill(); }
                 update() {
-                    if (this.x + this.size > canvas.width || this.x - this.size < 0) { 
-                        this.directionX = -this.directionX;
-                    }
-                    if (this.y + this.size > canvas.height || this.y - this.size < 0) { 
-                        this.directionY = -this.directionY;
-                    }
-                    this.x += this.directionX;
-                    this.y += this.directionY;
-                    this.draw(); 
+                    if (this.x + this.size > canvas.width || this.x - this.size < 0) this.directionX = -this.directionX;
+                    if (this.y + this.size > canvas.height || this.y - this.size < 0) this.directionY = -this.directionY;
+                    this.x += this.directionX; this.y += this.directionY; this.draw();
                 }
             }
-
             function initParticles() {
                 particlesArray = [];
-                let numberOfParticles = (canvas.height * canvas.width) / 12000; 
-                if (numberOfParticles > 120) numberOfParticles = 120; 
-                if (numberOfParticles < 30) numberOfParticles = 30;   
-
+                let numberOfParticles = (canvas.height * canvas.width) / 12000;
+                if (numberOfParticles > 120) numberOfParticles = 120; if (numberOfParticles < 30) numberOfParticles = 30;
                 for (let i = 0; i < numberOfParticles; i++) {
-                    let size = (Math.random() * 2.5) + 1; 
+                    let size = (Math.random() * 2.5) + 1;
                     let x = Math.random() * (canvas.width - size * 2) + size;
                     let y = Math.random() * (canvas.height - size * 2) + size;
-                    let directionX = (Math.random() * 0.4) - 0.2; 
-                    let directionY = (Math.random() * 0.4) - 0.2; 
+                    let directionX = (Math.random() * 0.4) - 0.2;
+                    let directionY = (Math.random() * 0.4) - 0.2;
                     particlesArray.push(new Particle(x, y, directionX, directionY, size, particleColor));
                 }
             }
-
             function connectParticles() {
-                const maxDistance = 110; 
+                const maxDistance = 110;
                 for (let a = 0; a < particlesArray.length; a++) {
-                    for (let b = a + 1; b < particlesArray.length; b++) { 
-                        let distance = Math.sqrt(
-                            Math.pow(particlesArray[a].x - particlesArray[b].x, 2) +
-                            Math.pow(particlesArray[a].y - particlesArray[b].y, 2)
-                        );
+                    for (let b = a + 1; b < particlesArray.length; b++) {
+                        let distance = Math.sqrt(Math.pow(particlesArray[a].x - particlesArray[b].x, 2) + Math.pow(particlesArray[a].y - particlesArray[b].y, 2));
                         if (distance < maxDistance) {
-                            let opacityValue = 1 - (distance / maxDistance); 
-                            let alphaHex = Math.floor(opacityValue * 100).toString(16).padStart(2, '0'); 
-                            if (parseInt(alphaHex, 16) < 0x1A) alphaHex = '1A'; 
-
-                            ctx.strokeStyle = `${lineColorHex}${alphaHex}`; 
-                            ctx.lineWidth = 0.6; 
-                            ctx.beginPath();
-                            ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
-                            ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
-                            ctx.stroke();
+                            let opacityValue = 1 - (distance / maxDistance);
+                            let alphaHex = Math.floor(opacityValue * 100).toString(16).padStart(2, '0');
+                            if (parseInt(alphaHex, 16) < 0x1A) alphaHex = '1A';
+                            ctx.strokeStyle = `${lineColorHex}${alphaHex}`; ctx.lineWidth = 0.6;
+                            ctx.beginPath(); ctx.moveTo(particlesArray[a].x, particlesArray[a].y); ctx.lineTo(particlesArray[b].x, particlesArray[b].y); ctx.stroke();
                         }
                     }
                 }
             }
-
             let animationFrameId;
             function animateParticles() {
-                animationFrameId = requestAnimationFrame(animateParticles); 
-                ctx.clearRect(0, 0, canvas.width, canvas.height); 
-                for (let i = 0; i < particlesArray.length; i++) {
-                    particlesArray[i].update();
-                }
-                connectParticles(); 
+                animationFrameId = requestAnimationFrame(animateParticles);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < particlesArray.length; i++) particlesArray[i].update();
+                connectParticles();
             }
-
             let resizeTimeout;
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimeout);
                 resizeTimeout = setTimeout(() => {
-                    if (animationFrameId) { 
-                        cancelAnimationFrame(animationFrameId); 
-                    }
-                    resizeCanvas();
-                    initParticles(); 
-                    animateParticles(); 
-                }, 250); 
+                    if (animationFrameId) cancelAnimationFrame(animationFrameId);
+                    resizeCanvas(); initParticles(); animateParticles();
+                }, 250);
             });
-
-            initParticles(); 
-            animateParticles(); 
+            initParticles(); animateParticles();
         }
 
-        // Lógica para el carrusel de imágenes del héroe y animaciones iniciales de texto
         document.addEventListener('DOMContentLoaded', () => {
             const heroSlides = document.querySelectorAll('#hero-slideshow .hero-slide');
             let currentSlideIndex = 0;
-            const slideIntervalTime = 5000; 
-
+            const slideIntervalTime = 5000;
             function showNextSlide() {
-                if (heroSlides.length <= 1) return; 
+                if (heroSlides.length <= 1) return;
                 heroSlides[currentSlideIndex].classList.remove('opacity-100');
                 heroSlides[currentSlideIndex].classList.add('opacity-0');
                 currentSlideIndex = (currentSlideIndex + 1) % heroSlides.length;
                 heroSlides[currentSlideIndex].classList.remove('opacity-0');
                 heroSlides[currentSlideIndex].classList.add('opacity-100');
             }
-
-            if (heroSlides.length > 1) {
-                setInterval(showNextSlide, slideIntervalTime); 
-            } else if (heroSlides.length === 1) {
-                 heroSlides[0].classList.remove('opacity-0'); 
-                 heroSlides[0].classList.add('opacity-100');
-            }
+            if (heroSlides.length > 1) setInterval(showNextSlide, slideIntervalTime);
+            else if (heroSlides.length === 1) { heroSlides[0].classList.remove('opacity-0'); heroSlides[0].classList.add('opacity-100');}
 
             const heroSection = document.getElementById('inicio');
-            if (heroSection) {
-                setTimeout(() => {
-                    heroSection.classList.add('loaded'); 
-                }, 200);
-            }
+            if (heroSection) setTimeout(() => heroSection.classList.add('loaded'), 200);
 
+            // --- LÓGICA DEL FORMULARIO DE CONTACTO CON SUPABASE ---
             const contactForm = document.getElementById('contactForm');
             const formMessageEl = document.getElementById('form-message');
+            const submitButton = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
 
-            if (contactForm && formMessageEl) {
-                contactForm.addEventListener('submit', function(event) {
-                    event.preventDefault(); 
-                    const nombre = document.getElementById('nombre').value;
-                    const email = document.getElementById('email').value;
-                    const asunto = document.getElementById('asunto').value;
-                    const mensaje = document.getElementById('mensaje').value;
+            if (contactForm && formMessageEl && submitButton) {
+                if (!supabase) {
+                    console.error("CLIENTE SUPABASE NO INICIALIZADO: El formulario de contacto no funcionará. Por favor, revisa tu SUPABASE_URL y SUPABASE_ANON_KEY en el script y asegúrate de que la librería Supabase JS esté cargada correctamente en el <head>.");
+                    formMessageEl.textContent = 'Error: El sistema de envío de mensajes no está disponible. Intenta más tarde.';
+                    formMessageEl.className = 'text-xs text-center mt-3 h-4 text-red-600';
+                    if(submitButton) submitButton.disabled = true;
+                } else {
+                    contactForm.addEventListener('submit', async function(event) {
+                        event.preventDefault();
 
-                    formMessageEl.textContent = ''; 
-                    formMessageEl.className = 'text-xs text-center mt-3 h-4'; 
+                        const originalButtonText = submitButton.innerHTML;
+                        submitButton.disabled = true;
+                        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Enviando...';
 
-                    if (!nombre || !email || !asunto || !mensaje) {
-                        formMessageEl.textContent = 'Por favor, completa todos los campos.';
-                        formMessageEl.classList.add('text-red-600'); 
-                        setTimeout(() => { 
-                           formMessageEl.textContent = '';
-                           formMessageEl.className = 'text-xs text-center mt-3 h-4';
-                        }, 3000);
-                        return;
-                    }
-
-                    console.log('Formulario de Contacto Enviado (Simulación):', { nombre, email, asunto, mensaje });
-                    formMessageEl.textContent = '¡Gracias! Mensaje enviado (Sin BD).';
-                    formMessageEl.classList.add('text-green-600'); 
-                    contactForm.reset(); 
-
-                    setTimeout(() => { 
                         formMessageEl.textContent = '';
-                        formMessageEl.className = 'text-xs text-center mt-3 h-4';
-                    }, 4000);
-                });
+                        formMessageEl.className = 'text-xs text-center text-subtle mt-3 h-4';
+
+                        const nombre = document.getElementById('nombre').value.trim();
+                        const email = document.getElementById('email').value.trim();
+                        const asunto = document.getElementById('asunto').value.trim();
+                        const mensaje = document.getElementById('mensaje').value.trim();
+
+                        if (!nombre || !email || !asunto || !mensaje) {
+                            formMessageEl.textContent = 'Por favor, completa todos los campos.';
+                            formMessageEl.classList.add('text-red-600');
+                            submitButton.disabled = false;
+                            submitButton.innerHTML = originalButtonText;
+                            setTimeout(() => { formMessageEl.textContent = ''; formMessageEl.className = 'text-xs text-center text-subtle mt-3 h-4'; }, 4000);
+                            return;
+                        }
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(email)) {
+                            formMessageEl.textContent = 'Por favor, introduce un correo electrónico válido.';
+                            formMessageEl.classList.add('text-red-600');
+                            submitButton.disabled = false;
+                            submitButton.innerHTML = originalButtonText;
+                            setTimeout(() => { formMessageEl.textContent = ''; formMessageEl.className = 'text-xs text-center text-subtle mt-3 h-4'; }, 4000);
+                            return;
+                        }
+
+                        // ----- INICIO DEL BLOQUE IMPORTANTE PARA EL CONSOLE.LOG -----
+                        const datosParaInsertar = {
+                            nombre: nombre,
+                            email: email,
+                            asunto: asunto,
+                            mensaje: mensaje
+                        };
+                        console.log('PASO CLAVE -> Datos que se enviarán a Supabase:', datosParaInsertar);
+                        // ----- FIN DEL BLOQUE IMPORTANTE PARA EL CONSOLE.LOG -----
+
+                        try {
+                            const { data, error } = await supabase
+                                .from('mensajes_contacto')
+                                .insert([datosParaInsertar]) // Usamos la variable datosParaInsertar aquí
+
+                            if (error) {
+                                console.error('Error de Supabase al insertar (desde el bloque if):', error);
+                                formMessageEl.textContent = 'Error al enviar el mensaje. (Detalle: ' + error.message + ')';
+                                formMessageEl.classList.add('text-red-600');
+                            } else {
+                                console.log('Datos insertados en Supabase:', data);
+                                formMessageEl.textContent = '¡Gracias! Tu mensaje ha sido enviado correctamente.';
+                                formMessageEl.classList.add('text-green-600');
+                                contactForm.reset();
+                            }
+                        } catch (e) {
+                            console.error('Excepción al procesar el formulario con Supabase (desde el bloque catch):', e);
+                            formMessageEl.textContent = 'Ocurrió un error inesperado al procesar tu solicitud. Intenta más tarde.';
+                            formMessageEl.classList.add('text-red-600');
+                        } finally {
+                            setTimeout(() => {
+                                submitButton.disabled = false;
+                                submitButton.innerHTML = originalButtonText;
+                                if (formMessageEl.classList.contains('text-green-600')) {
+                                    setTimeout(() => {
+                                        formMessageEl.textContent = '';
+                                        formMessageEl.className = 'text-xs text-center text-subtle mt-3 h-4';
+                                    }, 4000);
+                                }
+                            }, 500);
+                        }
+                    });
+                }
+            } else {
+                if (!contactForm) console.error("Elemento del DOM #contactForm no encontrado.");
+                if (!formMessageEl) console.error("Elemento del DOM #form-message no encontrado.");
+                if (!submitButton && contactForm) console.error("Botón de envío no encontrado dentro de #contactForm.");
             }
+            // --- FIN LÓGICA DEL FORMULARIO DE CONTACTO CON SUPABASE ---
+
 
             const contactoSectionElement = document.getElementById('contacto');
             if (contactoSectionElement) {
@@ -1713,181 +1637,106 @@
                     if (entries[0].isIntersecting && !contactCanvasInitialized) {
                         initContactCanvasAnimation();
                         contactCanvasInitialized = true;
-                        contactoEntry.unobserve(contactoSectionElement); 
                     }
-                }, { threshold: 0.05 }); 
+                }, { threshold: 0.05 });
                 contactoEntry.observe(contactoSectionElement);
             }
-            
-            // Lógica del Juego Didáctico: Pares de Emociones
+
             const tableroJuego = document.getElementById('tablero-juego');
             const intentosDisplay = document.getElementById('intentos-juego');
             const paresEncontradosDisplay = document.getElementById('pares-encontrados-juego');
             const reiniciarJuegoBtn = document.getElementById('reiniciar-juego-btn');
             const mensajeCompletado = document.getElementById('mensaje-juego-completado');
+            const nombresEmociones = ['ASUSTADO', 'BESO', 'LENGUITA', 'RISA', 'SONRIENTE'];
+            let tarjetasVolteadas = [];
+            let paresEncontrados = 0;
+            let intentos = 0;
+            let puedeVoltear = true;
+            const totalPares = nombresEmociones.length;
 
-            const nombresEmociones = ['ASUSTADO', 'BESO', 'LENGUITA', 'RISA', 'SONRIENTE']; 
-            let tarjetasVolteadas = []; 
-            let paresEncontrados = 0; 
-            let intentos = 0; 
-            let puedeVoltear = true; 
-            const totalPares = nombresEmociones.length; 
-
-            function actualizarContadorPares() {
-                if(paresEncontradosDisplay) {
-                    paresEncontradosDisplay.textContent = `${paresEncontrados} / ${totalPares}`;
-                }
-            }
-            
+            function actualizarContadorPares() { if(paresEncontradosDisplay) paresEncontradosDisplay.textContent = `${paresEncontrados} / ${totalPares}`; }
             function crearTablero() {
-                paresEncontrados = 0;
-                intentos = 0;
-                puedeVoltear = true;
-                if (!tableroJuego || !intentosDisplay || !paresEncontradosDisplay || !mensajeCompletado) {
-                    console.error("Faltan elementos del DOM para el juego.");
-                    return;
-                }
-                tableroJuego.innerHTML = ''; 
-                intentosDisplay.textContent = intentos;
-                actualizarContadorPares();
-                mensajeCompletado.classList.add('hidden'); 
-                mensajeCompletado.textContent = '';
-
-                let emocionesParaJuego = [...nombresEmociones, ...nombresEmociones]; 
-                emocionesParaJuego.sort(() => 0.5 - Math.random()); 
-
-                emocionesParaJuego.forEach((nombreEmocion, i) => { 
+                paresEncontrados = 0; intentos = 0; puedeVoltear = true;
+                if (!tableroJuego || !intentosDisplay || !paresEncontradosDisplay || !mensajeCompletado) return;
+                tableroJuego.innerHTML = ''; intentosDisplay.textContent = intentos; actualizarContadorPares();
+                mensajeCompletado.classList.add('hidden'); mensajeCompletado.textContent = '';
+                let emocionesParaJuego = [...nombresEmociones, ...nombresEmociones];
+                emocionesParaJuego.sort(() => 0.5 - Math.random());
+                emocionesParaJuego.forEach((nombreEmocion, i) => {
                     const tarjeta = document.createElement('div');
-                    tarjeta.classList.add('tarjeta-juego'); 
-                    tarjeta.dataset.emocion = nombreEmocion; 
-
-                    const caraFrontal = document.createElement('div');
-                    caraFrontal.classList.add('cara-tarjeta', 'frontal'); 
-
-                    const caraTrasera = document.createElement('div');
-                    caraTrasera.classList.add('cara-tarjeta', 'trasera'); 
-                    const imgEmocion = document.createElement('img');
-                    imgEmocion.src = `imagenesjuego/${nombreEmocion}.png`; 
-                    imgEmocion.alt = `Emoción ${nombreEmocion}`;
-                    imgEmocion.onerror = function() { 
-                        this.src='https://placehold.co/100x100/E0D8CE/A88B70?text=?';
-                        this.alt='Error al cargar imagen';
-                        this.style.border='1px solid var(--current-primary-accent-bg)';
-                    };
+                    tarjeta.classList.add('tarjeta-juego'); tarjeta.dataset.emocion = nombreEmocion;
+                    const caraFrontal = document.createElement('div'); caraFrontal.classList.add('cara-tarjeta', 'frontal');
+                    const caraTrasera = document.createElement('div'); caraTrasera.classList.add('cara-tarjeta', 'trasera');
+                    const imgEmocion = document.createElement('img'); imgEmocion.src = `imagenesjuego/${nombreEmocion}.png`; imgEmocion.alt = `Emoción ${nombreEmocion}`;
+                    imgEmocion.onerror = function() { this.src='https://placehold.co/100x100/E0D8CE/A88B70?text=?'; this.alt='Error al cargar imagen'; this.style.border='1px solid var(--current-primary-accent-bg)'; };
                     caraTrasera.appendChild(imgEmocion);
-
-                    tarjeta.appendChild(caraFrontal);
-                    tarjeta.appendChild(caraTrasera);
-                    tableroJuego.appendChild(tarjeta);
-
+                    tarjeta.appendChild(caraFrontal); tarjeta.appendChild(caraTrasera); tableroJuego.appendChild(tarjeta);
                     tarjeta.addEventListener('click', () => voltearTarjeta(tarjeta));
-
-                    tarjeta.style.opacity = '0';
-                    tarjeta.style.transform = 'translateY(20px) scale(0.9)';
-                    const entryAnimationDelay = i * 0.06; 
-                    const entryAnimationDuration = 400; 
+                    tarjeta.style.opacity = '0'; tarjeta.style.transform = 'translateY(20px) scale(0.9)';
+                    const entryAnimationDelay = i * 0.06; const entryAnimationDuration = 400;
                     tarjeta.style.transition = `opacity 0.4s ${entryAnimationDelay}s ease-out, transform 0.4s ${entryAnimationDelay}s ease-out`;
-                    
-                    requestAnimationFrame(() => { 
+                    requestAnimationFrame(() => {
                         tarjeta.style.opacity = '1';
                         tarjeta.style.transform = 'translateY(0px) scale(1)';
-                        setTimeout(() => {
-                            tarjeta.style.transform = ''; 
-                            tarjeta.style.transition = 'transform 0.6s cubic-bezier(0.3, 1.2, 0.7, 1.2)'; 
-                        }, entryAnimationDuration + (entryAnimationDelay * 1000) + 50); 
+                        setTimeout(() => { tarjeta.style.transform = ''; tarjeta.style.transition = 'transform 0.6s cubic-bezier(0.3, 1.2, 0.7, 1.2)'; }, entryAnimationDuration + (entryAnimationDelay * 1000) + 50);
                     });
                 });
             }
-
             function voltearTarjeta(tarjeta) {
-                if (!puedeVoltear || tarjeta.classList.contains('volteada') || tarjeta.classList.contains('igualada')) {
-                    return; 
-                }
-                tarjeta.classList.add('volteada'); 
-                tarjetasVolteadas.push(tarjeta);
-
-                if (tarjetasVolteadas.length === 2) { 
-                    puedeVoltear = false; 
-                    intentos++;
-                    if(intentosDisplay) intentosDisplay.textContent = intentos;
+                if (!puedeVoltear || tarjeta.classList.contains('volteada') || tarjeta.classList.contains('igualada')) return;
+                tarjeta.classList.add('volteada'); tarjetasVolteadas.push(tarjeta);
+                if (tarjetasVolteadas.length === 2) {
+                    puedeVoltear = false; intentos++; if(intentosDisplay) intentosDisplay.textContent = intentos;
                     comprobarPareja();
                 }
             }
-
             function comprobarPareja() {
                 const [tarjeta1, tarjeta2] = tarjetasVolteadas;
-
-                if (tarjeta1.dataset.emocion === tarjeta2.dataset.emocion) { 
-                    tarjeta1.classList.add('igualada'); 
-                    tarjeta2.classList.add('igualada');
-                    paresEncontrados++;
-                    actualizarContadorPares();
-                    tarjetasVolteadas = []; 
-                    puedeVoltear = true; 
-
-                    if (paresEncontrados === totalPares) { 
+                if (tarjeta1.dataset.emocion === tarjeta2.dataset.emocion) {
+                    tarjeta1.classList.add('igualada'); tarjeta2.classList.add('igualada');
+                    paresEncontrados++; actualizarContadorPares(); tarjetasVolteadas = []; puedeVoltear = true;
+                    if (paresEncontrados === totalPares) {
                         setTimeout(() => {
                             if(mensajeCompletado) {
                                 mensajeCompletado.textContent = '¡Felicidades! ¡Has encontrado todos los pares!';
-                                mensajeCompletado.classList.remove('hidden');
-                                mensajeCompletado.style.opacity = '0';
-                                mensajeCompletado.style.transform = 'translateY(10px)';
+                                mensajeCompletado.classList.remove('hidden'); mensajeCompletado.style.opacity = '0'; mensajeCompletado.style.transform = 'translateY(10px)';
                                 requestAnimationFrame(() => {
                                     mensajeCompletado.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                                    mensajeCompletado.style.opacity = '1';
-                                    mensajeCompletado.style.transform = 'translateY(0px)';
-
-                                    setTimeout(() => {
-                                        crearTablero(); 
-                                    }, 3000); 
-
+                                    mensajeCompletado.style.opacity = '1'; mensajeCompletado.style.transform = 'translateY(0px)';
+                                    setTimeout(() => crearTablero(), 3000);
                                 });
                             }
-                        }, 600); 
+                        }, 600);
                     }
-                } else { 
-                    setTimeout(() => { 
-                        tarjeta1.classList.remove('volteada');
-                        tarjeta2.classList.remove('volteada');
-                        tarjetasVolteadas = [];
-                        puedeVoltear = true;
+                } else {
+                    setTimeout(() => {
+                        tarjeta1.classList.remove('volteada'); tarjeta2.classList.remove('volteada');
+                        tarjetasVolteadas = []; puedeVoltear = true;
                     }, 1200);
                 }
             }
-
             if (tableroJuego) {
-                actualizarContadorPares(); 
-                crearTablero(); 
-                if (reiniciarJuegoBtn) {
-                    reiniciarJuegoBtn.addEventListener('click', crearTablero); 
-                }
-
+                actualizarContadorPares(); crearTablero();
+                if (reiniciarJuegoBtn) reiniciarJuegoBtn.addEventListener('click', crearTablero);
                 const juegoSection = document.getElementById('juego-didactico');
                 if (juegoSection) {
-                    const animatedItemsJuego = juegoSection.querySelectorAll('.animate-item:not(.tarjeta-juego)'); 
+                    const animatedItemsJuego = juegoSection.querySelectorAll('.animate-item:not(.tarjeta-juego)');
                     const juegoObserver = new IntersectionObserver((entries) => {
                         entries.forEach(entry => {
                             if (entry.isIntersecting) {
                                 animatedItemsJuego.forEach((item) => {
-                                    const delay = parseFloat(item.style.animationDelay) || 0; 
-                                    if (item.style.opacity !== '1') { 
-                                        item.style.opacity = '0';
-                                        item.style.transform = 'translateY(20px)';
+                                    const delay = parseFloat(item.style.animationDelay) || 0;
+                                    if (item.style.opacity !== '1') {
+                                        item.style.opacity = '0'; item.style.transform = 'translateY(20px)';
                                         item.style.transition = `opacity 0.6s ${delay}s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.6s ${delay}s cubic-bezier(0.25, 0.8, 0.25, 1)`;
-                                        requestAnimationFrame(() => {
-                                            item.style.opacity = '1';
-                                            item.style.transform = 'translateY(0px)';
-                                        });
+                                        requestAnimationFrame(() => { item.style.opacity = '1'; item.style.transform = 'translateY(0px)'; });
                                     }
                                 });
-                                // juegoObserver.unobserve(entry.target); 
+                                // juegoObserver.unobserve(entry.target);
                             }
                         });
                     }, { threshold: 0.1 });
-
-                    animatedItemsJuego.forEach(item => { 
-                        item.style.opacity = '0'; 
-                    });
+                    animatedItemsJuego.forEach(item => item.style.opacity = '0');
                     juegoObserver.observe(juegoSection);
                 }
             }
