@@ -493,7 +493,7 @@
         }
 
 
-        /* --- ESTILOS DEL RESTO DE LA PÁGINA (SIN MODIFICAR) --- */
+        /* --- ESTILOS DEL RESTO DE LA PÁGINA --- */
         #main-content { display: none; }
         .theme-2 { --current-primary-accent-bg: #A88B70; --current-primary-accent-bg-hover: #9A7C60; --current-secondary-accent-bg: #D1C5B8; --current-secondary-accent-bg-light: #E0D8CE; --color-border: #E5E0DA; --color-border-input: #D5CCC2; }
         #nosotros.theme-2, #enfoque.theme-2 { background-color: #F7F5F2; position: relative; overflow: hidden; }
@@ -501,21 +501,43 @@
         #juego-didactico.theme-2::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(247, 245, 242, 0.15); z-index: 1; }
         #servicios.theme-2 { background-color: #FFFFFF; position: relative; overflow: hidden; }
         #contacto.theme-2 { background-color: #F7F5F2; position: relative; overflow: hidden; }
-        .legal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(42, 54, 59, 0.85); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; padding: 1rem; }
-        .legal-overlay.is-visible { opacity: 1; visibility: visible; }
-        .legal-modal { background-color: var(--color-bg-main); padding: 2rem 2.5rem; border-radius: 0.75rem; box-shadow: 0 15px 35px rgba(0,0,0,0.2); width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; position: relative; transform: scale(0.95); transition: transform 0.3s ease; }
-        .legal-overlay.is-visible .legal-modal { transform: scale(1); }
-        .legal-modal h2 { color: var(--text-font-accent-darker); font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center; }
-        .legal-modal h3 { color: var(--text-font-accent); font-family: 'Poppins', sans-serif; font-size: 1.3rem; font-weight: 600; margin-top: 1.8rem; margin-bottom: 0.8rem; border-bottom: 2px solid var(--current-primary-accent-bg); padding-bottom: 0.4rem; }
-        .legal-modal p, .legal-modal ul li { font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.65; color: var(--text-font-subtle); margin-bottom: 0.8rem; }
-        .legal-modal ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 0.8rem; }
-        .legal-modal strong { color: var(--text-font-primary); font-weight: 600; }
-        .legal-modal a { color: var(--text-font-accent-secondary); text-decoration: underline; }
-        .legal-modal a:hover { color: var(--text-font-accent-darker); }
-        .legal-modal .last-updated-text { text-align: center; font-style: italic; color: var(--text-font-subtle); margin-bottom: 2rem; font-size: 0.85rem; }
-        .legal-close-btn { position: absolute; top: 1rem; right: 1.25rem; background: none; border: none; font-size: 1.75rem; color: var(--text-font-subtle); cursor: pointer; padding: 0.5rem; line-height: 1; transition: color 0.3s ease, transform 0.3s ease; }
-        .legal-close-btn:hover { color: var(--text-font-accent-darker); transform: scale(1.1); }
+
+        /* --- ESTILOS PARA MODALES (LEGAL Y JUEGO) --- */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(42, 54, 59, 0.85); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; padding: 1rem; }
+        .modal-overlay.is-visible { opacity: 1; visibility: visible; }
+        .modal-content { background-color: var(--color-bg-main); padding: 2rem 2.5rem; border-radius: 0.75rem; box-shadow: 0 15px 35px rgba(0,0,0,0.2); width: 90%; max-height: 90vh; overflow-y: auto; position: relative; transform: scale(0.95); transition: transform 0.3s ease; }
+        .modal-overlay.is-visible .modal-content { transform: scale(1); }
+        .modal-content h2 { color: var(--text-font-accent-darker); font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; text-align: center; }
+        .modal-content h3 { color: var(--text-font-accent); font-family: 'Poppins', sans-serif; font-size: 1.3rem; font-weight: 600; margin-top: 1.8rem; margin-bottom: 0.8rem; border-bottom: 2px solid var(--current-primary-accent-bg); padding-bottom: 0.4rem; }
+        .modal-content p, .modal-content ul li { font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.65; color: var(--text-font-subtle); margin-bottom: 0.8rem; }
+        .modal-content ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 0.8rem; }
+        .modal-content strong { color: var(--text-font-primary); font-weight: 600; }
+        .modal-content a { color: var(--text-font-accent-secondary); text-decoration: underline; }
+        .modal-content a:hover { color: var(--text-font-accent-darker); }
+        .modal-content .last-updated-text { text-align: center; font-style: italic; color: var(--text-font-subtle); margin-bottom: 2rem; font-size: 0.85rem; }
+        .modal-close-btn { position: absolute; top: 1rem; right: 1.25rem; background: none; border: none; font-size: 1.75rem; color: var(--text-font-subtle); cursor: pointer; padding: 0.5rem; line-height: 1; transition: color 0.3s ease, transform 0.3s ease; }
+        .modal-close-btn:hover { color: var(--text-font-accent-darker); transform: scale(1.1); }
         body.modal-open { overflow: hidden; }
+        
+        /* MODIFICADO: Estilos específicos para el modal del juego */
+        #juego-modal.modal-content {
+            width: 95vw;
+            padding: 1rem;
+            max-height: 90vh;
+        }
+        @media (min-width: 640px) {
+            #juego-modal.modal-content { 
+                width: auto;
+                max-width: 600px; 
+                padding: 1.5rem;
+            }
+        }
+        @media (min-width: 1024px) { /* Ancho para dificultad Difícil */
+            #juego-modal.modal-content.dificultad-dificil-layout { 
+                max-width: 850px; 
+            }
+        }
+        
         #nosotros.theme-2 .commitment-text-block { background-color: var(--color-bg-main); padding: 1rem; border-radius: 0.5rem; border-left: 4px solid var(--current-primary-accent-bg); transition: border-left-width 0.3s ease, box-shadow 0.3s ease; }
         #nosotros.theme-2 .commitment-text-block:hover { border-left-width: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); }
         #nosotros.theme-2 .quote-block { background-color: #FFFFFF !important; border-left-color: var(--current-primary-accent-bg) !important; padding: 1rem; margin-top: 1rem; margin-bottom: 1rem; }
@@ -528,7 +550,72 @@
         body { font-family: 'Inter', sans-serif; background-color: var(--color-bg-main); color: var(--color-text-dark); overflow: hidden; }
         html { scroll-behavior: smooth; }
         h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
-        .bg-header-footer { background-color: var(--color-bg-header-footer); } .bg-accent-primary { background-color: var(--text-font-accent) !important; } .border-accent-primary { border-color: var(--text-font-accent) !important; } .bg-primary-accent { background-color: var(--current-primary-accent-bg); } .hover\:bg-primary-accent-hover:hover { background-color: var(--current-primary-accent-bg-hover) !important; } .bg-secondary-accent { background-color: var(--current-secondary-accent-bg); } .text-dark { color: var(--color-text-dark); } .text-light { color: var(--color-text-light); } .text-header-footer { color: var(--color-text-header-footer); } .text-subtle { color: var(--color-text-subtle); } .text-accent-primary { color: var(--text-font-accent) !important; } .text-accent-secondary { color: var(--text-font-accent-secondary) !important; } .text-accent-darker { color: var(--text-font-accent-darker) !important; } .text-accent-secondary-light { color: var(--text-font-accent) !important; opacity: 0.8; } .hover\:text-primary-accent-hover:hover { color: var(--text-font-accent-secondary) !important; } .border-custom { border-color: var(--color-border); } .border-input-custom { border-color: var(--color-border-input); } .focus\:border-primary-accent:focus { border-color: var(--current-primary-accent-bg) !important; } .focus\:ring-primary-accent:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--current-primary-accent-bg) 30%, transparent) !important; } .placeholder-custom::placeholder { color: var(--color-text-subtle); opacity: 0.7; } input:-ms-input-placeholder.placeholder-custom { color: var(--color-text-subtle); opacity: 0.7; } input::-ms-input-placeholder.placeholder-custom { color: var(--color-text-subtle); opacity: 0.7; } .cta-button { transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease; } #inicio .cta-button { background-color: var(--text-font-accent) !important; color: var(--text-font-on-accent-bg) !important; } #inicio .cta-button:hover { background-color: var(--text-font-accent-secondary) !important; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.1); } #contactoForm button[type="submit"] { background-color: #A88B70 !important; color: #FFFFFF !important; border: 1px solid #A88B70 !important; padding-top: 0.875rem; padding-bottom: 0.875rem; padding-left: 1.5rem; padding-right: 1.5rem; border-radius: 0.5rem; font-weight: 600; font-size: 1.125rem; width: 100%; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; } #contactoForm button[type="submit"]:hover { background-color: #9A7C60 !important; border-color: #9A7C60 !important; color: #FFFFFF !important; transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(168, 139, 112, 0.2), 0 4px 6px -2px rgba(168, 139, 112, 0.15) !important; } .service-card, .enfoque-item { transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); } .service-card:hover, .enfoque-item:hover { transform: translateY(-8px); box-shadow: 0 10px 30px color-mix(in srgb, var(--current-primary-accent-bg) 25%, transparent); } .service-card:hover .fas, .enfoque-item:hover .fas { transform: scale(1.1); transition: transform 0.3s ease; } .service-card .fas, .enfoque-item .fas { transition: transform 0.3s ease; } .fade-in-section { opacity: 0; transform: translateY(25px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; } .fade-in-section.is-visible { opacity: 1; transform: translateY(0); } .animate-item { opacity: 0; } .contact-info-item.is-visible { animation: fadeInUpItem 0.6s ease-out forwards; } @keyframes fadeInUpItem { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } } .commitment-title { position: relative; padding-left: 2rem; } .commitment-title::before { content: ''; position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); width: 10px; height: 10px; background-color: var(--text-font-accent); border-radius: 50%; opacity: 0.7; } .commitment-title .fa-briefcase { margin-right: 0.75rem; } @keyframes pulse { 0% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.15); opacity: 1; } 100% { transform: scale(1); opacity: 0.7; } } .icon-pulse { animation: pulse 2s infinite ease-in-out; } .contact-icon-pulse.is-visible { animation: pulseIcon 1.5s 0.5s ease-in-out; } @keyframes pulseIcon { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } } .image-hover-effect { transition: transform 0.35s ease, box-shadow 0.35s ease; } .image-hover-effect:hover { transform: scale(1.03); box-shadow: 0 8px 25px rgba(96, 88, 80, 0.1); } .profile-image-container .decorative-shape-1 { transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); } .profile-image-container:hover .decorative-shape-1 { transform: translateX(-50%) translateY(-50%) rotate(-12deg) scale(1.1); opacity: 0.8; } .profile-image-container .decorative-shape-2 { transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); } .profile-image-container:hover .decorative-shape-2 { transform: translateX(-50%) translateY(-50%) rotate(12deg) scale(1.12); opacity: 1; } .profile-image-container .profile-image { transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease; } .profile-image-container:hover .profile-image { transform: scale(1.05); box-shadow: 0 15px 35px rgba(42, 54, 59, 0.25); } header nav a span, #mobile-menu a { transition: all 0.3s ease-in-out; } .hero-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; } .whatsapp-button { background-color: #25D366; border-color: #25D366; color: white; transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; } .whatsapp-button:hover { background-color: #1DAE54; border-color: #1DAE54; transform: translateY(-2px) scale(1.03); box-shadow: 0 6px 12px rgba(37, 211, 102, 0.3); } #inicio .hero-text-animate { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; } #inicio.loaded .hero-text-animate.logo-animate { transition-delay: 0.2s; opacity: 1; transform: translateY(0); } #inicio.loaded .hero-text-animate.p2 { transition-delay: 0.4s; opacity: 1; transform: translateY(0); } #inicio.loaded .hero-text-animate.cta { transition-delay: 0.6s; opacity: 1; transform: translateY(0); } .icon-color-1 { color: var(--text-font-accent) !important; } .icon-color-2 { color: var(--text-font-accent-secondary) !important; } .icon-color-3 { color: var(--text-font-accent-darker) !important; } .icon-positive  { color: var(--icon-special-positive) !important; } .section-divider-container { width: 100%; margin-bottom: 3rem; } .section-divider { height: 1px; width: 70%; margin: 0 auto; background-color: var(--current-primary-accent-bg); opacity: 0.8; } .specialties-container { padding: 1rem; background-color: #FFFFFF; border-radius: 0.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.07); } .specialty-item { margin-bottom: 1rem; } .specialty-item:last-child { margin-bottom: 0; } .specialty-name { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-font-primary); } .specialty-percentage { color: var(--text-font-accent); font-weight: 600; } .progress-bar-bg { background-color: #E9ECEF; border-radius: 0.25rem; height: 10px; overflow: hidden; } .progress-bar-fill { background-color: var(--text-font-accent); height: 100%; width: 0; border-radius: 0.25rem; transition: width 1.5s cubic-bezier(0.25, 0.8, 0.25, 1); } .animated-shapes-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0; } .shape { position: absolute; list-style: none; display: block; animation: floatShapes linear infinite; bottom: -250px; will-change: transform, opacity; --shape-opacity-val: 0.2; } .shape.square { background-color: var(--current-secondary-accent-bg-light); border-radius: 10px; } .shape.circle { background-color: var(--current-primary-accent-bg); border-radius: 50%; } .shape.triangle { width: 0; height: 0; border-left-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-color: transparent; border-right-color: transparent; border-bottom-color: var(--current-secondary-accent-bg); background-color: transparent !important; border-radius: 0; } .shape:nth-child(1) { left: 15%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 28s; --shape-opacity-val: 0.22;} .shape:nth-child(2) { left: 5%; width: 70px; height: 70px; animation-delay: 2s; animation-duration: 22s; --shape-opacity-val: 0.18;} .shape:nth-child(3) { left: 80%; width: 60px; height: 60px; animation-delay: 4s; animation-duration: 30s; --shape-opacity-val: 0.2;} .shape:nth-child(4) { left: 40%; width: 120px; height: 120px; animation-delay: 1s; animation-duration: 25s; --shape-opacity-val: 0.25;} .shape:nth-child(5) { left: 70%; width: 50px; height: 50px; animation-delay: 5s; animation-duration: 20s; --shape-opacity-val: 0.18;} .shape:nth-child(6) { left: 85%; width: 180px; height: 180px; animation-delay: 3s; animation-duration: 32s; --shape-opacity-val: 0.12;} .shape:nth-child(7) { left: 10%; width: 200px; height: 200px; animation-delay: 7s; animation-duration: 35s; --shape-opacity-val: 0.1;} .shape:nth-child(8) { left: 50%; width: 65px; height: 65px; animation-delay: 14s; animation-duration: 30s; --shape-opacity-val: 0.22;} .shape:nth-child(9) { left: 25%; width: 45px; height: 45px; animation-delay: 8s; animation-duration: 28s; --shape-opacity-val: 0.19;} .shape:nth-child(10) { left: 92%; width: 160px; height: 160px; animation-delay: 2.5s; animation-duration: 22s; --shape-opacity-val: 0.15;} .shape:nth-child(11) { left: 30%; width: 70px; height: 70px; animation-delay: 10s; animation-duration: 26s; --shape-opacity-val: 0.2;} .shape:nth-child(12) { left: 60%; width: 110px; height: 110px; animation-delay: 12s; animation-duration: 29s; --shape-opacity-val: 0.17;} .shape.triangle:nth-child(3) { border-left-width:30px; border-right-width:30px; border-bottom-width:50px;} .shape.triangle:nth-child(7) { border-left-width:60px; border-right-width:60px; border-bottom-width:100px;} .shape.triangle:nth-child(11) { border-left-width:40px; border-right-width:40px; border-bottom-width:70px;} @keyframes floatShapes { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 10% { opacity: var(--shape-opacity-val); } 90% { opacity: var(--shape-opacity-val); } 100% { transform: translateY(-200vh) rotate(180deg); opacity: 0; } } .theme-2 #tablero-juego { perspective: 1000px; } .tarjeta-juego { background-color: var(--current-secondary-accent-bg-light); aspect-ratio: 1 / 1; border-radius: 0.5rem; cursor: pointer; position: relative; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.3, 1.2, 0.7, 1.2); box-shadow: 0 4px 10px rgba(0,0,0,0.08); border: 2px solid transparent; } .tarjeta-juego:hover { border-color: var(--current-primary-accent-bg); } .tarjeta-juego:not(.volteada):not(.igualada):hover { transform: translateY(-4px) scale(1.03); } .tarjeta-juego.volteada { transform: rotateY(180deg); } .tarjeta-juego.igualada { transform: rotateY(180deg) scale(0.95); opacity: 0.7; cursor: default; border-color: var(--text-font-accent); } .tarjeta-juego.igualada:hover { transform: rotateY(180deg) scale(0.95); } .cara-tarjeta { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; border-radius: 0.375rem; } .cara-tarjeta.frontal { background-color: var(--current-secondary-accent-bg); } .cara-tarjeta.frontal::before { content: "\f128"; font-family: "Font Awesome 5 Free"; font-weight: 900; font-size: 2.5rem; color: var(--current-primary-accent-bg); opacity: 0.6; } @media (max-width: 768px) { .cara-tarjeta.frontal::before { font-size: 1.8rem; } #tablero-juego { gap: 0.5rem; } } .cara-tarjeta.trasera { background-color: var(--color-bg-alt); transform: rotateY(180deg); padding: 10%; } .cara-tarjeta.trasera img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 0.25rem; } #reiniciar-juego-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px color-mix(in srgb, var(--current-primary-accent-bg) 30%, transparent); } #mobile-menu { max-height: 0; opacity: 0; overflow: hidden; transform: translateY(-20px); transition: max-height 0.4s ease-out, opacity 0.3s ease-out 0.1s, transform 0.4s ease-out; } #mobile-menu.menu-open { max-height: 500px; opacity: 1; transform: translateY(0); } footer .footer-column h4 { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 0.75rem; color: var(--text-font-on-dark-bg); } footer .footer-column a, footer .footer-column p { color: var(--text-font-on-dark-bg); opacity: 0.9; transition: opacity 0.3s ease; } footer .footer-column a:hover { opacity: 1; text-decoration: underline; } .footer-bottom-line { border-top: 1px solid rgba(255, 255, 255, 0.2); }
+        .bg-header-footer { background-color: var(--color-bg-header-footer); } .bg-accent-primary { background-color: var(--text-font-accent) !important; } .border-accent-primary { border-color: var(--text-font-accent) !important; } .bg-primary-accent { background-color: var(--current-primary-accent-bg); } .hover\:bg-primary-accent-hover:hover { background-color: var(--current-primary-accent-bg-hover) !important; } .bg-secondary-accent { background-color: var(--current-secondary-accent-bg); } .text-dark { color: var(--color-text-dark); } .text-light { color: var(--color-text-light); } .text-header-footer { color: var(--color-text-header-footer); } .text-subtle { color: var(--color-text-subtle); } .text-accent-primary { color: var(--text-font-accent) !important; } .text-accent-secondary { color: var(--text-font-accent-secondary) !important; } .text-accent-darker { color: var(--text-font-accent-darker) !important; } .text-accent-secondary-light { color: var(--text-font-accent) !important; opacity: 0.8; } .hover\:text-primary-accent-hover:hover { color: var(--text-font-accent-secondary) !important; } .border-custom { border-color: var(--color-border); } .border-input-custom { border-color: var(--color-border-input); } .focus\:border-primary-accent:focus { border-color: var(--current-primary-accent-bg) !important; } .focus\:ring-primary-accent:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--current-primary-accent-bg) 30%, transparent) !important; } .placeholder-custom::placeholder { color: var(--color-text-subtle); opacity: 0.7; } input:-ms-input-placeholder.placeholder-custom { color: var(--color-text-subtle); opacity: 0.7; } input::-ms-input-placeholder.placeholder-custom { color: var(--color-text-subtle); opacity: 0.7; } .cta-button { transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease; } #inicio .cta-button { background-color: var(--text-font-accent) !important; color: var(--text-font-on-accent-bg) !important; } #inicio .cta-button:hover { background-color: var(--text-font-accent-secondary) !important; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.1); } #contactoForm button[type="submit"] { background-color: #A88B70 !important; color: #FFFFFF !important; border: 1px solid #A88B70 !important; padding-top: 0.875rem; padding-bottom: 0.875rem; padding-left: 1.5rem; padding-right: 1.5rem; border-radius: 0.5rem; font-weight: 600; font-size: 1.125rem; width: 100%; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; } #contactoForm button[type="submit"]:hover { background-color: #9A7C60 !important; border-color: #9A7C60 !important; color: #FFFFFF !important; transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(168, 139, 112, 0.2), 0 4px 6px -2px rgba(168, 139, 112, 0.15) !important; } .service-card, .enfoque-item { transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.35s cubic-bezier(0.25, 0.8, 0.25, 1); } .service-card:hover, .enfoque-item:hover { transform: translateY(-8px); box-shadow: 0 10px 30px color-mix(in srgb, var(--current-primary-accent-bg) 25%, transparent); } .service-card:hover .fas, .enfoque-item:hover .fas { transform: scale(1.1); transition: transform 0.3s ease; } .service-card .fas, .enfoque-item .fas { transition: transform 0.3s ease; }
+        .fade-in-section { opacity: 0; transform: translateY(25px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+        .animate-item { opacity: 0; transform: translateY(20px); }
+        .contact-info-item.is-visible { animation: fadeInUpItem 0.6s ease-out forwards; } @keyframes fadeInUpItem { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } } .commitment-title { position: relative; padding-left: 2rem; } .commitment-title::before { content: ''; position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); width: 10px; height: 10px; background-color: var(--text-font-accent); border-radius: 50%; opacity: 0.7; } .commitment-title .fa-briefcase { margin-right: 0.75rem; } @keyframes pulse { 0% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.15); opacity: 1; } 100% { transform: scale(1); opacity: 0.7; } } .icon-pulse { animation: pulse 2s infinite ease-in-out; } .contact-icon-pulse.is-visible { animation: pulseIcon 1.5s 0.5s ease-in-out; } @keyframes pulseIcon { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } } .image-hover-effect { transition: transform 0.35s ease, box-shadow 0.35s ease; } .image-hover-effect:hover { transform: scale(1.03); box-shadow: 0 8px 25px rgba(96, 88, 80, 0.1); } .profile-image-container .decorative-shape-1 { transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); } .profile-image-container:hover .decorative-shape-1 { transform: translateX(-50%) translateY(-50%) rotate(-12deg) scale(1.1); opacity: 0.8; } .profile-image-container .decorative-shape-2 { transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); } .profile-image-container:hover .decorative-shape-2 { transform: translateX(-50%) translateY(-50%) rotate(12deg) scale(1.12); opacity: 1; } .profile-image-container .profile-image { transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease; } .profile-image-container:hover .profile-image { transform: scale(1.05); box-shadow: 0 15px 35px rgba(42, 54, 59, 0.25); } header nav a span, #mobile-menu a { transition: all 0.3s ease-in-out; } .hero-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; } .whatsapp-button { background-color: #25D366; border-color: #25D366; color: white; transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; } .whatsapp-button:hover { background-color: #1DAE54; border-color: #1DAE54; transform: translateY(-2px) scale(1.03); box-shadow: 0 6px 12px rgba(37, 211, 102, 0.3); } #inicio .hero-text-animate { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; } #inicio.loaded .hero-text-animate.logo-animate { transition-delay: 0.2s; opacity: 1; transform: translateY(0); } #inicio.loaded .hero-text-animate.p2 { transition-delay: 0.4s; opacity: 1; transform: translateY(0); } #inicio.loaded .hero-text-animate.cta { transition-delay: 0.6s; opacity: 1; transform: translateY(0); } .icon-color-1 { color: var(--text-font-accent) !important; } .icon-color-2 { color: var(--text-font-accent-secondary) !important; } .icon-color-3 { color: var(--text-font-accent-darker) !important; } .icon-positive  { color: var(--icon-special-positive) !important; } .section-divider-container { width: 100%; margin-bottom: 3rem; } .section-divider { height: 1px; width: 70%; margin: 0 auto; background-color: var(--current-primary-accent-bg); opacity: 0.8; } .specialties-container { padding: 1rem; background-color: #FFFFFF; border-radius: 0.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.07); } .specialty-item { margin-bottom: 1rem; } .specialty-item:last-child { margin-bottom: 0; } .specialty-name { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-font-primary); } .specialty-percentage { color: var(--text-font-accent); font-weight: 600; } .progress-bar-bg { background-color: #E9ECEF; border-radius: 0.25rem; height: 10px; overflow: hidden; } .progress-bar-fill { background-color: var(--text-font-accent); height: 100%; width: 0; border-radius: 0.25rem; } .animated-shapes-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0; } .shape { position: absolute; list-style: none; display: block; animation: floatShapes linear infinite; bottom: -250px; will-change: transform, opacity; --shape-opacity-val: 0.2; } .shape.square { background-color: var(--current-secondary-accent-bg-light); border-radius: 10px; } .shape.circle { background-color: var(--current-primary-accent-bg); border-radius: 50%; } .shape.triangle { width: 0; height: 0; border-left-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-color: transparent; border-right-color: transparent; border-bottom-color: var(--current-secondary-accent-bg); background-color: transparent !important; border-radius: 0; } .shape:nth-child(1) { left: 15%; width: 150px; height: 150px; animation-delay: 0s; animation-duration: 28s; --shape-opacity-val: 0.22;} .shape:nth-child(2) { left: 5%; width: 70px; height: 70px; animation-delay: 2s; animation-duration: 22s; --shape-opacity-val: 0.18;} .shape:nth-child(3) { left: 80%; width: 60px; height: 60px; animation-delay: 4s; animation-duration: 30s; --shape-opacity-val: 0.2;} .shape:nth-child(4) { left: 40%; width: 120px; height: 120px; animation-delay: 1s; animation-duration: 25s; --shape-opacity-val: 0.25;} .shape:nth-child(5) { left: 70%; width: 50px; height: 50px; animation-delay: 5s; animation-duration: 20s; --shape-opacity-val: 0.18;} .shape:nth-child(6) { left: 85%; width: 180px; height: 180px; animation-delay: 3s; animation-duration: 32s; --shape-opacity-val: 0.12;} .shape:nth-child(7) { left: 10%; width: 200px; height: 200px; animation-delay: 7s; animation-duration: 35s; --shape-opacity-val: 0.1;} .shape:nth-child(8) { left: 50%; width: 65px; height: 65px; animation-delay: 14s; animation-duration: 30s; --shape-opacity-val: 0.22;} .shape:nth-child(9) { left: 25%; width: 45px; height: 45px; animation-delay: 8s; animation-duration: 28s; --shape-opacity-val: 0.19;} .shape:nth-child(10) { left: 92%; width: 160px; height: 160px; animation-delay: 2.5s; animation-duration: 22s; --shape-opacity-val: 0.15;} .shape:nth-child(11) { left: 30%; width: 70px; height: 70px; animation-delay: 10s; animation-duration: 26s; --shape-opacity-val: 0.2;} .shape:nth-child(12) { left: 60%; width: 110px; height: 110px; animation-delay: 12s; animation-duration: 29s; --shape-opacity-val: 0.17;} .shape.triangle:nth-child(3) { border-left-width:30px; border-right-width:30px; border-bottom-width:50px;} .shape.triangle:nth-child(7) { border-left-width:60px; border-right-width:60px; border-bottom-width:100px;} .shape.triangle:nth-child(11) { border-left-width:40px; border-right-width:40px; border-bottom-width:70px;} @keyframes floatShapes { 0% { transform: translateY(0) rotate(0deg); opacity: 0; } 10% { opacity: var(--shape-opacity-val); } 90% { opacity: var(--shape-opacity-val); } 100% { transform: translateY(-200vh) rotate(180deg); opacity: 0; } }
+        .theme-2 #tablero-juego { perspective: 1000px; } 
+        .tarjeta-juego { background-color: var(--current-secondary-accent-bg-light); aspect-ratio: 1 / 1; border-radius: 0.5rem; cursor: pointer; position: relative; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.3, 1.2, 0.7, 1.2); box-shadow: 0 4px 10px rgba(0,0,0,0.08); border: 2px solid transparent; } .tarjeta-juego:hover { border-color: var(--current-primary-accent-bg); } .tarjeta-juego:not(.volteada):not(.igualada):hover { transform: translateY(-4px) scale(1.03); } .tarjeta-juego.volteada { transform: rotateY(180deg); } .tarjeta-juego.igualada { transform: rotateY(180deg) scale(0.95); opacity: 0.7; cursor: default; border-color: var(--text-font-accent); } .tarjeta-juego.igualada:hover { transform: rotateY(180deg) scale(0.95); } .cara-tarjeta { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; border-radius: 0.375rem; } .cara-tarjeta.frontal { background-color: var(--current-secondary-accent-bg); } .cara-tarjeta.frontal::before { content: "\f128"; font-family: "Font Awesome 5 Free"; font-weight: 900; font-size: 2.5rem; color: var(--current-primary-accent-bg); opacity: 0.6; } @media (max-width: 768px) { .cara-tarjeta.frontal::before { font-size: 1.8rem; } #tablero-juego { gap: 0.5rem; } } .cara-tarjeta.trasera { background-color: var(--color-bg-alt); transform: rotateY(180deg); padding: 10%; } .cara-tarjeta.trasera img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 0.25rem; } #reiniciar-juego-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px color-mix(in srgb, var(--current-primary-accent-bg) 30%, transparent); }
+        
+        /* ===== NUEVOS ESTILOS PARA BOTONES DE DIFICULTAD ===== */
+        .dificultad-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            color: var(--text-font-subtle);
+            background-color: transparent;
+            border: 2px solid transparent;
+        }
+
+        .dificultad-btn.active, .dificultad-btn:hover {
+            color: var(--text-font-on-accent-bg);
+            background-color: var(--current-primary-accent-bg-hover);
+        }
+
+        .dificultad-btn.active {
+             border-color: color-mix(in srgb, var(--current-primary-accent-bg-hover) 80%, black);
+        }
+
+        /* ===== INICIO: ESTILOS OPTIMIZADOS PARA MENÚ MÓVIL (CORREGIDO) ===== */
+        #mobile-menu {
+            max-height: 0;
+            opacity: 0;
+            visibility: hidden; /* Evita interacciones cuando está cerrado */
+            overflow: hidden;
+            transform: translateY(-10px); /* Efecto sutil de deslizamiento hacia abajo */
+            transition: max-height 0.4s ease-out, 
+                        opacity 0.3s ease-out, 
+                        transform 0.4s ease-out, 
+                        visibility 0s linear 0.4s; /* Oculta visibilidad al final de la transición de cierre */
+        }
+
+        #mobile-menu.menu-open {
+            max-height: 500px; /* Un valor mayor que el contenido del menú */
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            transition: max-height 0.4s ease-out, 
+                        opacity 0.3s ease-in 0.1s, /* Retrasa la aparición del contenido */
+                        transform 0.4s ease-out,
+                        visibility 0s linear 0s; /* Muestra visibilidad inmediatamente */
+        }
+
+        #mobile-menu a {
+            color: var(--text-font-on-dark-bg);
+            background-color: transparent;
+            transition: background-color 0.3s ease-out;
+        }
+        
+        #mobile-menu a:hover {
+            background-color: var(--color-mobile-menu-link-hover-bg);
+        }
+        /* ===== FIN: ESTILOS OPTIMIZADOS PARA MENÚ MÓVIL (CORREGIDO) ===== */
+
+        footer .footer-column h4 { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 0.75rem; color: var(--text-font-on-dark-bg); } footer .footer-column a, footer .footer-column p { color: var(--text-font-on-dark-bg); opacity: 0.9; transition: opacity 0.3s ease; } footer .footer-column a:hover { opacity: 1; text-decoration: underline; } .footer-bottom-line { border-top: 1px solid rgba(255, 255, 255, 0.2); }
 
         /* Estilos para la tarjeta de identificación */
         .identificacion-tarjeta {
@@ -567,7 +654,13 @@
             overflow: visible; /* Permite que la tarjeta sobresalga si es necesario */
         }
 
-
+        /* ===== CORRECCIÓN DEFINITIVA PARA TÍTULO DE MODAL EN MÓVIL ===== */
+        @media (max-width: 767px) {
+            #juego-modal h2 {
+                font-size: 1.285rem !important; /* Tamaño reducido (equivale a text-lg) */
+                line-height: 1.5rem !important;  /* Espacio vertical del texto */
+            }
+        }
     </style>
 </head>
 <body>
@@ -656,13 +749,17 @@
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
             </nav>
+            <!-- ===== INICIO: ESTRUCTURA DE MENÚ MÓVIL MODIFICADA ===== -->
             <div id="mobile-menu" class="md:hidden shadow-lg bg-header-footer">
-                <a href="#inicio" class="block px-6 py-3 transition-all duration-300 main-nav-link" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Inicio</a>
-                <a href="#nosotros" class="block px-6 py-3 transition-all duration-300 main-nav-link" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Sobre Mí</a>
-                <a href="#servicios" class="block px-6 py-3 transition-all duration-300 main-nav-link" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Servicios</a>
-                <a href="#juego-didactico" class="block px-6 py-3 transition-all duration-300 main-nav-link" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Juego Didáctico</a>
-                <a href="#contacto" class="block px-6 py-3 transition-all duration-300 main-nav-link" style="color: var(--text-font-on-dark-bg); background-color: transparent;" onmouseover="this.style.backgroundColor='var(--color-mobile-menu-link-hover-bg)';" onmouseout="this.style.backgroundColor='transparent';">Contacto</a>
+                <div class="overflow-hidden"> <!-- Contenedor interior para la animación -->
+                    <a href="#inicio" class="block px-6 py-3 main-nav-link">Inicio</a>
+                    <a href="#nosotros" class="block px-6 py-3 main-nav-link">Sobre Mí</a>
+                    <a href="#servicios" class="block px-6 py-3 main-nav-link">Servicios</a>
+                    <a href="#juego-didactico" class="block px-6 py-3 main-nav-link">Juego Didáctico</a>
+                    <a href="#contacto" class="block px-6 py-3 main-nav-link">Contacto</a>
+                </div>
             </div>
+            <!-- ===== FIN: ESTRUCTURA DE MENÚ MÓVIL MODIFICADA ===== -->
         </header>
 
         <!-- Sección Inicio -->
@@ -692,14 +789,14 @@
         </section>
 
         <!-- Sección Sobre Mí -->
-        <section id="nosotros" class="py-16 md:py-24 theme-2">
+        <section id="nosotros" class="py-16 md:py-24 theme-2 fade-in-section">
             <div class="container mx-auto px-6">
                 <div class="section-divider-container">
                     <div class="section-divider"></div>
                 </div>
                 <div class="text-center mb-12 md:mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-accent-primary animate-item">Sobre Mí</h2>
-                    <p class="text-dark mt-2 text-lg animate-item">Lic. Laura Portillo, Psicopedagoga (M.P 783)</p>
+                    <p id="matricula-display" class="text-dark mt-2 text-lg animate-item">Lic. Laura Portillo, Psicopedagoga (M.P ...)</p>
                 </div>
                 <div class="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-12">
                     <div class="md:w-2/5 lg:w-1/3 flex justify-center items-center py-8 px-4 animate-item">
@@ -737,46 +834,12 @@
                             </p>
                         </div>
 
-                        <div class="specialties-container animate-item mt-8">
+                        <div id="public-specialties-container" class="specialties-container mt-8">
                             <h3 class="text-xl font-semibold text-accent-primary mb-5 text-center animate-item">Mis Especialidades</h3>
-                            <div class="space-y-4">
-                                <div class="specialty-item animate-item" data-percentage="96">
-                                    <div class="specialty-name">
-                                        <span>Dificultades Específicas del Aprendizaje (DEA)</span>
-                                        <span class="specialty-percentage">0%</span>
-                                    </div>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill"></div>
-                                    </div>
-                                </div>
-                                <div class="specialty-item animate-item" data-percentage="92">
-                                    <div class="specialty-name">
-                                        <span>Intervenciones Personalizadas</span>
-                                        <span class="specialty-percentage">0%</span>
-                                    </div>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill"></div>
-                                    </div>
-                                </div>
-                                <div class="specialty-item animate-item" data-percentage="88">
-                                    <div class="specialty-name">
-                                        <span>Técnicas de Estudio Avanzadas</span>
-                                        <span class="specialty-percentage">0%</span>
-                                    </div>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill"></div>
-                                    </div>
-                                </div>
-                                <div class="specialty-item animate-item" data-percentage="90">
-                                    <div class="specialty-name">
-                                        <span>Orientación a Familias y Docentes</span>
-                                        <span class="specialty-percentage">0%</span>
-                                    </div>
-                                    <div class="progress-bar-bg">
-                                        <div class="progress-bar-fill"></div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div id="public-specialties-list" class="space-y-4">
+                                <!-- Las especialidades se cargarán aquí con JavaScript -->
+                                <p class="text-center text-subtle">Cargando especialidades...</p>
+                             </div>
                         </div>
                     </div>
                 </div>
@@ -850,42 +913,30 @@
             </div>
         </section>
 
-        <!-- Sección Juego Didáctico -->
-        <section id="juego-didactico" class="py-16 md:py-24 theme-2 fade-in-section">
-            <div class="container mx-auto px-6 relative z-10">
-                <div class="text-center mb-12 md:mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-accent-primary animate-item">Juego Didáctico: Pares de Emociones</h2>
-                    <p class="text-dark mt-3 text-lg max-w-2xl mx-auto animate-item" style="animation-delay: 0.1s;">
-                        ¡Pon a prueba tu memoria y encuentra los pares de emociones! Haz clic en las tarjetas para revelar la emoción escondida.
-                    </p>
-                </div>
-
-                <div class="max-w-3xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-xl animate-item" style="animation-delay: 0.2s; background-color: rgba(255, 255, 255, 0.95);">
-                    <div class="flex justify-between items-center mb-6">
-                        <div>
-                            <p class="text-subtle">Intentos: <span id="intentos-juego" class="font-semibold text-accent-secondary">0</span></p>
-                            <p class="text-subtle">Pares Encontrados: <span id="pares-encontrados-juego" class="font-semibold text-accent-secondary">0 / 5</span></p>
-                        </div>
-                        <button id="reiniciar-juego-btn" class="bg-primary-accent hover:bg-primary-accent-hover text-on-accent font-semibold py-2 px-5 rounded-lg shadow-md transition-all duration-300 ease-in-out flex items-center">
-                            <i class="fas fa-redo-alt mr-2"></i>Reiniciar
-                        </button>
-                    </div>
-
-                    <div id="tablero-juego" class="grid grid-cols-5 gap-3 md:gap-4">
-                        <!-- Las tarjetas del juego se generan con JavaScript -->
-                    </div>
-                    <p id="mensaje-juego-completado" class="text-center text-xl font-semibold text-accent-darker mt-8 hidden animate-item"></p>
+        <!-- === INICIO: SECCIÓN JUEGO DIDÁCTICO MODIFICADA === -->
+        <section id="juego-didactico" class="py-20 md:py-28 theme-2 fade-in-section">
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-accent-primary animate-item">Juego Didáctico: Pares de Emociones</h2>
+                <p class="text-dark mt-4 text-lg max-w-2xl mx-auto animate-item" style="animation-delay: 0.1s;">
+                    Una forma divertida de ejercitar la memoria y reconocer las emociones. <br class="hidden sm:block">¡Haz clic en el botón para comenzar el desafío!
+                </p>
+                <div class="mt-8 animate-item" style="animation-delay: 0.2s;">
+                    <button id="open-juego-btn" class="font-semibold py-3 px-10 rounded-lg text-lg shadow-xl cta-button inline-flex items-center transform hover:scale-105 bg-primary-accent hover:bg-primary-accent-hover text-on-accent">
+                        <i class="fas fa-gamepad mr-3"></i> ¡A Jugar!
+                    </button>
                 </div>
             </div>
         </section>
+        <!-- === FIN: SECCIÓN JUEGO DIDÁCTICO MODIFICADA === -->
+
 
         <!-- Sección Contacto -->
         <section id="contacto" class="py-16 md:py-24 theme-2 fade-in-section">
             <canvas id="contact-canvas-bg" class="absolute top-0 left-0 w-full h-full z-0"></canvas>
             <div class="container mx-auto px-6 relative z-10">
                 <div class="text-center mb-12 md:mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-accent-primary">Ponte en Contacto</h2>
-                    <p class="text-dark mt-3 text-lg max-w-2xl mx-auto">
+                    <h2 class="text-3xl md:text-4xl font-bold text-accent-primary animate-item">Ponte en Contacto</h2>
+                    <p class="text-dark mt-3 text-lg max-w-2xl mx-auto animate-item">
                         Estoy aquí para ayudarte en tu proceso de aprendizaje y desarrollo.
                         No dudes en consultarme o agendar una cita.
                     </p>
@@ -951,7 +1002,7 @@
                     </div>
 
                     <div class="md:w-3/5">
-                        <h3 class="text-2xl font-semibold text-accent-darker mb-6">Envíame un Mensaje</h3>
+                        <h3 class="text-2xl font-semibold text-accent-darker mb-6 animate-item">Envíame un Mensaje</h3>
                         <form id="contactForm" class="space-y-5">
                             <div>
                                 <label for="nombre" class="block text-sm font-medium text-subtle mb-1.5">Nombre Completo</label>
@@ -1047,10 +1098,11 @@
         </footer>
     </div>
 
-    <!-- Modales Legales -->
-    <div id="terminos-overlay" class="legal-overlay">
-        <div id="terminos-condiciones-modal" class="legal-modal">
-            <button id="close-terminos-btn" class="legal-close-btn" aria-label="Cerrar Términos y Condiciones">×</button>
+    <!-- === INICIO: ESTRUCTURA DE MODALES (LEGALES Y JUEGO) === -->
+    <!-- Modal de Términos -->
+    <div id="terminos-overlay" class="modal-overlay">
+        <div id="terminos-condiciones-modal" class="modal-content">
+            <button id="close-terminos-btn" class="modal-close-btn" aria-label="Cerrar Términos y Condiciones">×</button>
             <h2>Términos y Condiciones</h2>
             <p class="last-updated-text">Última actualización: 28 de mayo de 2025</p>
 
@@ -1088,20 +1140,21 @@
             <h3>8. Ley Aplicable y Jurisdicción</h3>
             <p>Estos Términos y Condiciones se rigen por las leyes de la República Argentina. Cualquier disputa que surja en relación con el Sitio o estos términos será sometida a la jurisdicción de los tribunales competentes de la ciudad de Posadas, Provincia de Misiones, Argentina, renunciando a cualquier otro fuero o jurisdicción que pudiera corresponder.</p>
             <h3>9. Contacto</h3>
-            <p>Si tiene alguna pregunta o inquietud sobre estos Términos y Condiciones, puede contactar a Laura Portillo a través de los medios proporcionados en la sección de <a href="#contacto" class="legal-modal-contact-link">Contacto</a> de este Sitio.</p>
+            <p>Si tiene alguna pregunta o inquietud sobre estos Términos y Condiciones, puede contactar a Laura Portillo a través de los medios proporcionados en la sección de <a href="#contacto" class="modal-contact-link">Contacto</a> de este Sitio.</p>
         </div>
     </div>
 
-    <div id="privacidad-overlay" class="legal-overlay">
-        <div id="politica-privacidad-modal" class="legal-modal">
-            <button id="close-privacidad-btn" class="legal-close-btn" aria-label="Cerrar Política de Privacidad">×</button>
+    <!-- Modal de Privacidad -->
+    <div id="privacidad-overlay" class="modal-overlay">
+        <div id="politica-privacidad-modal" class="modal-content">
+            <button id="close-privacidad-btn" class="modal-close-btn" aria-label="Cerrar Política de Privacidad">×</button>
             <h2>Política de Privacidad</h2>
             <p class="last-updated-text">Última actualización: 28 de mayo de 2025</p>
 
             <p>La Lic. Laura Portillo (en adelante, "nosotros", "nuestro/a" o "el Titular") se compromete a proteger la privacidad de los usuarios (en adelante, "usted" o "el Usuario") de su sitio web (en adelante, "el Sitio"). Esta Política de Privacidad describe cómo recopilamos, usamos, protegemos y compartimos su información personal.</p>
 
             <h3>1. Responsable del Tratamiento de Datos</h3>
-            <p>La responsable del tratamiento de sus datos personales es Laura Portillo, Psicopedagoga, con domicilio profesional en Posadas, Misiones, Argentina. Puede contactarnos a través de los medios indicados en la sección <a href="#contacto" class="legal-modal-contact-link">Contacto</a> del Sitio.</p>
+            <p>La responsable del tratamiento de sus datos personales es Laura Portillo, Psicopedagoga, con domicilio profesional en Posadas, Misiones, Argentina. Puede contactarnos a través de los medios indicados en la sección <a href="#contacto" class="modal-contact-link">Contacto</a> del Sitio.</p>
 
             <h3>2. Información que Recopilamos</h3>
             <p>Recopilamos información personal que usted nos proporciona voluntariamente a través de:</p>
@@ -1151,9 +1204,41 @@
             <p>Podemos actualizar esta Política de Privacidad ocasionalmente. Le notificaremos cualquier cambio publicando la nueva política en el Sitio con una fecha de "última actualización" revisada. Le recomendamos revisar esta política periódicamente.</p>
 
             <h3>10. Contacto</h3>
-            <p>Si tiene alguna pregunta, comentario o inquietud sobre esta Política de Privacidad o nuestras prácticas de tratamiento de datos, por favor contáctenos a través de los medios indicados en la sección de <a href="#contacto" class="legal-modal-contact-link">Contacto</a> de este Sitio.</p>
+            <p>Si tiene alguna pregunta, comentario o inquietud sobre esta Política de Privacidad o nuestras prácticas de tratamiento de datos, por favor contáctenos a través de los medios indicados en la sección de <a href="#contacto" class="modal-contact-link">Contacto</a> de este Sitio.</p>
         </div>
     </div>
+    
+    <!-- === INICIO: MODAL DEL JUEGO (ESTRUCTURA MODIFICADA) === -->
+    <div id="juego-overlay" class="modal-overlay">
+        <div id="juego-modal" class="modal-content bg-white p-6 md:p-8 rounded-xl shadow-xl transition-all duration-300" style="background-color: rgba(253, 251, 248, 0.98);">
+             <button id="close-juego-btn" class="modal-close-btn" aria-label="Cerrar Juego">×</button>
+             
+             <div class="flex justify-between items-center mb-4 flex-wrap gap-y-3 pr-16 gap-x-6">
+                <h2 class="text-xl md:text-3xl font-bold text-accent-primary text-left w-full sm:w-auto !mb-0">Pares de Emociones</h2>
+                <div id="contadores-juego" class="flex items-center gap-x-4">
+                     <p class="text-subtle text-sm md:text-base">Intentos: <span id="intentos-juego" class="font-semibold text-accent-secondary">0</span></p>
+                     <p class="text-subtle text-sm md:text-base">Pares: <span id="pares-encontrados-juego" class="font-semibold text-accent-secondary">0 / 4</span></p>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center mb-6 flex-wrap gap-4">
+                 <div id="controles-dificultad" class="flex items-center gap-x-1 rounded-lg bg-gray-200 p-1">
+                    <button data-dificultad="facil" class="dificultad-btn active">Fácil</button>
+                    <button data-dificultad="intermedia" class="dificultad-btn">Intermedia</button>
+                    <button data-dificultad="dificil" class="dificultad-btn">Difícil</button>
+                </div>
+                <button id="reiniciar-juego-btn" class="bg-primary-accent hover:bg-primary-accent-hover text-on-accent font-semibold py-2 px-5 rounded-lg shadow-md transition-all duration-300 ease-in-out flex items-center">
+                    <i class="fas fa-redo-alt mr-2"></i>Reiniciar
+                </button>
+            </div>
+
+            <div id="tablero-juego" class="grid grid-cols-4 gap-3 md:gap-4">
+                <!-- Las tarjetas del juego se generan con JavaScript al abrir el modal -->
+            </div>
+            <p id="mensaje-juego-completado" class="text-center text-xl font-semibold text-accent-darker mt-8 hidden"></p>
+        </div>
+    </div>
+    <!-- === FIN: MODAL DEL JUEGO === -->
 
 
     <script>
@@ -1183,7 +1268,6 @@
                 if(csHoursEl) csHoursEl.innerHTML = "<span>00</span>";
                 if(csMinutesEl) csMinutesEl.innerHTML = "<span>00</span>";
                 if(csSecondsEl) csSecondsEl.innerHTML = "<span>00</span>";
-                // Aquí podrías habilitar el acceso automáticamente si la fecha ha pasado
                 return;
             }
 
@@ -1192,7 +1276,6 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Actualiza solo si el valor cambia para evitar re-renderizado innecesario y parpadeo de la animación
             if (csDaysEl && csDaysEl.querySelector('span').textContent !== String(days).padStart(2, '0')) csDaysEl.innerHTML = `<span>${String(days).padStart(2, '0')}</span>`;
             if (csHoursEl && csHoursEl.querySelector('span').textContent !== String(hours).padStart(2, '0')) csHoursEl.innerHTML = `<span>${String(hours).padStart(2, '0')}</span>`;
             if (csMinutesEl && csMinutesEl.querySelector('span').textContent !== String(minutes).padStart(2, '0')) csMinutesEl.innerHTML = `<span>${String(minutes).padStart(2, '0')}</span>`;
@@ -1206,16 +1289,16 @@
         let animationFrameIdBg;
 
         function initAnimatedBackground() {
-            if (!canvas) return; // Si el canvas no existe, no hacer nada
+            if (!canvas) return;
             ctxAnimation = canvas.getContext('2d');
             resizeAnimatedCanvas();
             createParticlesBg();
             animateParticlesBg();
             window.addEventListener('resize', () => {
-                if (animationFrameIdBg) cancelAnimationFrame(animationFrameIdBg); // Detener animación anterior
+                if (animationFrameIdBg) cancelAnimationFrame(animationFrameIdBg);
                 resizeAnimatedCanvas();
-                createParticlesBg(); // Recrear partículas para el nuevo tamaño
-                animateParticlesBg(); // Reiniciar animación
+                createParticlesBg();
+                animateParticlesBg();
             });
         }
 
@@ -1237,13 +1320,12 @@
                 ctxAnimation.fill();
             }
             update() {
-                // Reposicionar partícula si sale de la pantalla
                 if (this.x > canvas.width + this.size || this.x < -this.size || this.y > canvas.height + this.size || this.y < -this.size) {
                     const side = Math.floor(Math.random() * 4);
-                    if (side === 0) { this.x = Math.random() * canvas.width; this.y = -this.size; } // Top
-                    else if (side === 1) { this.x = canvas.width + this.size; this.y = Math.random() * canvas.height; } // Right
-                    else if (side === 2) { this.x = Math.random() * canvas.width; this.y = canvas.height + this.size; } // Bottom
-                    else { this.x = -this.size; this.y = Math.random() * canvas.height; } // Left
+                    if (side === 0) { this.x = Math.random() * canvas.width; this.y = -this.size; }
+                    else if (side === 1) { this.x = canvas.width + this.size; this.y = Math.random() * canvas.height; }
+                    else if (side === 2) { this.x = Math.random() * canvas.width; this.y = canvas.height + this.size; }
+                    else { this.x = -this.size; this.y = Math.random() * canvas.height; }
                 }
                 this.x += this.directionX;
                 this.y += this.directionY;
@@ -1254,14 +1336,14 @@
         function createParticlesBg() {
             if (!canvas) return;
             particlesArrayBg = [];
-            const numberOfParticles = Math.floor((canvas.width * canvas.height) / 15000); // Ajustar densidad
+            const numberOfParticles = Math.floor((canvas.width * canvas.height) / 15000);
             const particleBaseColor = getComputedStyle(document.documentElement).getPropertyValue('--cs-particle-color').trim() || 'rgba(233, 30, 99, 0.5)';
 
             for (let i = 0; i < numberOfParticles; i++) {
-                let size = Math.random() * 1.5 + 0.5; // Tamaño pequeño y sutil
+                let size = Math.random() * 1.5 + 0.5;
                 let x = Math.random() * canvas.width;
                 let y = Math.random() * canvas.height;
-                let directionX = (Math.random() - 0.5) * 0.3; // Movimiento lento
+                let directionX = (Math.random() - 0.5) * 0.3;
                 let directionY = (Math.random() - 0.5) * 0.3;
                 particlesArrayBg.push(new ParticleBg(x, y, directionX, directionY, size, particleBaseColor));
             }
@@ -1272,12 +1354,12 @@
             const lineColor = getComputedStyle(document.documentElement).getPropertyValue('--cs-line-color').trim() || 'rgba(234, 234, 234, 0.1)';
             let opacityValue;
             for (let a = 0; a < particlesArrayBg.length; a++) {
-                for (let b = a; b < particlesArrayBg.length; b++) { // Empezar b desde a para evitar duplicar líneas y auto-conexiones
+                for (let b = a; b < particlesArrayBg.length; b++) {
                     let distance = ((particlesArrayBg[a].x - particlesArrayBg[b].x) * (particlesArrayBg[a].x - particlesArrayBg[b].x))
                                  + ((particlesArrayBg[a].y - particlesArrayBg[b].y) * (particlesArrayBg[a].y - particlesArrayBg[b].y));
-                    if (distance < (canvas.width/7) * (canvas.height/7) && distance < 10000) { // Conectar si están suficientemente cerca
-                        opacityValue = 1 - (distance/10000); // Líneas más débiles cuanto más lejos
-                        ctxAnimation.strokeStyle = lineColor.replace(/[\d\.]+\)$/g, `${opacityValue.toFixed(2)})`); // Ajustar alfa del color de línea
+                    if (distance < (canvas.width/7) * (canvas.height/7) && distance < 10000) {
+                        opacityValue = 1 - (distance/10000);
+                        ctxAnimation.strokeStyle = lineColor.replace(/[\d\.]+\)$/g, `${opacityValue.toFixed(2)})`);
                         ctxAnimation.lineWidth = 0.5;
                         ctxAnimation.beginPath();
                         ctxAnimation.moveTo(particlesArrayBg[a].x, particlesArrayBg[a].y);
@@ -1301,34 +1383,32 @@
         function showMainContent() {
             if (comingSoonOverlay) comingSoonOverlay.classList.add('hidden');
             if (mainContent) mainContent.style.display = 'block';
-            document.body.style.overflow = 'auto'; // Permitir scroll en el contenido principal
-            if (countdownInterval) clearInterval(countdownInterval); // Detener contador
-            if (animationFrameIdBg) cancelAnimationFrame(animationFrameIdBg); // Detener animación de fondo
-            initializeAppLogic(); // Inicializar la lógica de la app principal
+            document.body.style.overflow = 'auto';
+            if (countdownInterval) clearInterval(countdownInterval);
+            if (animationFrameIdBg) cancelAnimationFrame(animationFrameIdBg);
+            initializeAppLogic();
         }
 
         if (passwordForm) {
             passwordForm.addEventListener('submit', function(event) {
                 event.preventDefault();
                 if (passwordInput.value === correctPassword) {
-                    sessionStorage.setItem('accessGranted_lp', 'true'); // Guardar estado de acceso
+                    sessionStorage.setItem('accessGranted_lp', 'true');
                     showMainContent();
                     if (errorMessage) errorMessage.textContent = '';
                 } else {
                     if (errorMessage) errorMessage.textContent = 'Contraseña incorrecta. Inténtalo de nuevo.';
-                    passwordInput.value = ''; // Limpiar input
-                    passwordInput.focus(); // Re-enfocar
-                    // Animación de "shake" para el input
+                    passwordInput.value = '';
+                    passwordInput.focus();
                     passwordInput.style.animation = 'shake 0.5s';
                     setTimeout(() => {
-                        passwordInput.style.animation = ''; // Limpiar animación
-                         if (errorMessage) errorMessage.textContent = ''; // Limpiar mensaje de error después de un tiempo
+                        passwordInput.style.animation = '';
+                         if (errorMessage) errorMessage.textContent = '';
                     }, 3000);
                 }
             });
         }
 
-        // Estilo para la animación de "shake" (si no está ya en el CSS)
         const styleSheet = document.createElement("style");
         styleSheet.type = "text/css";
         styleSheet.innerText = `
@@ -1342,7 +1422,7 @@
 
         // ---------- LÓGICA PRINCIPAL DE LA APLICACIÓN (SE EJECUTA DESPUÉS DEL ACCESO) ----------
         function initializeAppLogic() {
-            // Configuración de Supabase (reemplazar con tus credenciales si es necesario)
+            // Configuración de Supabase
             const SUPABASE_URL = 'https://wwukwwlrceszawotljau.supabase.co';
             const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3dWt3d2xyY2VzemF3b3RsamF1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1NzE5OTQsImV4cCI6MjA2NDE0Nzk5NH0.w85OwTsxhWNMWqKNPQAyQ_GSnXf_SGjcb-FAP4D6nAs';
             let supabase = null;
@@ -1359,33 +1439,32 @@
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileMenuIcon = mobileMenuButton ? mobileMenuButton.querySelector('i') : null;
-            const header = document.querySelector('header'); // Para calcular offset del scroll
+            const header = document.querySelector('header');
 
             if (mobileMenuButton && mobileMenu && mobileMenuIcon) {
                 mobileMenuButton.addEventListener('click', () => {
                     mobileMenu.classList.toggle('menu-open');
-                    mobileMenuIcon.classList.toggle('fa-bars'); // Alternar ícono de hamburguesa
-                    mobileMenuIcon.classList.toggle('fa-times'); // Alternar ícono de cierre
+                    mobileMenuIcon.classList.toggle('fa-bars');
+                    mobileMenuIcon.classList.toggle('fa-times');
                 });
             }
-
-            // Scroll suave y cierre de menú móvil al hacer clic en enlaces de navegación
+            
+            // Scroll suave y cierre de menú móvil
             const mainNavLinks = document.querySelectorAll('.main-nav-link');
             mainNavLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     const targetId = link.getAttribute('href');
-                    if (targetId && targetId.startsWith('#')) { // Solo para enlaces internos
+                    if (targetId && targetId.startsWith('#')) {
                         e.preventDefault();
                         const targetSectionElement = document.querySelector(targetId);
                         if (targetSectionElement) {
                             const headerOffset = header ? header.offsetHeight : 0;
                             const elementPosition = targetSectionElement.getBoundingClientRect().top + window.pageYOffset;
-                            const desiredGapBelowHeader = 24; // Espacio deseado debajo del header fijo
+                            const desiredGapBelowHeader = 24;
                             const offsetPosition = elementPosition - headerOffset - desiredGapBelowHeader;
 
                             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
 
-                            // Cerrar menú móvil si está abierto
                             if (mobileMenu && mobileMenu.classList.contains('menu-open')) {
                                  mobileMenu.classList.remove('menu-open');
                                  if (mobileMenuIcon) { mobileMenuIcon.classList.remove('fa-times'); mobileMenuIcon.classList.add('fa-bars');}
@@ -1395,136 +1474,129 @@
                 });
             });
 
-            // Lógica para modales de Términos y Política de Privacidad
+            // ===== INICIO: LÓGICA DE MODALES (LEGALES Y JUEGO) =====
             const openTerminosBtn = document.getElementById('open-terminos-btn');
             const closeTerminosBtn = document.getElementById('close-terminos-btn');
             const terminosOverlay = document.getElementById('terminos-overlay');
             const openPrivacidadBtn = document.getElementById('open-privacidad-btn');
             const closePrivacidadBtn = document.getElementById('close-privacidad-btn');
             const privacidadOverlay = document.getElementById('privacidad-overlay');
-            const allLegalModalContactLinks = document.querySelectorAll('.legal-modal-contact-link');
+            const allModalContactLinks = document.querySelectorAll('.modal-contact-link');
             const privacidadLinkInTerminosModal = document.querySelector('.privacidad-link-in-modal');
             const contactFormOpenTerminosLink = document.getElementById('contact-form-open-terminos-link');
             const contactFormOpenPrivacidadLink = document.getElementById('contact-form-open-privacidad-link');
+            
+            const openJuegoBtn = document.getElementById('open-juego-btn');
+            const closeJuegoBtn = document.getElementById('close-juego-btn');
+            const juegoOverlay = document.getElementById('juego-overlay');
 
 
             function openModal(overlayElement) { if (overlayElement) { overlayElement.classList.add('is-visible'); document.body.classList.add('modal-open'); } }
             function closeModalFunction(overlayElement) {
                 if (overlayElement) {
                     overlayElement.classList.remove('is-visible');
-                    // Solo quitar 'modal-open' del body si no hay otros modales visibles
-                    if (!document.querySelector('.legal-overlay.is-visible')) { document.body.classList.remove('modal-open'); }
+                    if (!document.querySelector('.modal-overlay.is-visible')) { document.body.classList.remove('modal-open'); }
                 }
             }
-            if (openTerminosBtn && terminosOverlay) openTerminosBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(terminosOverlay); });
-            if (closeTerminosBtn && terminosOverlay) closeTerminosBtn.addEventListener('click', () => closeModalFunction(terminosOverlay));
-            if (terminosOverlay) terminosOverlay.addEventListener('click', (event) => { if (event.target === terminosOverlay) closeModalFunction(terminosOverlay); }); // Cerrar al hacer clic fuera
-            if (openPrivacidadBtn && privacidadOverlay) openPrivacidadBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(privacidadOverlay); });
-            if (closePrivacidadBtn && privacidadOverlay) closePrivacidadBtn.addEventListener('click', () => closeModalFunction(privacidadOverlay));
-            if (privacidadOverlay) privacidadOverlay.addEventListener('click', (event) => { if (event.target === privacidadOverlay) closeModalFunction(privacidadOverlay); }); // Cerrar al hacer clic fuera
-            if (contactFormOpenTerminosLink && terminosOverlay) contactFormOpenTerminosLink.addEventListener('click', (e) => { e.preventDefault(); openModal(terminosOverlay); });
-            if (contactFormOpenPrivacidadLink && privacidadOverlay) contactFormOpenPrivacidadLink.addEventListener('click', (e) => { e.preventDefault(); openModal(privacidadOverlay); });
+            
+            if (openTerminosBtn) openTerminosBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(terminosOverlay); });
+            if (closeTerminosBtn) closeTerminosBtn.addEventListener('click', () => closeModalFunction(terminosOverlay));
+            if (terminosOverlay) terminosOverlay.addEventListener('click', (event) => { if (event.target === terminosOverlay) closeModalFunction(terminosOverlay); });
+            
+            if (openPrivacidadBtn) openPrivacidadBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(privacidadOverlay); });
+            if (closePrivacidadBtn) closePrivacidadBtn.addEventListener('click', () => closeModalFunction(privacidadOverlay));
+            if (privacidadOverlay) privacidadOverlay.addEventListener('click', (event) => { if (event.target === privacidadOverlay) closeModalFunction(privacidadOverlay); });
+            
+            if (contactFormOpenTerminosLink) contactFormOpenTerminosLink.addEventListener('click', (e) => { e.preventDefault(); openModal(terminosOverlay); });
+            if (contactFormOpenPrivacidadLink) contactFormOpenPrivacidadLink.addEventListener('click', (e) => { e.preventDefault(); openModal(privacidadOverlay); });
 
-            // Enlaces de "Contacto" dentro de los modales
-            allLegalModalContactLinks.forEach(link => {
+            if (openJuegoBtn) {
+                openJuegoBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openModal(juegoOverlay);
+                    // Inicia el juego con la dificultad por defecto (fácil)
+                    crearTablero();
+                });
+            }
+            if (closeJuegoBtn) closeJuegoBtn.addEventListener('click', () => closeModalFunction(juegoOverlay));
+            if (juegoOverlay) juegoOverlay.addEventListener('click', (event) => { if (event.target === juegoOverlay) closeModalFunction(juegoOverlay); });
+
+            allModalContactLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
+                    e.preventDefault();
                     const targetId = link.getAttribute('href');
-                     if (targetId && targetId.startsWith('#')) {
-                        e.preventDefault();
-                        // Cerrar cualquier modal abierto
-                        if (terminosOverlay && terminosOverlay.classList.contains('is-visible')) closeModalFunction(terminosOverlay);
-                        if (privacidadOverlay && privacidadOverlay.classList.contains('is-visible')) closeModalFunction(privacidadOverlay);
-
-                        const targetSectionElement = document.querySelector(targetId);
-                        if (targetSectionElement) {
-                            const headerOffset = header ? header.offsetHeight : 0;
-                            const elementPosition = targetSectionElement.getBoundingClientRect().top + window.pageYOffset;
-                            const desiredGapBelowHeader = 24;
-                            const offsetPosition = elementPosition - headerOffset - desiredGapBelowHeader;
-                            // Pequeño retraso para asegurar que el modal se cierre antes del scroll
-                            setTimeout(() => window.scrollTo({ top: offsetPosition, behavior: 'smooth' }), 150);
-                        }
+                    closeModalFunction(terminosOverlay);
+                    closeModalFunction(privacidadOverlay);
+                    const targetSectionElement = document.querySelector(targetId);
+                    if (targetSectionElement) {
+                        const headerOffset = header ? header.offsetHeight : 0;
+                        const elementPosition = targetSectionElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - headerOffset - 24;
+                        setTimeout(() => window.scrollTo({ top: offsetPosition, behavior: 'smooth' }), 150);
                     }
                 });
             });
 
-            // Enlace de Política de Privacidad dentro del modal de Términos
-            if (privacidadLinkInTerminosModal && terminosOverlay && privacidadOverlay) {
+            if (privacidadLinkInTerminosModal) {
                 privacidadLinkInTerminosModal.addEventListener('click', (e) => {
                     e.preventDefault();
                     closeModalFunction(terminosOverlay);
-                    setTimeout(() => openModal(privacidadOverlay), 150); // Abrir el otro modal después de un breve retraso
+                    setTimeout(() => openModal(privacidadOverlay), 150);
                 });
             }
+            // ===== FIN: LÓGICA DE MODALES =====
 
 
-            // Animaciones de aparición de secciones (Fade-in)
-            const sectionsToFade = document.querySelectorAll('.fade-in-section');
-            let contactCanvasInitialized = false; // Para la animación del canvas de contacto
-
-            const sectionObserver = new IntersectionObserver(function(entries, observer) {
+            // ===== INICIO: LÓGICA DE ANIMACIONES (CORREGIDA) =====
+            const sectionsToAnimate = document.querySelectorAll('.fade-in-section');
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        // Animaciones específicas para la sección de contacto al hacerse visible
-                        if (entry.target.id === 'contacto') {
-                            const contactInfoItems = entry.target.querySelectorAll('.contact-info-item');
-                            contactInfoItems.forEach((item, index) => { item.style.animationDelay = `${index * 0.15}s`; item.classList.add('is-visible'); });
-                            const contactIcons = entry.target.querySelectorAll('.contact-icon-pulse');
-                             contactIcons.forEach((icon, index) => { icon.style.animationDelay = `${0.3 + index * 0.15}s`; icon.classList.add('is-visible'); });
+                        const section = entry.target;
+                        section.classList.add('is-visible');
+
+                        // Animar elementos hijos con .animate-item
+                        const animatedItems = section.querySelectorAll('.animate-item');
+                        animatedItems.forEach((item, index) => {
+                            if (item.style.opacity !== '1') { // Evitar re-animar
+                                item.style.transition = `opacity 0.6s ${index * 0.15}s ease-out, transform 0.6s ${index * 0.15}s ease-out`;
+                                requestAnimationFrame(() => {
+                                    item.style.opacity = '1';
+                                    item.style.transform = 'translateY(0)';
+                                });
+                            }
+                        });
+                        
+                        // Lógica específica para animaciones de la sección de contacto
+                        if (section.id === 'contacto') {
+                            const contactInfoItems = section.querySelectorAll('.contact-info-item');
+                            contactInfoItems.forEach((item, index) => { 
+                                item.style.animationDelay = `${index * 0.15}s`;
+                                item.classList.add('is-visible'); 
+                            });
+                            const contactIcons = section.querySelectorAll('.contact-icon-pulse');
+                             contactIcons.forEach((icon, index) => { 
+                                icon.style.animationDelay = `${0.3 + index * 0.15}s`;
+                                icon.classList.add('is-visible');
+                            });
                         }
-                        // observer.unobserve(entry.target); // Descomentar si la animación solo debe ocurrir una vez
+
+                        observer.unobserve(section); // Animar solo una vez
                     }
                 });
-            }, { threshold: 0.1 }); // La sección se considera visible cuando el 10% está en pantalla
-            sectionsToFade.forEach(section => sectionObserver.observe(section));
+            }, { threshold: 0.1 });
 
-            // Animaciones específicas para la sección "Sobre Mí" (Nosotros)
-            const nosotrosSection = document.getElementById('nosotros');
-            if (nosotrosSection) {
-                const animatedItemsNosotros = nosotrosSection.querySelectorAll('.animate-item');
-                const nosotrosObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            animatedItemsNosotros.forEach((item, index) => {
-                                item.style.opacity = '0'; item.style.transform = 'translateY(20px)';
-                                item.style.transition = `opacity 0.6s ${index * 0.15}s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.6s ${index * 0.15}s cubic-bezier(0.25, 0.8, 0.25, 1)`;
-                                requestAnimationFrame(() => { item.style.opacity = '1'; item.style.transform = 'translateY(0px)'; });
-
-                                // Animación de barras de progreso
-                                if (item.classList.contains('specialty-item')) {
-                                    const progressBarFill = item.querySelector('.progress-bar-fill');
-                                    const percentageSpan = item.querySelector('.specialty-percentage');
-                                    const targetPercentage = parseInt(item.dataset.percentage, 10);
-                                    setTimeout(() => {
-                                        if (progressBarFill) progressBarFill.style.width = targetPercentage + '%';
-                                        let currentPercentage = 0;
-                                        const interval = setInterval(() => {
-                                            if (currentPercentage >= targetPercentage) {
-                                                clearInterval(interval);
-                                                if (percentageSpan) percentageSpan.textContent = targetPercentage + '%';
-                                                return;
-                                            }
-                                            currentPercentage++;
-                                            if (percentageSpan) percentageSpan.textContent = currentPercentage + '%';
-                                        }, (1500 / targetPercentage) || 20); // Duración de la animación del número
-                                    }, (index * 0.15 * 1000) + 100); // Retraso para iniciar animación de barra
-                                }
-                            });
-                            nosotrosObserver.unobserve(entry.target); // Animar solo una vez
-                        }
-                    });
-                }, { threshold: 0.1 });
-                animatedItemsNosotros.forEach(item => item.style.opacity = '0'); // Ocultar inicialmente
-                nosotrosObserver.observe(nosotrosSection);
-            }
+            sectionsToAnimate.forEach(section => {
+                sectionObserver.observe(section);
+            });
 
             // Animación de canvas para la sección de Contacto
+            let contactCanvasInitialized = false;
             function initContactCanvasAnimation() {
                 const canvasContact = document.getElementById('contact-canvas-bg');
                 const contactoSection = document.getElementById('contacto');
                 if (!canvasContact || !contactoSection || contactCanvasInitialized) return;
-                contactCanvasInitialized = true; // Marcar como inicializado
+                contactCanvasInitialized = true;
                 const ctxContact = canvasContact.getContext('2d');
                 let particlesArrayContact = [];
 
@@ -1533,7 +1605,7 @@
 
                 const computedStyles = getComputedStyle(document.documentElement);
                 const particleColorHex = computedStyles.getPropertyValue('--current-primary-accent-bg').trim() || '#A88B70';
-                const particleColorContact = `${particleColorHex}99`; // Color con opacidad
+                const particleColorContact = `${particleColorHex}99`;
                 const lineColorHex = computedStyles.getPropertyValue('--text-font-accent').trim() || '#00695C';
 
                 class ParticleContact {
@@ -1547,26 +1619,26 @@
                 }
                 function initParticlesContact() {
                     particlesArrayContact = [];
-                    let numberOfParticles = (canvasContact.height * canvasContact.width) / 12000; // Ajustar densidad
-                    if (numberOfParticles > 120) numberOfParticles = 120; if (numberOfParticles < 30) numberOfParticles = 30; // Límites
+                    let numberOfParticles = (canvasContact.height * canvasContact.width) / 12000;
+                    if (numberOfParticles > 120) numberOfParticles = 120; if (numberOfParticles < 30) numberOfParticles = 30;
                     for (let i = 0; i < numberOfParticles; i++) {
                         let size = (Math.random() * 2.5) + 1;
                         let x = Math.random() * (canvasContact.width - size * 2) + size;
                         let y = Math.random() * (canvasContact.height - size * 2) + size;
-                        let directionX = (Math.random() * 0.4) - 0.2; // Movimiento lento
+                        let directionX = (Math.random() * 0.4) - 0.2;
                         let directionY = (Math.random() * 0.4) - 0.2;
                         particlesArrayContact.push(new ParticleContact(x, y, directionX, directionY, size, particleColorContact));
                     }
                 }
                 function connectParticlesContact() {
-                    const maxDistance = 110; // Distancia máxima para conectar partículas
+                    const maxDistance = 110;
                     for (let a = 0; a < particlesArrayContact.length; a++) {
                         for (let b = a + 1; b < particlesArrayContact.length; b++) {
                             let distance = Math.sqrt(Math.pow(particlesArrayContact[a].x - particlesArrayContact[b].x, 2) + Math.pow(particlesArrayContact[a].y - particlesArrayContact[b].y, 2));
                             if (distance < maxDistance) {
                                 let opacityValue = 1 - (distance / maxDistance);
-                                let alphaHex = Math.floor(opacityValue * 100).toString(16).padStart(2, '0'); // Convertir opacidad a hexadecimal
-                                if (parseInt(alphaHex, 16) < 0x1A) alphaHex = '1A'; // Mínima opacidad para visibilidad
+                                let alphaHex = Math.floor(opacityValue * 100).toString(16).padStart(2, '0');
+                                if (parseInt(alphaHex, 16) < 0x1A) alphaHex = '1A';
                                 ctxContact.strokeStyle = `${lineColorHex}${alphaHex}`; ctxContact.lineWidth = 0.6;
                                 ctxContact.beginPath(); ctxContact.moveTo(particlesArrayContact[a].x, particlesArrayContact[a].y); ctxContact.lineTo(particlesArrayContact[b].x, particlesArrayContact[b].y); ctxContact.stroke();
                             }
@@ -1591,59 +1663,71 @@
                 initParticlesContact(); animateParticlesContact();
             }
 
-            // Carrusel de imágenes de la sección Inicio
+            const contactoSectionElement = document.getElementById('contacto');
+            if (contactoSectionElement) {
+                const contactoEntry = new IntersectionObserver((entries, observer) => {
+                    if (entries[0].isIntersecting) {
+                        initContactCanvasAnimation();
+                        observer.unobserve(entries[0].target);
+                    }
+                }, { threshold: 0.05 });
+                contactoEntry.observe(contactoSectionElement);
+            }
+            // ===== FIN: LÓGICA DE ANIMACIONES =====
+
+
+            // Carrusel de imágenes
             const heroSlides = document.querySelectorAll('#hero-slideshow .hero-slide');
             let currentSlideIndex = 0;
-            const slideIntervalTime = 5000; // 5 segundos por slide
+            const slideIntervalTime = 5000;
             let heroIntervalId = null;
 
             function showNextSlide() {
-                if (heroSlides.length <= 1) return; // No hacer nada si hay 1 o 0 slides
+                if (heroSlides.length <= 1) return;
                 heroSlides[currentSlideIndex].classList.remove('opacity-100'); heroSlides[currentSlideIndex].classList.add('opacity-0');
                 currentSlideIndex = (currentSlideIndex + 1) % heroSlides.length;
                 heroSlides[currentSlideIndex].classList.remove('opacity-0'); heroSlides[currentSlideIndex].classList.add('opacity-100');
             }
             function startHeroSlideshow() {
                 if (heroSlides.length > 1 && !heroIntervalId) { heroIntervalId = setInterval(showNextSlide, slideIntervalTime); }
-                else if (heroSlides.length === 1) { heroSlides[0].classList.remove('opacity-0'); heroSlides[0].classList.add('opacity-100');} // Asegurar que el único slide sea visible
+                else if (heroSlides.length === 1) { heroSlides[0].classList.remove('opacity-0'); heroSlides[0].classList.add('opacity-100');}
             }
             startHeroSlideshow();
 
-            // Animación de entrada para el texto de la sección Inicio
+            // Animación de texto en "Inicio"
             const heroSection = document.getElementById('inicio');
-            if (heroSection) setTimeout(() => heroSection.classList.add('loaded'), 200); // Pequeño retraso para iniciar animación
+            if (heroSection) setTimeout(() => heroSection.classList.add('loaded'), 200);
 
-            // Formulario de Contacto con Supabase
+            // Formulario de Contacto
             const contactForm = document.getElementById('contactForm');
             const formMessageEl = document.getElementById('form-message');
             const submitButton = contactForm ? contactForm.querySelector('button[type="submit"]') : null;
 
             if (contactForm && formMessageEl && submitButton) {
-                if (!supabase) { // Verificar si Supabase se inicializó correctamente
+                if (!supabase) {
                     console.error("Supabase no está inicializado. El formulario de contacto no funcionará.");
                     formMessageEl.textContent = 'Error: El sistema de mensajes no está disponible.';
-                    formMessageEl.className = 'text-xs text-center mt-3 h-4 text-red-600'; // Estilo de error
-                    if(submitButton) submitButton.disabled = true; // Deshabilitar botón si Supabase falla
+                    formMessageEl.className = 'text-xs text-center mt-3 h-4 text-red-600';
+                    if(submitButton) submitButton.disabled = true;
                 } else {
                     contactForm.addEventListener('submit', async function(event) {
                         event.preventDefault();
                         const originalButtonText = submitButton.innerHTML;
                         submitButton.disabled = true; submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Enviando...';
-                        formMessageEl.textContent = ''; formMessageEl.className = 'text-xs text-center text-subtle mt-3 h-4'; // Resetear mensaje
+                        formMessageEl.textContent = ''; formMessageEl.className = 'text-xs text-center text-subtle mt-3 h-4';
 
                         const nombre = document.getElementById('nombre').value.trim();
                         const email = document.getElementById('email').value.trim();
                         const asunto = document.getElementById('asunto').value.trim();
                         const mensaje = document.getElementById('mensaje').value.trim();
 
-                        // Validaciones básicas
                         if (!nombre || !email || !asunto || !mensaje) {
                             formMessageEl.textContent = 'Por favor, completa todos los campos.'; formMessageEl.classList.add('text-red-600');
                             submitButton.disabled = false; submitButton.innerHTML = originalButtonText;
                             setTimeout(() => { formMessageEl.textContent = ''; formMessageEl.className = 'text-xs text-center text-subtle mt-3 h-4'; }, 4000);
                             return;
                         }
-                        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { // Validación simple de email
+                        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
                             formMessageEl.textContent = 'Correo electrónico inválido.'; formMessageEl.classList.add('text-red-600');
                             submitButton.disabled = false; submitButton.innerHTML = originalButtonText;
                             setTimeout(() => { formMessageEl.textContent = ''; formMessageEl.className = 'text-xs text-center text-subtle mt-3 h-4'; }, 4000);
@@ -1653,15 +1737,13 @@
                         try {
                             const { data, error } = await supabase.from('mensajes_contacto').insert([{ nombre, email, asunto, mensaje }]);
                             if (error) { throw error; }
-                            formMessageEl.textContent = '¡Gracias! Tu mensaje ha sido enviado.'; formMessageEl.classList.add('text-green-600'); contactForm.reset(); // Limpiar formulario
+                            formMessageEl.textContent = '¡Gracias! Tu mensaje ha sido enviado.'; formMessageEl.classList.add('text-green-600'); contactForm.reset();
                         } catch (e) {
                             console.error('Error al enviar mensaje con Supabase:', e);
                             formMessageEl.textContent = `Error al enviar: ${e.message || 'Inténtalo de nuevo más tarde.'}`; formMessageEl.classList.add('text-red-600');
                         } finally {
-                            // Retraso para que el usuario vea el mensaje antes de reactivar el botón
                             setTimeout(() => {
                                 submitButton.disabled = false; submitButton.innerHTML = originalButtonText;
-                                // Limpiar mensaje de éxito después de un tiempo
                                 if (formMessageEl.classList.contains('text-green-600')) {
                                     setTimeout(() => { formMessageEl.textContent = ''; formMessageEl.className = 'text-xs text-center text-subtle mt-3 h-4'; }, 4000);
                                 }
@@ -1671,154 +1753,324 @@
                 }
             }
 
-            // Observador para iniciar la animación del canvas de contacto solo cuando la sección es visible
-            const contactoSectionElement = document.getElementById('contacto');
-            if (contactoSectionElement) {
-                const contactoEntry = new IntersectionObserver((entries) => {
-                    if (entries[0].isIntersecting) { initContactCanvasAnimation(); }
-                }, { threshold: 0.05 }); // Iniciar cuando un 5% es visible
-                contactoEntry.observe(contactoSectionElement);
-            }
-
-            // Lógica del Juego Didáctico
+            // ===== INICIO: LÓGICA DEL JUEGO DIDÁCTICO (MODIFICADA PARA NIVELES Y RESPONSIVE) =====
+            const juegoModal = document.getElementById('juego-modal');
             const tableroJuego = document.getElementById('tablero-juego');
             const intentosDisplay = document.getElementById('intentos-juego');
             const paresEncontradosDisplay = document.getElementById('pares-encontrados-juego');
             const reiniciarJuegoBtn = document.getElementById('reiniciar-juego-btn');
             const mensajeCompletado = document.getElementById('mensaje-juego-completado');
-            const nombresEmociones = ['ASUSTADO', 'BESO', 'LENGUITA', 'RISA', 'SONRIENTE']; // Nombres de las imágenes (sin extensión)
+            const botonesDificultad = document.querySelectorAll('.dificultad-btn');
+
+            // Definición de las imágenes para cada nivel de dificultad
+            const todasLasEmociones = {
+                facil: ['RISA', 'SONRIENTE', 'ENAMORADO', 'TRANQUILO'],
+                intermedia: ['RISA', 'SONRIENTE', 'ENAMORADO', 'TRANQUILO', 'ASUSTADO', 'LENGUITA', 'TRISTE', 'ENOJADO'],
+                dificil: ['ASUSTADO', 'BESO', 'LENGUITA', 'RISA', 'SONRIENTE', 'ANGELITO', 'DORMIDO', 'ENAMORADO', 'ENFERMO', 'ENOJADO', 'TRANQUILO', 'TRISTE']
+            };
+
+            let dificultadActual = 'facil'; // Dificultad por defecto
             let tarjetasVolteadas = [];
             let paresEncontrados = 0;
             let intentos = 0;
-            let puedeVoltear = true; // Para evitar múltiples clics rápidos
-            const totalPares = nombresEmociones.length;
-            let juegoInicializado = false;
+            let puedeVoltear = true;
 
-            function actualizarContadorPares() { if(paresEncontradosDisplay) paresEncontradosDisplay.textContent = `${paresEncontrados} / ${totalPares}`; }
+            function actualizarContadorPares() {
+                const totalPares = todasLasEmociones[dificultadActual].length;
+                if (paresEncontradosDisplay) paresEncontradosDisplay.textContent = `${paresEncontrados} / ${totalPares}`;
+            }
 
             function crearTablero() {
-                if (!tableroJuego || !intentosDisplay || !paresEncontradosDisplay || !mensajeCompletado) return; // Elementos no encontrados
-                if(juegoInicializado && reiniciarJuegoBtn && reiniciarJuegoBtn.disabled) return; // Evitar recrear si ya se está creando
-                juegoInicializado = true;
-                paresEncontrados = 0; intentos = 0; puedeVoltear = true;
-                if(reiniciarJuegoBtn) reiniciarJuegoBtn.disabled = true; // Deshabilitar botón mientras se crea
+                if (!tableroJuego || !intentosDisplay || !paresEncontradosDisplay || !mensajeCompletado) return;
+                
+                // Reiniciar estado del juego
+                paresEncontrados = 0;
+                intentos = 0;
+                puedeVoltear = true;
+                if (reiniciarJuegoBtn) reiniciarJuegoBtn.disabled = true;
 
-                tableroJuego.innerHTML = ''; intentosDisplay.textContent = intentos; actualizarContadorPares();
-                mensajeCompletado.classList.add('hidden'); mensajeCompletado.textContent = ''; // Ocultar mensaje de completado
+                // Limpiar tablero y contadores
+                tableroJuego.innerHTML = '';
+                intentosDisplay.textContent = intentos;
+                actualizarContadorPares();
+                mensajeCompletado.classList.add('hidden');
+                mensajeCompletado.textContent = '';
 
-                let emocionesParaJuego = [...nombresEmociones, ...nombresEmociones].sort(() => 0.5 - Math.random()); // Duplicar y barajar
+                // Seleccionar imágenes según la dificultad y duplicarlas para formar pares
+                let nombresEmociones = todasLasEmociones[dificultadActual];
+                let emocionesParaJuego = [...nombresEmociones, ...nombresEmociones].sort(() => 0.5 - Math.random());
+                
+                // MODIFICADO: Ajustar el layout del grid y el tamaño del modal según la dificultad
+                tableroJuego.className = 'grid gap-2 sm:gap-3'; // Reiniciar clases y ajustar gap responsivo
+                juegoModal.classList.remove('dificultad-dificil-layout'); // Quitar por defecto
 
+                if (dificultadActual === 'facil') {
+                    tableroJuego.classList.add('grid-cols-4');
+                } else if (dificultadActual === 'intermedia') {
+                    tableroJuego.classList.add('grid-cols-4');
+                } else { // Dificil
+                    tableroJuego.classList.add('grid-cols-4', 'sm:grid-cols-6'); // 4 columnas en móvil, 6 en SM y más
+                    juegoModal.classList.add('dificultad-dificil-layout');
+                }
+
+                // Crear las tarjetas y añadirlas al tablero
                 emocionesParaJuego.forEach((nombreEmocion, i) => {
                     const tarjeta = document.createElement('div');
-                    tarjeta.className = 'tarjeta-juego'; tarjeta.dataset.emocion = nombreEmocion;
-                    const caraFrontal = document.createElement('div'); caraFrontal.className = 'cara-tarjeta frontal';
-                    const caraTrasera = document.createElement('div'); caraTrasera.className = 'cara-tarjeta trasera';
-                    const imgEmocion = document.createElement('img'); imgEmocion.src = `imagenesjuego/${nombreEmocion}.png`; imgEmocion.alt = `Emoción ${nombreEmocion}`;
-                    // Fallback por si la imagen no carga
+                    tarjeta.className = 'tarjeta-juego';
+                    tarjeta.dataset.emocion = nombreEmocion;
+                    
+                    const caraFrontal = document.createElement('div');
+                    caraFrontal.className = 'cara-tarjeta frontal';
+                    
+                    const caraTrasera = document.createElement('div');
+                    caraTrasera.className = 'cara-tarjeta trasera';
+                    
+                    const imgEmocion = document.createElement('img');
+                    imgEmocion.src = `imagenesjuego/${nombreEmocion}.png`;
+                    imgEmocion.alt = `Emoción ${nombreEmocion}`;
                     imgEmocion.onerror = function() { this.src='https://placehold.co/100x100/E0D8CE/A88B70?text=?'; this.alt='Error al cargar imagen'; this.style.border='1px solid var(--current-primary-accent-bg)'; };
+                    
                     caraTrasera.appendChild(imgEmocion);
-                    tarjeta.append(caraFrontal, caraTrasera); tableroJuego.appendChild(tarjeta);
+                    tarjeta.append(caraFrontal, caraTrasera);
+                    tableroJuego.appendChild(tarjeta);
+                    
                     tarjeta.addEventListener('click', () => voltearTarjeta(tarjeta));
 
-                    // Animación de entrada para las tarjetas
-                    tarjeta.style.opacity = '0'; tarjeta.style.transform = 'translateY(20px) scale(0.9)';
-                    const delay = i * 0.06, duration = 400; // ms
+                    // Animación de entrada para cada tarjeta
+                    tarjeta.style.opacity = '0';
+                    tarjeta.style.transform = 'translateY(20px) scale(0.9)';
+                    const delay = i * 0.05, duration = 400;
                     tarjeta.style.transition = `opacity 0.4s ${delay}s ease-out, transform 0.4s ${delay}s ease-out`;
                     requestAnimationFrame(() => {
-                        tarjeta.style.opacity = '1'; tarjeta.style.transform = 'translateY(0px) scale(1)';
-                        // Restaurar transición normal después de la animación de entrada
-                        setTimeout(() => { tarjeta.style.transform = ''; tarjeta.style.transition = 'transform 0.6s cubic-bezier(0.3, 1.2, 0.7, 1.2)'; }, duration + (delay * 1000) + 50);
+                        tarjeta.style.opacity = '1';
+                        tarjeta.style.transform = 'translateY(0px) scale(1)';
+                        setTimeout(() => {
+                            tarjeta.style.transform = '';
+                            tarjeta.style.transition = 'transform 0.6s cubic-bezier(0.3, 1.2, 0.7, 1.2)';
+                        }, duration + (delay * 1000) + 50);
                     });
                 });
-                 // Habilitar botón de reinicio después de que todas las tarjetas se hayan animado
-                 if(reiniciarJuegoBtn) setTimeout(() => { reiniciarJuegoBtn.disabled = false; }, emocionesParaJuego.length * 60 + 500);
+
+                 if (reiniciarJuegoBtn) setTimeout(() => { reiniciarJuegoBtn.disabled = false; }, emocionesParaJuego.length * 50 + 500);
             }
 
             function voltearTarjeta(tarjeta) {
                 if (!puedeVoltear || tarjeta.classList.contains('volteada') || tarjeta.classList.contains('igualada')) return;
-                tarjeta.classList.add('volteada'); tarjetasVolteadas.push(tarjeta);
+                
+                tarjeta.classList.add('volteada');
+                tarjetasVolteadas.push(tarjeta);
+
                 if (tarjetasVolteadas.length === 2) {
-                    puedeVoltear = false; intentos++; if(intentosDisplay) intentosDisplay.textContent = intentos;
+                    puedeVoltear = false;
+                    intentos++;
+                    if(intentosDisplay) intentosDisplay.textContent = intentos;
                     comprobarPareja();
                 }
             }
 
             function comprobarPareja() {
                 const [t1, t2] = tarjetasVolteadas;
-                if (t1.dataset.emocion === t2.dataset.emocion) { // Es un par
-                    t1.classList.add('igualada'); t2.classList.add('igualada');
-                    paresEncontrados++; actualizarContadorPares(); tarjetasVolteadas = []; puedeVoltear = true;
-                    if (paresEncontrados === totalPares && mensajeCompletado) { // Juego completado
+                const totalPares = todasLasEmociones[dificultadActual].length;
+
+                if (t1.dataset.emocion === t2.dataset.emocion) {
+                    t1.classList.add('igualada');
+                    t2.classList.add('igualada');
+                    paresEncontrados++;
+                    actualizarContadorPares();
+                    tarjetasVolteadas = [];
+                    puedeVoltear = true;
+
+                    if (paresEncontrados === totalPares && mensajeCompletado) {
                         setTimeout(() => {
                             mensajeCompletado.textContent = '¡Felicidades! ¡Has encontrado todos los pares!';
                             mensajeCompletado.classList.remove('hidden');
-                            // Animación de entrada para el mensaje de completado
-                            mensajeCompletado.style.opacity = '0'; mensajeCompletado.style.transform = 'translateY(10px)';
+                            mensajeCompletado.style.opacity = '0';
+                            mensajeCompletado.style.transform = 'translateY(10px)';
                             requestAnimationFrame(() => {
                                 mensajeCompletado.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                                mensajeCompletado.style.opacity = '1'; mensajeCompletado.style.transform = 'translateY(0px)';
-                                // Reiniciar juego automáticamente después de un tiempo
+                                mensajeCompletado.style.opacity = '1';
+                                mensajeCompletado.style.transform = 'translateY(0px)';
+                                // Reiniciar automáticamente después de mostrar el mensaje
                                 setTimeout(() => crearTablero(), 3000);
                             });
-                        }, 600); // Pequeño retraso antes de mostrar mensaje
+                        }, 600);
                     }
-                } else { // No es un par
+                } else {
                     setTimeout(() => {
-                        t1.classList.remove('volteada'); t2.classList.remove('volteada');
-                        tarjetasVolteadas = []; puedeVoltear = true;
-                    }, 1200); // Tiempo para ver las tarjetas antes de que se volteen de nuevo
+                        t1.classList.remove('volteada');
+                        t2.classList.remove('volteada');
+                        tarjetasVolteadas = [];
+                        puedeVoltear = true;
+                    }, 1200);
                 }
             }
+            
+            // Event listener para el botón de reiniciar
+            if (reiniciarJuegoBtn) reiniciarJuegoBtn.addEventListener('click', crearTablero);
 
-            // Inicializar juego si los elementos existen y no ha sido inicializado
-            if (tableroJuego && !juegoInicializado) {
-                actualizarContadorPares(); // Actualizar contador inicial
-                crearTablero();
-                if (reiniciarJuegoBtn) reiniciarJuegoBtn.addEventListener('click', crearTablero);
-            }
+            // Event listeners para los botones de dificultad
+            botonesDificultad.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Actualizar estado visual de los botones
+                    botonesDificultad.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // Cambiar la dificultad y reiniciar el tablero
+                    dificultadActual = btn.dataset.dificultad;
+                    crearTablero();
+                });
+            });
 
-            // Animación para elementos dentro de la sección de juego (excepto las tarjetas)
-            const juegoSection = document.getElementById('juego-didactico');
-            if (juegoSection) {
-                const animatedItemsJuego = juegoSection.querySelectorAll('.animate-item:not(.tarjeta-juego)'); // Excluir tarjetas que tienen su propia animación
-                const juegoObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            animatedItemsJuego.forEach((item) => {
-                                const delay = parseFloat(item.style.animationDelay) || 0; // Respetar delay si existe
-                                if (item.style.opacity !== '1') { // Animar solo si no está ya visible
-                                    item.style.opacity = '0'; item.style.transform = 'translateY(20px)';
-                                    item.style.transition = `opacity 0.6s ${delay}s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.6s ${delay}s cubic-bezier(0.25, 0.8, 0.25, 1)`;
-                                    requestAnimationFrame(() => { item.style.opacity = '1'; item.style.transform = 'translateY(0px)'; });
-                                }
-                            });
-                            // juegoObserver.unobserve(entry.target); // Descomentar para animar solo una vez
-                        }
-                    });
-                }, { threshold: 0.1 });
-                animatedItemsJuego.forEach(item => item.style.opacity = '0'); // Ocultar inicialmente
-                juegoObserver.observe(juegoSection);
-            }
-        } // Fin de initializeAppLogic
-
+        }
 
         // ---------- INICIALIZACIÓN GENERAL AL CARGAR EL DOM ----------
         document.addEventListener('DOMContentLoaded', () => {
-            // Verificar si el acceso ya fue concedido (ej. en una recarga de página)
             if (sessionStorage.getItem('accessGranted_lp') === 'true') {
                 showMainContent();
             } else {
-                // Mostrar la pantalla "Próximamente"
-                document.body.style.overflow = 'hidden'; // Evitar scroll en la pantalla de "Próximamente"
-                if (passwordInput) passwordInput.focus(); // Enfocar el input de contraseña
-                if (csDaysEl) { // Iniciar contador si los elementos existen
+                document.body.style.overflow = 'hidden';
+                if (passwordInput) passwordInput.focus();
+                if (csDaysEl) {
                     updateCountdown();
                     countdownInterval = setInterval(updateCountdown, 1000);
                 }
-                initAnimatedBackground(); // Iniciar animación de fondo
+                initAnimatedBackground();
             }
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Configuración del cliente de Supabase (solo para esta página) ---
+            const SUPABASE_URL = 'https://wwukwwlrceszawotljau.supabase.co';
+            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3dWt3d2xyY2VzemF3b3RsamF1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1NzE5OTQsImV4cCI6MjA2NDE0Nzk5NH0.w85OwTsxhWNMWqKNPQAyQ_GSnXf_SGjcb-FAP4D6nAs';
+            const supabasePublicClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+            // --- Función para cargar y mostrar la matrícula ---
+            async function cargarMatriculaPublica() {
+                const matriculaElement = document.getElementById('matricula-display');
+                if (!matriculaElement) return;
+
+                try {
+                    const { data, error } = await supabasePublicClient
+                        .from('configuracion')
+                        .select('valor')
+                        .eq('clave', 'matricula_profesional')
+                        .single();
+
+                    if (error) throw error;
+                    
+                    if (data && data.valor) {
+                        matriculaElement.textContent = `Lic. Laura Portillo, Psicopedagoga (M.P ${data.valor})`;
+                    }
+
+                } catch (error) {
+                    console.error('Error al cargar la matrícula profesional:', error);
+                }
+            }
+
+            // --- CORRECCIÓN: Función para cargar y animar especialidades ---
+            async function cargarEspecialidadesPublicas() {
+                const container = document.getElementById('public-specialties-list');
+                if (!container) return;
+
+                try {
+                    const { data: specialtiesData, error } = await supabasePublicClient
+                        .from('specialties')
+                        .select('*')
+                        .order('id', { ascending: true });
+
+                    if (error) throw error;
+
+                    if (specialtiesData.length === 0) {
+                        container.innerHTML = '<p class="text-center text-subtle">No hay especialidades para mostrar.</p>';
+                        return;
+                    }
+                    
+                    container.innerHTML = ''; // Limpiar mensaje de "cargando"
+
+                    // Crear y añadir los elementos de especialidad al DOM
+                    specialtiesData.forEach(spec => {
+                        const itemDiv = document.createElement('div');
+                        itemDiv.className = 'specialty-item animate-item'; // La clase 'animate-item' lo mantiene oculto
+                        itemDiv.dataset.percentage = spec.percentage;
+                        
+                        itemDiv.innerHTML = `
+                            <div class="specialty-name">
+                                <span>${spec.name}</span>
+                                <span class="specialty-percentage">0%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill"></div>
+                            </div>
+                        `;
+                        container.appendChild(itemDiv);
+                    });
+
+                    // Crear un IntersectionObserver para animar los items cuando sean visibles
+                    const specialtiesContainer = document.getElementById('public-specialties-container');
+                    if (specialtiesContainer) {
+                        const specialtiesObserver = new IntersectionObserver((entries, observer) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    const itemsToAnimate = entry.target.querySelectorAll('.specialty-item');
+                                    
+                                    itemsToAnimate.forEach((item, index) => {
+                                        // 1. Animar la aparición del item
+                                        item.style.transition = `opacity 0.6s ${index * 0.15}s ease-out, transform 0.6s ${index * 0.15}s ease-out`;
+                                        requestAnimationFrame(() => {
+                                            item.style.opacity = '1';
+                                            item.style.transform = 'translateY(0)';
+                                        });
+
+                                        // 2. Animar la barra de progreso y el contador
+                                        const progressBar = item.querySelector('.progress-bar-fill');
+                                        const percentageText = item.querySelector('.specialty-percentage');
+                                        const targetPercentage = parseInt(item.dataset.percentage, 10);
+
+                                        if (progressBar && percentageText && !isNaN(targetPercentage)) {
+                                            // Animar la barra
+                                            progressBar.style.transition = `width 1.5s cubic-bezier(0.25, 0.8, 0.25, 1)`;
+                                            progressBar.style.transitionDelay = `${index * 0.15 + 0.3}s`;
+                                            progressBar.style.width = targetPercentage + '%';
+
+                                            // Animar el texto del contador
+                                            if (targetPercentage > 0) {
+                                                let currentPercentage = 0;
+                                                const duration = 1500;
+                                                const stepTime = Math.max(1, duration / targetPercentage);
+                                                const timer = setInterval(() => {
+                                                    currentPercentage++;
+                                                    if (currentPercentage >= targetPercentage) {
+                                                        clearInterval(timer);
+                                                        percentageText.textContent = targetPercentage + '%';
+                                                    } else {
+                                                        percentageText.textContent = currentPercentage + '%';
+                                                    }
+                                                }, stepTime);
+                                            } else {
+                                                percentageText.textContent = '0%';
+                                            }
+                                        }
+                                    });
+                                    
+                                    // Animar solo una vez
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        }, { threshold: 0.2 });
+
+                        specialtiesObserver.observe(specialtiesContainer);
+                    }
+
+                } catch (error) {
+                     console.error('Error al cargar las especialidades:', error);
+                     container.innerHTML = '<p class="text-center text-subtle">No se pudieron cargar las especialidades.</p>';
+                }
+            }
+
+            cargarMatriculaPublica();
+            cargarEspecialidadesPublicas();
+        });
+    </script>
 </body>
 </html>
