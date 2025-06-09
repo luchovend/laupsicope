@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F7F5F2;
+            --card-bg-color: #FFFFFF;
+            --text-color: #1f2937; /* gray-800 */
+            --heading-color: #1f2937;
+            --subtle-text-color: #4b5563; /* gray-600 */
+            --border-color: #e5e7eb; /* gray-200 */
+            --input-border-color: #d1d5db; /* gray-300 */
+            --input-focus-border-color: #A88B70;
+            --input-focus-ring-color: rgba(168, 139, 112, 0.2);
+            --message-card-bg: #f9fafb; /* gray-50 */
+            --message-card-border: #A88B70;
+            --button-secondary-bg: #e5e7eb;
+            --button-secondary-text: #374151;
+            --button-secondary-hover-bg: #d1d5db;
+        }
+
+        html.dark {
+            --bg-color: #111827; /* gray-900 */
+            --card-bg-color: #1f2937; /* gray-800 */
+            --text-color: #d1d5db; /* gray-300 */
+            --heading-color: #f9fafb; /* gray-50 */
+            --subtle-text-color: #9ca3af; /* gray-400 */
+            --border-color: #374151; /* gray-700 */
+            --input-border-color: #4b5563; /* gray-600 */
+            --message-card-bg: #374151; /* gray-700 */
+            --message-card-border: #9A7C60;
+            --button-secondary-bg: #374151;
+            --button-secondary-text: #d1d5db;
+            --button-secondary-hover-bg: #4b5563;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--heading-color);
+        }
+        .main-content {
+            background-color: var(--card-bg-color);
+            transition: background-color 0.3s ease;
+        }
+        .logout-button { background-color: #ef4444; color: white; }
+        .logout-button:hover { background-color: #dc2626; }
+        .save-button { background-color: #A88B70; color: white; }
+        .save-button:hover { background-color: #9A7C60; }
+        .message-card {
+            border-left: 4px solid var(--message-card-border);
+            background-color: var(--message-card-bg);
+            transition: all 0.2s ease-in-out;
+        }
+        .message-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        input, select {
+            background-color: var(--card-bg-color);
+            border-color: var(--input-border-color);
+            color: var(--heading-color);
+        }
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(var(--dark-mode-filter, 0));
+        }
+        html.dark input[type="date"]::-webkit-calendar-picker-indicator {
+            --dark-mode-filter: 1;
+        }
+        input:focus, select:focus {
+            border-color: var(--input-focus-border-color) !important;
+            box-shadow: 0 0 0 3px var(--input-focus-ring-color) !important;
+        }
+        .btn-secondary {
+            background-color: var(--button-secondary-bg);
+            color: var(--button-secondary-text);
+            border: 1px solid var(--input-border-color);
+        }
+        .btn-secondary:hover {
+            background-color: var(--button-secondary-hover-bg);
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-8">
+
+    <div class="max-w-5xl mx-auto">
+        <header class="flex flex-wrap items-center justify-between gap-4 pb-4 mb-6 border-b-2" style="border-color: var(--border-color)">
+            <h1 class="text-2xl sm:text-3xl font-bold">Panel de Administración</h1>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="p-2 w-10 h-10 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 dark:focus:ring-offset-gray-800 transition-colors">
+                    <i class="fas fa-moon block dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+                <button id="logout-button" class="px-3 sm:px-4 py-2 text-sm font-semibold transition-colors duration-200 rounded-md shadow-sm logout-button flex items-center">
+                    <i class="fas fa-sign-out-alt mr-0 sm:mr-2"></i>
+                    <span class="hidden sm:inline">Cerrar Sesión</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="space-y-8">
+            <section class="p-6 rounded-lg shadow-md main-content">
+                <h2 class="mb-4 text-xl font-semibold">Editar Matrícula Profesional</h2>
+                <form id="matricula-form" class="flex flex-col sm:flex-row items-center gap-4">
+                    <label for="matricula-input" class="font-medium text-[var(--subtle-text-color)]">M.P.</label>
+                    <input type="text" id="matricula-input" name="matricula" class="flex-grow w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none sm:w-auto">
+                    <button type="submit" class="w-full px-5 py-2 font-semibold text-white transition-colors duration-200 rounded-md shadow-sm save-button sm:w-auto">
+                        <i class="fas fa-save mr-2"></i>Guardar
+                    </button>
+                </form>
+                <p id="matricula-message" class="mt-3 text-sm h-4"></p>
+            </section>
+            
+            <!-- NUEVA SECCIÓN: Editor de Especialidades -->
+            <section class="p-6 rounded-lg shadow-md main-content">
+                <h2 class="mb-4 text-xl font-semibold">Editar Especialidades</h2>
+                <form id="specialties-form" class="space-y-6">
+                    <div id="specialties-container" class="space-y-4">
+                         <p class="text-[var(--subtle-text-color)]"><i class="fas fa-spinner fa-spin mr-2"></i>Cargando especialidades...</p>
+                    </div>
+                    <div class="pt-4 border-t" style="border-color: var(--border-color);">
+                        <button type="submit" class="w-full sm:w-auto px-6 py-2 font-semibold text-white transition-colors duration-200 rounded-md shadow-sm save-button">
+                            <i class="fas fa-save mr-2"></i>Guardar Todas las Especialidades
+                        </button>
+                    </div>
+                </form>
+                <p id="specialties-message" class="mt-3 text-sm h-4"></p>
+            </section>
+
+            <section class="p-6 rounded-lg shadow-md main-content">
+                <h2 class="text-xl font-semibold mb-4">Mensajes Recibidos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 p-4 border rounded-lg" style="border-color: var(--border-color);">
+                    <div>
+                        <label for="filter-input" class="text-sm font-medium text-[var(--subtle-text-color)]">Buscar por texto</label>
+                        <div class="relative mt-1">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </div>
+                            <input type="text" id="filter-input" class="w-full py-2 pl-10 pr-4 border rounded-md shadow-sm focus:outline-none" placeholder="Nombre, email, etc...">
+                        </div>
+                    </div>
+                    <div>
+                         <label class="block text-sm font-medium text-[var(--subtle-text-color)]">Filtrar por fecha</label>
+                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-1">
+                             <input type="date" id="start-date-input" class="w-full p-2 border rounded-md shadow-sm focus:outline-none" title="Fecha de inicio">
+                             <input type="date" id="end-date-input" class="w-full p-2 border rounded-md shadow-sm focus:outline-none" title="Fecha de fin">
+                         </div>
+                         <div class="flex items-center gap-2 mt-2">
+                            <button id="apply-date-filter-btn" class="w-full text-sm py-2 px-4 rounded-md shadow-sm save-button">Aplicar</button>
+                            <button id="clear-date-filter-btn" class="w-full text-sm py-2 px-4 rounded-md shadow-sm btn-secondary">Limpiar</button>
+                         </div>
+                    </div>
+                </div>
+                 <div class="flex items-center justify-end mb-4">
+                    <label for="date-sort-select" class="text-sm font-medium text-[var(--subtle-text-color)] mr-2">Ordenar por:</label>
+                    <select id="date-sort-select" class="text-sm border rounded-md shadow-sm focus:outline-none p-2">
+                        <option value="desc">Más nuevos primero</option>
+                        <option value="asc">Más antiguos primero</option>
+                    </select>
+                </div>
+                <div id="messages-container" class="space-y-4">
+                    <p id="loading-messages" class="text-[var(--subtle-text-color)]"><i class="fas fa-spinner fa-spin mr-2"></i>Cargando mensajes...</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

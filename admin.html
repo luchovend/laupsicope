@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso de Administrador | Laura Portillo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FDFBF8;
+            --card-bg-color: #FFFFFF;
+            --text-color: #1f2937; /* gray-800 */
+            --subtle-text-color: #4b5563; /* gray-600 */
+            --border-color: #EAE3DC;
+            --input-border-color: #d1d5db; /* gray-300 */
+            --input-focus-border-color: #A88B70;
+            --input-focus-ring-color: rgba(168, 139, 112, 0.2);
+            --button-bg-color: #A88B70;
+            --button-hover-bg-color: #9A7C60;
+        }
+
+        html.dark {
+            --bg-color: #111827; /* gray-900 */
+            --card-bg-color: #1f2937; /* gray-800 */
+            --text-color: #f9fafb; /* gray-50 */
+            --subtle-text-color: #d1d5db; /* gray-300 */
+            --border-color: #374151; /* gray-700 */
+            --input-border-color: #4b5563; /* gray-600 */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .login-container {
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .login-button {
+            background-color: var(--button-bg-color);
+            color: #FFFFFF;
+            font-family: 'Poppins', sans-serif;
+        }
+        .login-button:hover {
+            background-color: var(--button-hover-bg-color);
+        }
+        input {
+            background-color: var(--card-bg-color);
+            border-color: var(--input-border-color);
+            color: var(--text-color);
+        }
+        input:focus {
+            border-color: var(--input-focus-border-color) !important;
+            box-shadow: 0 0 0 3px var(--input-focus-ring-color) !important;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+
+    <button id="theme-toggle" class="fixed top-4 right-4 p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 dark:focus:ring-offset-gray-800">
+        <i class="fas fa-moon block dark:hidden"></i>
+        <i class="fas fa-sun hidden dark:block"></i>
+    </button>
+
+    <div class="w-full max-w-md p-8 space-y-6 rounded-lg shadow-lg login-container">
+        <div class="flex justify-center">
+            <img src="imagenes/logolau.png" alt="Logotipo Laura Portillo Psicopedagoga" class="h-16" onerror="this.onerror=null;this.src='https://placehold.co/150x50/FDFBF8/2A363B?text=LP+Psico';">
+        </div>
+        <h2 class="text-2xl font-bold text-center" style="font-family: 'Poppins', sans-serif;">
+            Acceso de Administrador
+        </h2>
+        
+        <form id="login-form" class="space-y-6">
+            <div>
+                <label for="email" class="block text-sm font-medium text-[var(--subtle-text-color)]">Correo Electrónico</label>
+                <input id="email" name="email" type="email" autocomplete="email" required
+                       class="w-full px-3 py-2 mt-1 placeholder-gray-400 rounded-md shadow-sm focus:outline-none sm:text-sm">
+            </div>
+
+            <div>
+                <label for="password" class="block text-sm font-medium text-[var(--subtle-text-color)]">Contraseña</label>
+                <input id="password" name="password" type="password" autocomplete="current-password" required
+                       class="w-full px-3 py-2 mt-1 placeholder-gray-400 rounded-md shadow-sm focus:outline-none sm:text-sm">
+            </div>
+
+            <div>
+                <button type="submit"
+                        class="w-full px-4 py-2 text-sm font-semibold tracking-wider transition duration-300 ease-in-out rounded-md shadow-sm login-button focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#A88B70]">
+                    Ingresar
+                </button>
+            </div>
+        </form>
+        
+        <p id="error-message" class="text-sm text-center text-red-600"></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
