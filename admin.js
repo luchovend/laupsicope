@@ -221,8 +221,7 @@ async function loadMessages(sortOrder = 'desc', startDate = null, endDate = null
         container.innerHTML = `<p class="text-red-500">Error al cargar los mensajes.</p>`;
     }
 }
-// CORRECCIÓN: Se restaura la condición completa para asegurar que la
-// actualización en tiempo real solo ocurra cuando NO hay filtros de fecha aplicados.
+
 function subscribeToNewMessages() {
     const container = document.getElementById('messages-container');
     const sortSelect = document.getElementById('date-sort-select');
@@ -233,7 +232,6 @@ function subscribeToNewMessages() {
             const startDateInput = document.getElementById('start-date-input');
             const endDateInput = document.getElementById('end-date-input');
             
-            // La actualización solo sucede si el orden es descendente y AMBOS campos de fecha están vacíos.
             if (sortSelect.value === 'desc' && !startDateInput.value && !endDateInput.value) {
                 const newCard = createMessageCard(payload.new);
                 const noMessagesPlaceholder = document.getElementById('no-messages-placeholder');
@@ -246,13 +244,81 @@ function subscribeToNewMessages() {
     return subscription;
 }
 
+// === FUNCIÓN MODIFICADA PARA AÑADIR EL BOTÓN DE CAPTURA ===
 function createMessageCard(msg) {
     const card = document.createElement('div');
+    // Se asigna un ID único a la tarjeta para poder seleccionarla fácilmente
+    card.id = `message-card-${msg.id}`;
     card.className = 'p-4 rounded-lg shadow-sm message-card';
-    const formattedDate = new Date(msg.created_at).toLocaleString('es-AR', {day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'});
-    card.innerHTML = `<div class="flex justify-end items-center mb-2"><p class="text-xs" style="color: var(--subtle-text-color);">Recibido: ${formattedDate}</p></div><div class="space-y-2"><p><span class="font-semibold" style="color: var(--subtle-text-color);">Nombre:</span> <span style="color: var(--text-color);">${msg.nombre}</span></p><p><span class="font-semibold" style="color: var(--subtle-text-color);">Email:</span> <a href="mailto:${msg.email}" class="text-blue-600 hover:underline dark:text-blue-400">${msg.email}</a></p><p><span class="font-semibold" style="color: var(--subtle-text-color);">Asunto:</span> <span style="color: var(--text-color);">${msg.asunto}</span></p><div class="pt-2 mt-2 border-t" style="border-color: var(--border-color);"><p class="font-semibold" style="color: var(--subtle-text-color);">Mensaje:</p><p class="mt-1" style="color: var(--text-color); white-space: pre-wrap;">${msg.mensaje}</p></div></div>`;
+    
+    const formattedDate = new Date(msg.created_at).toLocaleString('es-AR', {
+        day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
+    });
+
+    // Contenido principal de la tarjeta
+    const contentHTML = `
+        <div class="flex justify-end items-center mb-2">
+            <p class="text-xs" style="color: var(--subtle-text-color);">Recibido: ${formattedDate}</p>
+        </div>
+        <div class="space-y-2">
+            <p><span class="font-semibold" style="color: var(--subtle-text-color);">Nombre:</span> <span style="color: var(--text-color);">${msg.nombre}</span></p>
+            <p><span class="font-semibold" style="color: var(--subtle-text-color);">Email:</span> <a href="mailto:${msg.email}" class="text-blue-600 hover:underline dark:text-blue-400">${msg.email}</a></p>
+            <p><span class="font-semibold" style="color: var(--subtle-text-color);">Asunto:</span> <span style="color: var(--text-color);">${msg.asunto}</span></p>
+            <div class="pt-2 mt-2 border-t" style="border-color: var(--border-color);">
+                <p class="font-semibold" style="color: var(--subtle-text-color);">Mensaje:</p>
+                <p class="mt-1" style="color: var(--text-color); white-space: pre-wrap;">${msg.mensaje}</p>
+            </div>
+        </div>
+    `;
+    card.innerHTML = contentHTML;
+
+    // --- Lógica para el botón de captura ---
+    const footer = document.createElement('div');
+    footer.className = 'flex justify-end pt-3 mt-3 border-t';
+    footer.style.borderColor = 'var(--border-color)';
+
+    const captureButton = document.createElement('button');
+    captureButton.innerHTML = '<i class="fas fa-camera mr-2"></i>Capturar';
+    captureButton.className = 'px-3 py-1 text-xs font-semibold transition-colors duration-200 rounded-md shadow-sm btn-secondary flex items-center';
+    captureButton.title = 'Guardar captura de este mensaje';
+
+    captureButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Ocultar el pie de página para que no aparezca en la captura
+        footer.style.visibility = 'hidden';
+
+        html2canvas(card, {
+            useCORS: true,
+            // Se define el color de fondo explícitamente para asegurar que se capture correctamente
+            backgroundColor: getComputedStyle(card).backgroundColor,
+            scale: 2 // Aumentar la escala para una mejor resolución de la imagen
+        }).then(canvas => {
+            const link = document.createElement('a');
+            
+            // Crear un nombre de archivo seguro y descriptivo
+            const safeName = msg.nombre.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+            const dateStamp = new Date(msg.created_at).toISOString().split('T')[0];
+            link.download = `mensaje_${safeName}_${dateStamp}.png`;
+            
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            
+            // Volver a mostrar el pie de página después de la captura
+            footer.style.visibility = 'visible';
+        }).catch(err => {
+            console.error('Error al usar html2canvas:', err);
+            // Asegurarse de que el pie de página sea visible incluso si hay un error
+            footer.style.visibility = 'visible';
+        });
+    });
+
+    footer.appendChild(captureButton);
+    card.appendChild(footer);
+
     return card;
 }
+
 
 function setupMessageFilter() {
     const filterInput = document.getElementById('filter-input');
