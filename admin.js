@@ -1,14 +1,11 @@
-// =================================================================
-// LÓGICA DEL PANEL DE ADMINISTRACIÓN - LAURA PORTILLO
-// =================================================================
 
-// --- Configuración de Supabase ---
+// Configuracion de Supabase
 const SUPABASE_URL = 'https://wwukwwlrceszawotljau.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3dWt3d2xyY2VzemF3b3RsamF1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1NzE5OTQsImV4cCI6MjA2NDE0Nzk5NH0.w85OwTsxhWNMWqKNPQAyQ_GSnXf_SGjcb-FAP4D6nAs';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind3dWt3d2xyY2VzemF3b3RsamF1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg1NzE5OTQsImV4cCI6MjA2NDE0Nzk5NH0.w85OwTsxhWNMWqKNPQAyQ_GSnXf_SGjcb-FAP4D6nAs'; 
 
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// --- Lógica Principal ---
+// Logica Principal
 document.addEventListener('DOMContentLoaded', () => {
     handleTheme();
 
@@ -22,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// --- Función para el Modo Oscuro/Claro ---
+//Funcion modo Oscuro/Claro
 function handleTheme() {
     const themeToggleBtn = document.getElementById('theme-toggle');
     if (!themeToggleBtn) return;
@@ -43,7 +40,7 @@ function handleTheme() {
 }
 
 
-// --- Funciones para la Página de Login (admin.html) ---
+// Funciones para la Pagina de Login (admin.html)
 function handleLoginPage() {
     const loginForm = document.getElementById('login-form');
     if (!loginForm) return;
@@ -70,7 +67,7 @@ function handleLoginPage() {
 }
 
 
-// --- Funciones para la Página del Panel (dashboard.html) ---
+// Funciones para la Pagina del Panel (dashboard.html) 
 async function handleDashboardPage() {
     const { data: { session } } = await supabaseClient.auth.getSession();
     
@@ -91,7 +88,7 @@ async function handleDashboardPage() {
     loadMessages();
     setupMessageFilter();
     setupDateFilter();
-    subscribeToNewMessages();
+    subscribeToNewMessages(); 
 }
 
 async function loadMatricula() {
@@ -229,6 +226,7 @@ function subscribeToNewMessages() {
     const subscription = supabaseClient.channel('public:mensajes_contacto')
         .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'mensajes_contacto' }, 
         (payload) => {
+            console.log('Realtime INSERT event received:', payload); // Log para INSERT
             const startDateInput = document.getElementById('start-date-input');
             const endDateInput = document.getElementById('end-date-input');
             
@@ -239,15 +237,71 @@ function subscribeToNewMessages() {
                 container.prepend(newCard);
             }
         })
+        .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'mensajes_contacto' },
+        (payload) => {
+            console.log('Realtime DELETE event received:', payload); 
+            const deletedMessageId = payload.old.id;
+            const cardToRemove = document.getElementById(`message-card-${deletedMessageId}`);
+            if (cardToRemove) {
+                console.log('Removing card:', cardToRemove); 
+                cardToRemove.remove();
+                const messagesContainer = document.getElementById('messages-container');
+                if (messagesContainer.children.length === 0) {
+                    messagesContainer.innerHTML = '<p id="no-messages-placeholder" class="text-[var(--subtle-text-color)]">No se encontraron mensajes con los filtros aplicados.</p>';
+                }
+            } else {
+                console.log('Card not found for ID:', deletedMessageId); 
+            }
+        })
         .subscribe();
     
+    // Log para el estado de la suscripción
+    subscription.on('CHANNEL_STATE', (state) => {
+        console.log('Supabase Realtime channel state:', state);
+    });
+
     return subscription;
 }
 
-// === FUNCIÓN MODIFICADA PARA AÑADIR EL BOTÓN DE CAPTURA ===
+async function deleteMessage(messageId) {
+    const confirmationModal = document.getElementById('confirmation-modal');
+    const confirmDeleteButton = document.getElementById('confirm-delete-button');
+    const cancelDeleteButton = document.getElementById('cancel-delete-button');
+
+    confirmationModal.classList.remove('hidden');
+
+    return new Promise((resolve) => {
+        const onConfirm = async () => {
+            confirmationModal.classList.add('hidden');
+            try {
+                const { error } = await supabaseClient.from('mensajes_contacto').delete().eq('id', messageId);
+                if (error) throw error;
+                console.log('Mensaje eliminado con éxito en DB:', messageId); 
+                resolve(true);
+            } catch (error) {
+                console.error('Error al eliminar el mensaje en DB:', error); 
+                resolve(false);
+            } finally {
+                confirmDeleteButton.removeEventListener('click', onConfirm);
+                cancelDeleteButton.removeEventListener('click', onCancel);
+            }
+        };
+
+        const onCancel = () => {
+            confirmationModal.classList.add('hidden');
+            resolve(false);
+            confirmDeleteButton.removeEventListener('click', onConfirm);
+            cancelDeleteButton.removeEventListener('click', onCancel);
+        };
+
+        confirmDeleteButton.addEventListener('click', onConfirm);
+        cancelDeleteButton.addEventListener('click', onCancel);
+    });
+}
+
+
 function createMessageCard(msg) {
     const card = document.createElement('div');
-    // Se asigna un ID único a la tarjeta para poder seleccionarla fácilmente
     card.id = `message-card-${msg.id}`;
     card.className = 'p-4 rounded-lg shadow-sm message-card';
     
@@ -255,7 +309,6 @@ function createMessageCard(msg) {
         day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
     });
 
-    // Contenido principal de la tarjeta
     const contentHTML = `
         <div class="flex justify-end items-center mb-2">
             <p class="text-xs" style="color: var(--subtle-text-color);">Recibido: ${formattedDate}</p>
@@ -272,9 +325,8 @@ function createMessageCard(msg) {
     `;
     card.innerHTML = contentHTML;
 
-    // --- Lógica para el botón de captura ---
     const footer = document.createElement('div');
-    footer.className = 'flex justify-end pt-3 mt-3 border-t';
+    footer.className = 'flex justify-end pt-3 mt-3 border-t gap-2';
     footer.style.borderColor = 'var(--border-color)';
 
     const captureButton = document.createElement('button');
@@ -284,36 +336,38 @@ function createMessageCard(msg) {
 
     captureButton.addEventListener('click', (e) => {
         e.preventDefault();
-        
-        // Ocultar el pie de página para que no aparezca en la captura
         footer.style.visibility = 'hidden';
 
         html2canvas(card, {
             useCORS: true,
-            // Se define el color de fondo explícitamente para asegurar que se capture correctamente
             backgroundColor: getComputedStyle(card).backgroundColor,
-            scale: 2 // Aumentar la escala para una mejor resolución de la imagen
+            scale: 2 
         }).then(canvas => {
             const link = document.createElement('a');
-            
-            // Crear un nombre de archivo seguro y descriptivo
             const safeName = msg.nombre.replace(/[^a-z0-9]/gi, '_').toLowerCase();
             const dateStamp = new Date(msg.created_at).toISOString().split('T')[0];
             link.download = `mensaje_${safeName}_${dateStamp}.png`;
-            
             link.href = canvas.toDataURL('image/png');
             link.click();
-            
-            // Volver a mostrar el pie de página después de la captura
             footer.style.visibility = 'visible';
         }).catch(err => {
             console.error('Error al usar html2canvas:', err);
-            // Asegurarse de que el pie de página sea visible incluso si hay un error
             footer.style.visibility = 'visible';
         });
     });
 
+    const deleteButton = document.createElement('button');
+    deleteButton.innerHTML = '<i class="fas fa-trash-alt mr-2"></i>Eliminar';
+    deleteButton.className = 'px-3 py-1 text-xs font-semibold transition-colors duration-200 rounded-md shadow-sm bg-red-500 text-white hover:bg-red-600 flex items-center';
+    deleteButton.title = 'Eliminar este mensaje';
+
+    deleteButton.addEventListener('click', async (e) => {
+        e.preventDefault();
+        await deleteMessage(msg.id);
+    });
+
     footer.appendChild(captureButton);
+    footer.appendChild(deleteButton);
     card.appendChild(footer);
 
     return card;
